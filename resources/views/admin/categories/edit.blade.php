@@ -25,10 +25,19 @@
             <div class="form-group">
                 <label>{!! Form::label('image') !!}</label>
                 {!! Form::file('image') !!}
+                <img width="150" height="150" src="{{asset('images/categories/'.$category->image)}}" alt="category image">
             </div>
             {!! Form::submit('Update',['class' => 'btn btn-default']) !!}
             {!! Form::close() !!}
         </div>
+
+        <div class="col-md-12">
+            <h1>
+                {{$category->name}} Products
+            </h1>
+            <hr>
+        </div>
+
 
 
     </div>
