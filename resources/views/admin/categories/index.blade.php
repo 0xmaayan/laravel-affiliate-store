@@ -20,7 +20,7 @@
         @foreach($categories as $category)
             <div class="col-md-4" style="">
                 <div class="card text-center">
-                    <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{$category->image}}" alt="category image">
+                    <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('images/categories/'.$category->image)}}" alt="category image">
                     <div class="card-block">
                         <h4 class="card-title">{{$category->name}}</h4>
                         {{--<div class="form-group col-md-6 col-xs-6">--}}
