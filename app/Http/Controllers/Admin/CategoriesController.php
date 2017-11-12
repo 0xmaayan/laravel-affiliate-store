@@ -54,15 +54,7 @@ class CategoriesController extends AdminController
         'image' => 'mimes:png,jpg,jpeg',
       ]);
 
-      if($request->image){
-        $image = $this->uploadToS3($request->file('image'),'categories');
-      }
-
-      $data = [
-        'image' => $image,
-        'name' => $request->name
-      ];
-      Category::create($data);
+      Category::create($validatedData);
 
       return Redirect::route('categories.index');
     }
