@@ -6,7 +6,7 @@ use App\Category;
 use App\Base\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\DataTables;
 
 class CategoriesController extends AdminController
 {
@@ -26,9 +26,14 @@ class CategoriesController extends AdminController
      */
     public function index()
     {
-        $categories = Category::all();
+      $categories = Category::all();
 
-        return view('admin.categories.index',compact('categories'));
+      $products = Product::all();
+
+      return Datatables::of($products)->make(true)->view(
+        'admin.categories.index',
+        compact('categories','products')
+      );
     }
 
     /**
