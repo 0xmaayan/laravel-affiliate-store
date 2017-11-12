@@ -96,18 +96,9 @@ class CategoriesController extends AdminController
         'image' => 'mimes:png,jpg,jpeg',
       ]);
 
-      $data =[
-        'name' => $request->name
-      ];
-      if($request->image){
-        $image = $this->uploadToS3($request->file('image'),'categories');
-        $data = [
-          'image' => $image,
-        ];
-      }
 
       $category = Category::findOrFail($id);
-      $category->update($data);
+      $category->update($validatedData);
 
       return Redirect::route('categories.index');
     }
