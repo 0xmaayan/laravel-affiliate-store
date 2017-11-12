@@ -27,13 +27,8 @@ class CategoriesController extends AdminController
     public function index()
     {
         $categories = Category::all();
-        $categories_images=[];
 
-        foreach($categories as $key => $value){
-
-          $categories_images[$key] = [Storage::disk('s3')->url('categories/'.$value->image),$value->name,$value->id];
-        }
-        return view('admin.categories.index',compact('categories_images'));
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
