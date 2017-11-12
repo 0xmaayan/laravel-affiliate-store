@@ -1,0 +1,17 @@
+@extends('layouts.master')
+
+@section('content')
+
+    @include('pages.homepage.slider')
+
+    @include('pages.homepage.categories')
+
+    @include('pages.homepage.products')
+
+    @include('pages.homepage.parallax')
+
+    @include('pages.homepage.categoriesList')
+
+    {{--@include('pages.homepage.articles')--}}
+
+@endsection

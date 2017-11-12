@@ -1,0 +1,318 @@
+/*
+* Based on Skeleton by Dave Gamache (www.getskeleton.com)
+* Modified by Vasterad
+*/
+
+
+/* Table of Content
+==================================================
+	#Reset & Basics
+	#Basic Styles
+	#Site Styles
+	#Typography
+	#Links
+	#Lists
+	#Images
+	#Buttons
+	#Forms
+	#Misc */
+
+
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline; }
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block; }
+	body {
+		line-height: 1; }
+	ol, ul {
+		list-style: none; }
+	blockquote, q {
+		quotes: none; }
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none; }
+	table {
+		border-collapse: collapse;
+		border-spacing: 0; }
+	.no-select {
+		user-select: none;
+		-o-user-select:none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		-webkit-user-select: none; }
+
+
+/* #Basic Styles
+================================================== */
+	body {
+		background: #fff;
+		font-size: 14px;
+		line-height: 24px;
+		color: #888;
+		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+		-webkit-text-size-adjust: 100%;
+	}
+	
+	#wrapper {
+		padding: 0;
+		background-color: #fff;
+	}
+
+	/* Boxed Layout Style */
+	body.boxed {
+		margin: 0 auto;
+		background: #e9e9e9;
+	}
+	
+	#header {
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+	}
+
+	/* Main Font */
+	body, h1, h2, h3, h4, h5, h6,
+	input[type="button"], input[type="submit"],
+	input[type="text"], input[type="password"], input[type="email"], textarea, select, button {
+		font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+
+/* Basic Alginment
+================================================== */
+	#wrapper img {
+		height: auto;
+		max-width: 100%;
+	}
+	
+	.columns.google-map img {
+		max-width: none;
+	}
+
+	img, object, video {
+		height: auto;
+		display:block;
+	}
+	
+	img {
+		width: auto;
+		border: 0;
+		-ms-interpolation-mode: bicubic;
+	}
+
+	/* Flexible Embeds */
+	.embed {
+		position: relative;
+		padding: 0px;
+		padding-bottom: 56.25%; /* 16/9 ratio */
+		height: 0;
+		overflow: hidden;
+	}
+
+	.embed iframe,
+	.embed object,
+	.embed embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.image-left {
+		float: left;
+		margin: 5px 15px 8px 0;
+	}
+	
+	.image-right {
+		float:right;
+		margin: 5px 0 8px 15px;
+	}
+	
+	.image-right,
+	.image-left {
+		 padding: 5px;
+		 border: 1px solid #e0e0e0;
+		 max-width: 100%;
+		-webkit-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+		box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+	}
+
+
+/* #Margin Styles
+================================================== */
+
+	/* Margin Reset */
+	.margin-reset { margin: 0 !important; }
+
+	/* Margin Top */
+	.margin-top-0 { margin-top: 0 !important; }
+	.margin-top-5 { margin-top: 5px !important; }
+	.margin-top-10 { margin-top: 10px !important; }
+	.margin-top-15 { margin-top: 15px !important; }
+	.margin-top-20 { margin-top: 20px !important; }
+	.margin-top-25 { margin-top: 25px !important; }
+	.margin-top-30 { margin-top: 30px !important; }
+	.margin-top-35 { margin-top: 35px !important; }
+	.margin-top-40 { margin-top: 40px !important; }
+	.margin-top-45 { margin-top: 45px !important; }
+	.margin-top-50 { margin-top: 50px !important; }
+
+	/* Margin Bottom */
+	.margin-bottom-0 { margin-bottom: 0 !important; }
+	.margin-bottom-5 { margin-bottom: 5px !important; }
+	.margin-bottom-10 { margin-bottom: 10px !important; }
+	.margin-bottom-15 { margin-bottom: 15px !important; }
+	.margin-bottom-20 { margin-bottom: 20px !important; }
+	.margin-bottom-25 { margin-bottom: 25px !important; }
+	.margin-bottom-30 { margin-bottom: 30px !important; }
+	.margin-bottom-35 { margin-bottom: 35px !important; }
+	.margin-bottom-40 { margin-bottom: 40px !important; }
+	.margin-bottom-45 { margin-bottom: 45px !important; }
+	.margin-bottom-50 { margin-bottom: 50px !important; }
+
+	/* Margin Left */
+	.margin-left-0 { margin-left: 0 !important; }
+
+	/* Margin Right */
+	.margin-right-5 { margin-right: 5px !important; }
+
+
+/* #Typography
+================================================== */
+	h1, h2, h3, h4, h5, h6 {
+		color: #606060;
+		font-weight: 500;
+	}
+		
+	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+	h1 { font-size: 28px; line-height: 50px; }
+	h2 { font-size: 24px; line-height: 30px; }
+	h3 { font-size: 20px; line-height: 34px; }
+	h4 { font-size: 18px; line-height: 30px; }
+	h5 { font-size: 16px; line-height: 24px; }
+	h6 { font-size: 14px; line-height: 21px; }
+
+	p { margin: 0 0 15px 0; line-height: 24px;}
+	p img { margin: 0; }
+	p.lead { font-size: 21px; line-height: 27px; color: #777;  }
+
+	em { font-style: italic; }
+	strong { font-weight: 600; color: #606060; }
+	small { font-size: 80%; }
+
+	hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
+
+
+/* #Links
+================================================== */
+	a { color: #3acf87; text-decoration: none; outline: 0; -webkit-transition: color 0.2s ease-in-out; -moz-transition: color 0.2s ease-in-out; -o-transition: color 0.2s ease-in-out; -transition: color 0.2s ease-in-out; }
+	a:hover { color: #888; }
+	a:visited { color: transparent; }
+	p a, p a:visited { line-height: inherit; }
+
+
+/* #Lists
+================================================== */
+	ul, ol { margin: 0; }
+	ul { list-style: none outside; }
+	ol { list-style: decimal; }
+	ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
+	ul.square { list-style: square outside; }
+	ul.circle { list-style: circle outside; }
+	ul.disc { list-style: disc outside; }
+	ul ul, ul ol,
+	ol ol, ol ul {}
+	ul ul li, ul ol li,
+	ol ol li, ol ul li {}
+	li { line-height: 18px; }
+	ul.large li { line-height: 21px; }
+	li p { line-height: 21px; }
+
+
+/* #Forms
+================================================== */
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea,
+	select {
+		padding: 10px 12px;
+		outline: none;
+		font-size: 13px;
+		color: #999;
+		margin: 0;
+		max-width: 100%;
+		display: block;
+		background: #f5f5f5;
+		border: 1px solid #f5f5f5;
+		font-weight: 600;
+		}
+	select {
+		padding: 0;}
+	input[type="text"]:focus,
+	input[type="password"]:focus,
+	input[type="email"]:focus,
+	textarea:focus {
+		border: 1px solid #f2f2f2;
+		background: #f2f2f2;
+		color: #808080; 
+		-webkit-transition: all 0.1s ease-in-out;
+		-moz-transition: all 0.1s ease-in-out;
+		-o-transition: all 0.1s ease-in-out;
+		-ms-transition: all 0.1s ease-in-out;
+		transition: all 0.1s ease-in-out;
+		}
+::-webkit-input-placeholder { /* WebKit browsers */
+	color:    #999;
+	opacity: 1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:    #999;
+	opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:    #999;
+	opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color:    #999;
+	opacity: 1;
+}
+	textarea {
+		min-height: 60px; }
+	label,
+	legend {
+		display: block;
+		font-weight: bold;
+		font-size: 14px; 
+		font-weight: normal;
+		margin-bottom: 5px;}
+	input {
+		-webkit-transition: all 0.1s ease-in-out;
+		-moz-transition: all 0.1s ease-in-out;
+		-o-transition: all 0.1s ease-in-out;
+		-ms-transition: all 0.1s ease-in-out;
+		transition: all 0.1s ease-in-out;
+		 }
+	input[type="checkbox"] {
+		display: inline; }
+	label span,
+	legend span {
+		font-weight: normal;
+		font-size: 14px;
+		color: #444; }
+		
+
+
+
