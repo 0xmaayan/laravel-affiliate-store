@@ -170,6 +170,7 @@ return [
        */
         Caffeinated\Menus\MenusServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,7 +231,7 @@ return [
         'Menu' => Caffeinated\Menus\Facades\Menu::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 
