@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Base\Controllers\AdminController;
-use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\DataTables;
 
-class CategoriesController extends AdminController
+class ProductsController extends AdminController
 {
       /**
        * Create a new controller instance.
@@ -27,15 +26,7 @@ class CategoriesController extends AdminController
      */
     public function index()
     {
-      $categories = Category::all();
 
-      //$products = Product::all();
-
-//      return Datatables::of($products)->make(true)->view(
-//        'admin.categories.index',
-//        compact('categories','products')
-//      );
-      return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -45,7 +36,7 @@ class CategoriesController extends AdminController
      */
     public function create()
     {
-        return view('admin.categories.create');
+
     }
 
     /**
@@ -56,23 +47,7 @@ class CategoriesController extends AdminController
      */
     public function store(Request $request)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-      ]);
 
-      $data = [
-        'name' => $request->name,
-      ];
-
-      if($request->file('image')){
-        $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/images/categories'), $data['image']);
-      }
-
-      Category::create($data);
-
-      return Redirect::route('categories.index');
     }
 
     /**
@@ -94,8 +69,7 @@ class CategoriesController extends AdminController
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
+
     }
 
     /**
@@ -107,16 +81,7 @@ class CategoriesController extends AdminController
      */
     public function update(Request $request, $id)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-      ]);
 
-
-      $category = Category::findOrFail($id);
-      $category->update($validatedData);
-
-      return Redirect::route('categories.index');
     }
 
     /**
@@ -127,10 +92,6 @@ class CategoriesController extends AdminController
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
 
-        $category->delete();
-
-        return redirect()->back();
     }
 }
