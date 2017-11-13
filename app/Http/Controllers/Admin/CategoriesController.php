@@ -29,12 +29,6 @@ class CategoriesController extends AdminController
     {
       $categories = Category::all();
 
-      //$products = Product::all();
-
-//      return Datatables::of($products)->make(true)->view(
-//        'admin.categories.index',
-//        compact('categories','products')
-//      );
       return view('admin.categories.index',compact('categories'));
     }
 
@@ -86,16 +80,22 @@ class CategoriesController extends AdminController
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int $id
+   * @param Request $request
+   * @return \Illuminate\Http\Response
+   */
+    public function edit($id, Request $request)
     {
         $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
+        $products = Product::all();
+
+      if ($request->ajax()){
+        return Datatables::of($products)->make(true);
+      }
+        return view('admin.categories.edit', compact('category','products'));
     }
 
     /**

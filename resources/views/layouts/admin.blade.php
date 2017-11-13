@@ -17,6 +17,7 @@
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" />--}}
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -84,7 +85,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- DataTables -->
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    @stack('scripts')
     <script src="{{ asset('scripts/app.js') }}"></script>
 </body>
 </html>

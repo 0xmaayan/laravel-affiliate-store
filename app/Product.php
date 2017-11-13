@@ -21,6 +21,6 @@ class Product extends Model
   protected $dates = ['deleted_at'];
 
   public function category(){
-    return $this->hasOne('App\Category');
+    return $this->belongsTo('App\Category');
   }
 }

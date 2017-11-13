@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+@endsection
+
 @section('content')
 <div id="page-wrapper" style="min-height: 902px;">
     @if (session('status'))
@@ -40,8 +44,40 @@
             <hr>
         </div>
 
-        <div id="products-table"></div>
+       <div class="panel-body">
+           <table id="products-table" class="table">
+               <thead>
+               <tr>
+                   <td>#</td>
+                   <td>Name</td>
+                   <td>Created At</td>
+                   <td>Updated At</td>
+               </tr>
+               </thead>
+               <tbody>
+               </tbody>
+           </table>
+       </div>
 
     </div>
 </div>
-@endsection
+@stop
+
+@push('scripts')
+    <script>
+        $(function() {
+            $('#products-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('categories.index') !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'updated_at', name: 'updated_at' }
+                ]
+            });
+        });
+    </script>
+
+@endpush
