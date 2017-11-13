@@ -17,6 +17,6 @@ $factory->define(App\Category::class, function (Faker $faker) {
 
     return [
         'name' => $faker->name,
-        'image' => $faker->image(),
+        'image' => $faker->image('public/images/categories',400,300,null,false),
     ];
 });

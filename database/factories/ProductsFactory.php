@@ -19,8 +19,8 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'name' => $faker->name,
         'link' => $faker->url,
         'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
-        'main_image' => $faker->image(),
-        'second_image' => $faker->image(),
+        'main_image' => $faker->image('public/images/categories',400,300,null,false),
+        'second_image' => $faker->image('public/images/categories',400,300,null,false),
         'category_id' => \App\Category::all()->random()->id
     ];
 });
