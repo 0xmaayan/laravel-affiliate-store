@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->decimal('price',9,2)->nullable();
             $table->string('main_image')->nullable();
             $table->string('second_image')->nullable();
-            $table->integer('categorie_id')->unsigned();
-            $table->foreign('categorie_id')
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
                   ->references('id')
                   ->on('categories')
                   ->onDelete('cascade');
