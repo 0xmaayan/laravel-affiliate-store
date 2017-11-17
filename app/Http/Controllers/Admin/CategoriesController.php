@@ -93,7 +93,15 @@ class CategoriesController extends AdminController
         $products = Product::where('category_id',$id)->get();
 
       if ($request->ajax()){
-        return Datatables::of($products)->make(true);
+        return Datatables::of($products)
+          ->editColumn('link', function ($product){
+            return '<a href="'.$product->link.'">Product Link</a>';
+          })
+          ->addColumn('action', function ($product){
+            return '<a href="'.route('products.edit',$product->id).'">Edit</a>';
+          })
+          ->rawColumns(['link'])
+          ->make(true);
       }
         return view('admin.categories.edit', compact('category','products'));
     }
