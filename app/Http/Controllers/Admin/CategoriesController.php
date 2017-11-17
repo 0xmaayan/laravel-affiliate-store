@@ -90,7 +90,7 @@ class CategoriesController extends AdminController
     public function edit($id, Request $request)
     {
         $category = Category::findOrFail($id);
-        $products = Product::all();
+        $products = Product::where('category_id',$id)->get();
 
       if ($request->ajax()){
         return Datatables::of($products)->make(true);
