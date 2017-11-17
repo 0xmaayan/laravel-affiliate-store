@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label>{!! Form::label('category') !!}</label>
-                {!! Form::select('category', $categories_list,['class' => 'form-control']); !!}
+                {!! Form::select('category_id', $categories_list,['class' => 'form-control']); !!}
             </div>
             {!! Form::submit('Save',['class' => 'btn btn-default']) !!}
             {!! Form::close() !!}
