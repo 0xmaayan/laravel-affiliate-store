@@ -52,7 +52,9 @@ class ProductsController extends AdminController
      */
     public function create()
     {
+        $categories_list = Category::pluck('name','id');
 
+        return view('admin.products.create',compact('categories_list'));
     }
 
     /**

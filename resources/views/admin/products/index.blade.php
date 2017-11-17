@@ -19,7 +19,7 @@
                     Products
                     <a
                         class="btn btn-outline btn-info pull-right"
-                        href="{{route('categories.create')}}">Add Product
+                        href="{{route('products.create')}}">Add Product
                     </a>
                 </h1>
             </div>
