@@ -17,6 +17,10 @@
             <div class="col-md-12">
                 <h1>
                     Products
+                    <a
+                        class="btn btn-outline btn-info pull-right"
+                        href="{{route('categories.create')}}">Add Product
+                    </a>
                 </h1>
             </div>
 
