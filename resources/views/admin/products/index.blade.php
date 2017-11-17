@@ -1,59 +1,62 @@
-<script id="details-template" type="text/x-handlebars-template">
-<table class="table">
-<tr>
-<td>Full name:</td>
-<td>name</td>
-</tr>
-<tr>
-<td>Email:</td>
-<td>email</td>
-</tr>
-<tr>
-<td>Extra info:</td>
-<td>And any further details here (images etc)...</td>
-</tr>
-</table>
-</script>
+@extends('layouts.admin')
 
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+@endsection
 
+@section('content')
+    <div id="page-wrapper" style="min-height: 902px;">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+        <div style="padding-top:25px;"></div>
+        <div class="row">
 
-<script>
-    var template = Handlebars.compile($("#details-template").html());
+            <div class="col-md-12">
+                <h1>
+                    Products
+                </h1>
+            </div>
 
-    var table = $('#products-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{{route('categories.index')}}',
-        columns: [
-            {
-              "className":      'details-control',
-                "orderable":      false,
-                "searchable":     false,
-                "data":           null,
-                "defaultContent": ''
-            },
-            {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'},
-        ],
-        order: [[1, 'asc']]
-    });
+            <div class="panel-body">
+                <table id="products-table" class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Link</th>
+                        <th>Category</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
 
-    // Add event listener for opening and closing details
-    $('#products-table tbody').on('click', 'td.details-control', function () {
-      var tr = $(this).closest('tr');
-      var row = table.row( tr );
+        </div>
+    </div>
+@stop
 
-      if ( row.child.isShown() ) {
-        // This row is already open - close it
-        row.child.hide();
-        tr.removeClass('shown');
-      }
-      else {
-        // Open this row
-        row.child( template(row.data()) ).show();
-        tr.addClass('shown');
-      }
-    });
-</script>
+@push('scripts')
+    <script>
+        $(function(){
+            $('#products-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('products.index') !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
+                    { data: 'link', name: 'link' },
+                    { data: 'category.name', name: 'category.name' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'updated_at', name: 'updated_at' },
+                    { data: 'action', name: 'action' }
+                ]
+            });
+        });
+    </script>
+@endpush

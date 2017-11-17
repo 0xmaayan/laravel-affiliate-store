@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Base\Controllers\AdminController;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\DataTables;
@@ -19,14 +20,29 @@ class ProductsController extends AdminController
         $this->middleware('auth');
       }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+  /**
+   * Display a listing of the resource.
+   *
+   * @param Request $request
+   * @return \Illuminate\Http\Response
+   */
+    public function index(Request $request)
     {
+      $products =  Product::with('category')->select('products.*');;
+      if ($request->ajax()){
+        return Datatables::of($products)
+          ->editColumn('link', function ($product){
+            return '<a href="'.$product->link.'">Product Link</a>';
+          })
+          ->addColumn('action', function ($product){
+            return '<a class="btn btn-sm btn-warning" href="'.route('products.edit',$product->id).'">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="'.route('products.destroy',$product->id).'">Delete</a>';
+          })
+          ->rawColumns(['link','action'])
+          ->make(true);
+      }
 
+      return view('admin.products.index');
     }
 
     /**
