@@ -98,9 +98,9 @@ class CategoriesController extends AdminController
             return '<a href="'.$product->link.'">Product Link</a>';
           })
           ->addColumn('action', function ($product){
-            return '<a href="'.route('products.edit',$product->id).'">Edit</a>';
+            return '<a class="btn btn-sm btn-warning" href="'.route('products.edit',$product->id).'">Edit</a>';
           })
-          ->rawColumns(['link'])
+          ->rawColumns(['link','action'])
           ->make(true);
       }
         return view('admin.categories.edit', compact('category','products'));
