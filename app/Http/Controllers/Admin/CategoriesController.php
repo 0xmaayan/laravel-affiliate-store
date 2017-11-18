@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Base\Controllers\AdminController;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\DataTables;
@@ -28,12 +29,7 @@ class CategoriesController extends AdminController
     {
       $categories = Category::all();
 
-      $products = Product::all();
-
-      return Datatables::of($products)->make(true)->view(
-        'admin.categories.index',
-        compact('categories','products')
-      );
+      return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -84,16 +80,30 @@ class CategoriesController extends AdminController
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int $id
+   * @param Request $request
+   * @return \Illuminate\Http\Response
+   */
+    public function edit($id, Request $request)
     {
         $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
+        $products = Product::where('category_id',$id)->get();
+
+      if ($request->ajax()){
+        return Datatables::of($products)
+          ->editColumn('link', function ($product){
+            return '<a href="'.$product->link.'">Product Link</a>';
+          })
+          ->addColumn('action', function ($product){
+            return '<a class="btn btn-sm btn-warning" href="'.route('products.edit',$product->id).'">Edit</a>';
+          })
+          ->rawColumns(['link','action'])
+          ->make(true);
+      }
+        return view('admin.categories.edit', compact('category','products'));
     }
 
     /**

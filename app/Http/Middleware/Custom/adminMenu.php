@@ -26,6 +26,10 @@ class adminMenu
         ->active('admin/categories/*')
         ->icon('shopping-basket')
         ->prependIcon();
+      $menu->add('Products',  ['route' => 'products.index'])
+        ->active('admin/products/*')
+        ->icon('bars')
+        ->prependIcon();
       $menu->add('Users',  '/admin/users')
         ->active('admin/users/*')
         ->icon('users')

@@ -26,4 +26,5 @@ Route::get('/admin/users', ['as' => 'admin.users', 'uses' => 'UsersController@in
 Route::get('/admin/settings', ['as' => 'admin.settings', 'uses' => 'SettingsController@index']);
 
 Route::resource('categories','CategoriesController');
+Route::resource('products','ProductsController');
 
