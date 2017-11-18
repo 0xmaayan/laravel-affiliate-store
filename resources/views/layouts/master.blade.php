@@ -105,7 +105,7 @@
     <!-- Container -->
     <div class="container">
 
-        <div class="eight columns">© Copyright 2014 by <a href="#">trizzy</a>. All Rights Reserved.</div>
+        <div class="eight columns">© Copyright 2017 by <a href="#">lost in space</a>. All Rights Reserved.</div>
         <div class="eight columns">
             <ul class="payment-icons">
                 <li><img src="images/visa.png" alt="" /></li>
