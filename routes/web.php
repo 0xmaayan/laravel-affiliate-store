@@ -24,9 +24,7 @@ Route::group(['domain' => "www.lostinspace.co"], function()
   });
 });
 
-Route::get('/', function () {
-  return view('index');
-});
+Route::get('/', 'FrontController@index');
 
 Route::get("/email", function() {
   Mail::raw('Now I know how to send emails with Laravel', function($message)
