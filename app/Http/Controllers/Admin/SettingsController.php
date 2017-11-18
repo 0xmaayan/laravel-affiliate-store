@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Base\Controllers\AdminController;
+use App\Setting;
 use Illuminate\Http\Request;
 
 class SettingsController extends AdminController
@@ -23,8 +24,8 @@ class SettingsController extends AdminController
      */
     public function index()
     {
-      //$settings = Setting::all();
+      $settings = Setting::all();
 
-      return view('admin.settings');
+      return view('admin.settings.index',compact('settings'));
     }
 }

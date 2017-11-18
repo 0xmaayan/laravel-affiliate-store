@@ -27,4 +27,5 @@ Route::get('/admin/settings', ['as' => 'admin.settings', 'uses' => 'SettingsCont
 
 Route::resource('categories','CategoriesController');
 Route::resource('products','ProductsController');
+Route::resource('settings','SettingsController');
 
