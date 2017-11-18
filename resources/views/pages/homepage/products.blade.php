@@ -26,152 +26,29 @@
                 <div class="overflowholder">
 
                     <ul>
+                        @foreach($products as $product)
+                            <li>
+                                <figure class="product">
+                                    <div class="mediaholder">
+                                        <a href="variable-product-page.html">
+                                            <img alt="" src="{{asset('images/products/'.$product->main_image)}}"/>
+                                            <div class="cover">
+                                                <img alt="" src="{{asset('images/products/'.$product->second_image)}}"/>
+                                            </div>
+                                        </a>
+                                        <a href="{{$product->link}}" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                    </div>
 
-                        <!-- Product #1 -->
-                        <li>
-                            <figure class="product">
-                                <div class="mediaholder">
                                     <a href="variable-product-page.html">
-                                        <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        <div class="cover">
-                                            <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        </div>
+                                        <section>
+                                            <span class="product-category">{{$product->category_id}}</span>
+                                            <h5>{{$product->name}}</h5>
+                                            <span class="product-price">${{$product->price}}</span>
+                                        </section>
                                     </a>
-                                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <a href="variable-product-page.html">
-                                    <section>
-                                        <span class="product-category">Skirts</span>
-                                        <h5>Brown Mini Skirt</h5>
-                                        <span class="product-price">$79.00</span>
-                                    </section>
-                                </a>
-                            </figure>
-                        </li>
-
-
-                        <!-- Product #2 -->
-                        <li>
-                            <figure class="product">
-                                <div class="mediaholder">
-                                    <a target="_blank"
-                                           href="https://www.amazon.com/gp/product/B06XGYB161/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B06XGYB161&linkCode=as2&tag=lostinspace03-20&linkId=89f3f2f7f8990ac3a483bfda091fbd3b">
-                                        <img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B06XGYB161&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL110_&tag=lostinspace03-20" >
-                                        <div class="cover">
-                                            <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <a href="https://www.amazon.com/gp/product/B06XGYB161/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B06XGYB161&linkCode=as2&tag=lostinspace03-20&linkId=89f3f2f7f8990ac3a483bfda091fbd3b">
-                                    <section>
-                                        <span class="product-category">Product Category</span>
-                                        <h5>Product Name</h5>
-                                        <span class="product-price">Product Price</span>
-                                    </section>
-                                </a>
-                            </figure>
-                        </li>
-
-
-                        <!-- Product #3 -->
-                        <li>
-                            <figure class="product">
-                                <div class="product-discount">SALE</div>
-                                <div class="mediaholder">
-                                    <a href="single-product-page.html">
-                                        <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        <div class="cover">
-                                            <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <a href="single-product-page.html">
-                                    <section>
-                                        <span class="product-category">Suits</span>
-                                        <h5>Wool Two-Piece Suit</h5>
-                                        <span class="product-price-discount">$499.00<i>$399.00</i></span>
-                                    </section>
-                                </a>
-                            </figure>
-                        </li>
-
-
-                        <!-- Product #4 -->
-                        <li>
-                            <figure class="product">
-                                <div class="mediaholder">
-                                    <a href="variable-product-page.html">
-                                        <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        <div class="cover">
-                                            <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <a href="variable-product-page.html">
-                                    <section>
-                                        <span class="product-category">Longsleeves</span>
-                                        <h5>Vintage Stripe Jumper</h5>
-                                        <span class="product-price">$49.00</span>
-                                    </section>
-                                </a>
-                            </figure>
-                        </li>
-
-
-                        <!-- Product #5 -->
-                        <li>
-                            <figure class="product">
-                                <div class="mediaholder">
-                                    <a href="single-product-page.html">
-                                        <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        <div class="cover">
-                                            <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <a href="singlee-product-page.html">
-                                    <section>
-                                        <span class="product-category">Accessories</span>
-                                        <h5>Vintage Sunglasses</h5>
-                                        <span class="product-price">$29.00</span>
-                                    </section>
-                                </a>
-                            </figure>
-                        </li>
-
-
-                        <!-- Product #6 -->
-                        <li>
-                            <figure class="product">
-                                <div class="mediaholder">
-                                    <a href="single-product-page.html">
-                                        <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        <div class="cover">
-                                            <img alt="" src="{{asset('images/products/0XJHL0tHCo.jpg')}}"/>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <a href="single-product-page.html">
-                                    <section>
-                                        <span class="product-category">Shirts</span>
-                                        <h5>Solid Blue Polo Shirt</h5>
-                                        <span class="product-price">$29.00</span>
-                                    </section>
-                                </a>
-                            </figure>
-                        </li>
-
+                                </figure>
+                            </li>
+                        @endforeach
                     </ul>
                     <div class="clearfix"></div>
 
