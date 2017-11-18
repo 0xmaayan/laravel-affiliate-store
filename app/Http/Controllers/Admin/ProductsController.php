@@ -87,7 +87,9 @@ class ProductsController extends AdminController
      */
     public function edit($id)
     {
-
+      $categories_list = Category::pluck('name','id');
+      $product = Product::findOrFail($id);
+      return view('admin.products.edit',compact('product','categories_list'));
     }
 
     /**
