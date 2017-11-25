@@ -147,6 +147,6 @@ class CategoriesController extends AdminController
 
         $category->delete();
 
-        return redirect()->back();
+        return Redirect::route('categories.index');
     }
 }
