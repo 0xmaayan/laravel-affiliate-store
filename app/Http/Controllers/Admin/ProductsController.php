@@ -71,11 +71,14 @@ class ProductsController extends AdminController
         'image' => 'mimes:png,jpg,jpeg',
         'link' => 'required',
       ]);
+
+      $linkArray = $this->returnArrayOfAmazonLinks($request->link);
+
       $data = [
         'name' => $request->name,
         'price' => $request->price,
-        'link' => $this->handleLink($request->link),
-        'main_image' => $this->getLinkImage(),
+        'link' => $linkArray[0].$linkArray[2], // $linkArray[0] is opening a tag , $linkArray[2] closing a tag
+        'main_image' =>$linkArray[1], // $linkArray[0]
         'category_id' => $request->category_id
       ];
 
@@ -140,28 +143,10 @@ class ProductsController extends AdminController
       return redirect()->back();
     }
 
-    /*
-     * <a
-     * href="https://www.amazon.com/Allied-Brad-Pitt/dp/B01N0AN2W6/ref=as_li_ss_il?_encoding=UTF8&pd_rd_i=B01N0AN2W6&pd_rd_r=ZT95X1G6K2Q7PMT6GG0W&pd_rd_w=UtSzk&pd_rd_wg=qP5M5&psc=1&refRID=AF3SS5GBFWW0VBKT3BSA&linkCode=li2&tag=lostinspace03-20&linkId=765c98dd4931a6341a5760da4f8adf31" target="_blank">
-     * <img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01N0AN2W6&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=lostinspace03-20">
-     * </a>
-     * <img src="https://ir-na.amazon-adsystem.com/e/ir?t=lostinspace03-20&l=li2&o=1&a=B01N0AN2W6" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-     *
-     *
-     *
-     * <a
-     * href="https://www.amazon.com/Allied-Brad-Pitt/dp/B01N0AN2W6/ref=as_li_ss_il?_encoding=UTF8&pd_rd_i=B01N0AN2W6&pd_rd_r=ZT95X1G6K2Q7PMT6GG0W&pd_rd_w=UtSzk&pd_rd_wg=qP5M5&psc=1&refRID=AF3SS5GBFWW0VBKT3BSA&linkCode=li2&tag=lostinspace03-20&linkId=765c98dd4931a6341a5760da4f8adf31" target="_blank">
-     * </a>
-     * <img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01N0AN2W6&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=lostinspace03-20">
-     *  */
-
-    public function handleLink($link){
-//      preg_match_all("/\<\w[^<>]*?\>([^<>]+?\<\/\w+?\>)?|\<\/\w+?\>/i", $link, $linkArray);
-      $linkArray = preg_split("/[<>]+/", $link);
-      dd($linkArray);
-    }
-
-    public function getLinkImage(){
-
+    public function returnArrayOfAmazonLinks($fullLink){
+        preg_match_all("/<.*?>/", $fullLink, $linkArray);
+        // preg_match_all return two dimension array
+        $splitLinkArray = $linkArray[0];
+        return $splitLinkArray;
     }
 }
