@@ -8,6 +8,8 @@
 
     @include('pages.homepage.categories')
 
+    @include('pages.homepage.products')
+
     @include('pages.homepage.parallax')
 
     @include('pages.homepage.categoriesList')
