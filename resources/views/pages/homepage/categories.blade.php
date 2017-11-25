@@ -9,7 +9,7 @@
         </div>
 
         <!-- Navigation -->
-        <div class="showbiz-navigation pull-right">
+        <div class="showbiz-navigation pull-right col-md-1">
             <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
             <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
         </div>
