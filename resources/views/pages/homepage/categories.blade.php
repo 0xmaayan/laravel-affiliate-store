@@ -1,23 +1,58 @@
 
-<div class="container" >
+<div class="container">
+    <div class="">
 
-    <div class="row">
-        <div class="col-md-12">
-            @foreach($categories as $category)
-                <div class="col-md-4">
-                    <a href="#" class="img-caption" >
-                        <figure>
-                            <img src="{{asset('images/categories/'.$category->image)}}" alt="" />
-                            <figcaption>
-                                <h3>{{$category->name}}</h3>
-                                {{--<span>25% Off Summer Styles</span>--}}
-                            </figcaption>
-                        </figure>
-                    </a>
+        <!-- Headline -->
+        <div class="col-md-11">
+            <h3 class="headline">Categories</h3>
+            <span class="line margin-bottom-0"></span>
+        </div>
+
+        <!-- Navigation -->
+        <div class="showbiz-navigation pull-right">
+            <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+            <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+        </div>
+        <div class="clearfix"></div>
+
+
+        <!-- Carousel -->
+        <div id="new-arrivals" class="showbiz-container col-md-12">
+
+
+
+            <!-- Products -->
+            <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+                <div class="overflowholder">
+
+                    <ul>
+                        @foreach($categories as $category)
+                            <li>
+                                <figure class="product">
+                                    <div class="mediaholder">
+                                        <a href="variable-product-page.html">
+                                            <img alt="" src="{{asset('images/categories/'.$category->image)}}"/>
+                                            <div class="cover">
+                                                <img alt="" src="{{asset('images/categories/'.$category->image)}}"/>
+                                            </div>
+                                        </a>
+                                        {{--<a href="{{$category->link}}" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>--}}
+                                    </div>
+
+                                    <a href="variable-product-page.html">
+                                        <section>
+                                            <h5>{{$category->name}}</h5>
+                                        </section>
+                                    </a>
+                                </figure>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="clearfix"></div>
+
                 </div>
-            @endforeach
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
-
 </div>
-<div class="clearfix"></div>

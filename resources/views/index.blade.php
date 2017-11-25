@@ -4,9 +4,9 @@
 
     @include('pages.homepage.slider')
 
-    @include('pages.homepage.categories')
+    @include('pages.homepage.specialCategories')
 
-    @include('pages.homepage.products')
+    @include('pages.homepage.categories')
 
     @include('pages.homepage.parallax')
 
