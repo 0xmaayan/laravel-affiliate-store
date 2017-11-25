@@ -15,9 +15,10 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $categories = Category::take(3)->get();
+        $categories = Category::all();
         $products = Product::all();
+        $newArrivals = Product::orderBy('created_at', 'desc')->take(3)->get();
 
-        return view('index',compact('categories','products'));
+        return view('index',compact('categories','products','newArrivals'));
     }
 }

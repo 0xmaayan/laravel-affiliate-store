@@ -86,30 +86,19 @@
         <div class="col-md-4">
 
             <!-- Headline -->
-            <h3 class="headline">Weekly Sales</h3>
+            <h3 class="headline">New Arrival</h3>
             <span class="line margin-bottom-0"></span>
             <div class="clearfix"></div>
 
 
-            <ul class="product-list discount">
-
+            <ul class="product-list">
+                @foreach($newArrivals as $newArrival)
                 <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc">Short Sleeve Polo Shirt <i>$29.00<b>$19.00</b></i></div>
+                        <img style="width: 130px;" src="{{asset('images/products/'.$newArrival->main_image)}}" alt="product image"/>
+                        <div class="product-list-desc">{{$newArrival->name}} <i>${{$newArrival->price}}</i></div>
                     </a></li>
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc">Long Sleeve Shirt <i>$99.00<b>$79.00</b></i></div>
-                    </a></li>
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc">Tommy Hilfiger Shirt Beat <i>$499.00<b>$399.00</b></i></div>
-                    </a></li>
-
+                @endforeach
                 <li><div class="clearfix"></div></li>
-
             </ul>
 
         </div>
