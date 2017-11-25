@@ -120,9 +120,17 @@ class CategoriesController extends AdminController
         'image' => 'mimes:png,jpg,jpeg',
       ]);
 
+      $data = [
+        'name' => $request->name,
+      ];
+
+      if($request->file('image')){
+        $data['image'] = $request->file('image')->getClientOriginalName();
+        $request->image->move(public_path('/images/categories'), $data['image']);
+      }
 
       $category = Category::findOrFail($id);
-      $category->update($validatedData);
+      $category->update($data);
 
       return Redirect::route('categories.index');
     }
