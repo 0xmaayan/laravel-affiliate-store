@@ -65,7 +65,29 @@ class ProductsController extends AdminController
      */
     public function store(Request $request)
     {
-      dd($request);
+      $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
+        'image' => 'mimes:png,jpg,jpeg',
+        'link' => 'required',
+      ]);
+dd($request);
+      $data = [
+        'name' => $request->name,
+        'price' => $request->price,
+        'link' => $this->handleLink($request->link),
+        'main_image' => $this->getLinkImage(),
+        'category_id' => $request->category_id
+      ];
+
+      if($request->file('main_image')){
+        $data['main_image'] = $request->file('main_image')->getClientOriginalName();
+        $request->image->move(public_path('/images/products'), $data['main_image']);
+      }
+
+      Category::create($data);
+
+      return Redirect::route('products.index');
     }
 
     /**
@@ -117,5 +139,13 @@ class ProductsController extends AdminController
       $product->delete();
 
       return redirect()->back();
+    }
+
+    public function handleLink($link){
+
+    }
+
+    public function getLinkImage(){
+
     }
 }
