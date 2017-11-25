@@ -34,7 +34,7 @@
                     </a>
                     <section style="padding-bottom: 0">
                         <h4 class="card-title">{{$product->name}}</h4>
-                        <p class="card-text" style="margin:0;">{{$product->price}} $</p>
+                        <p class="card-text" style="margin:0;">${{$product->price}}</p>
                         <a href="{{$product->link}}" class="btn-block shopNow">
                             <i class="fa fa-shopping-cart"></i> Shop Now
                         </a>
