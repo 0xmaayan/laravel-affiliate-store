@@ -13,7 +13,7 @@
             <h1>Settings</h1>
         </div>
         <div class="col-md-12 text-center" style="margin-bottom: 30px;">
-            <img src="{{asset('images/logo/'.$settings->logo)}}" alt="logo" style="width:100px;height:100px;">
+            <img src="{{asset('images/logo/'.$settings->logo)}}" alt="logo" style="height:100px;">
         </div>
         {!! Form::open(['route' => 'admin.settings.update','files' => true]) !!}
         <div class="col-md-12">
