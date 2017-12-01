@@ -127,6 +127,32 @@ class ProductsController extends AdminController
     public function update(Request $request, $id)
     {
 
+      $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
+        'image' => 'mimes:png,jpg,jpeg',
+        'link' => 'required',
+      ]);
+
+      $linksArray = $this->returnArrayOfAmazonLinks($request->link);
+
+      $data = [
+        'name' => $request->name,
+        'price' => $request->price,
+        'link' => $linksArray['value'], // the href attribute value
+        'main_image' =>$linksArray['src'][0], // the img src
+        'category_id' => $request->category_id
+      ];
+
+      if($request->file('main_image')){
+        $data['main_image'] = $request->file('main_image')->getClientOriginalName();
+        $request->image->move(public_path('/images/products'), $data['main_image']);
+      }
+
+      $product = Product::findOrFail($id);
+      $product->update($data);
+
+      return Redirect::route('products.index');
     }
 
     /**

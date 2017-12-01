@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-md-12">
-            {!! Form::open(['route' => ['categories.update',$product->id ],'files' => true ,'method' => 'PUT']) !!}
+            {!! Form::open(['route' => ['products.update',$product->id ],'files' => true ,'method' => 'PUT']) !!}
             <div class="form-group col-md-4">
                 <label>{!! Form::label('name') !!}</label>
                 {!! Form::text('name',$product->name,['class' => 'form-control']) !!}
