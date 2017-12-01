@@ -8,6 +8,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\DataTables;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class ProductsController extends AdminController
 {
@@ -65,7 +66,31 @@ class ProductsController extends AdminController
      */
     public function store(Request $request)
     {
-      dd($request);
+      $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
+        'image' => 'mimes:png,jpg,jpeg',
+        'link' => 'required',
+      ]);
+
+      $linksArray = $this->returnArrayOfAmazonLinks($request->link);
+
+      $data = [
+        'name' => $request->name,
+        'price' => $request->price,
+        'link' => $linksArray['value'], // the href attribute value
+        'main_image' =>$linksArray['src'][0], // the img src
+        'category_id' => $request->category_id
+      ];
+
+      if($request->file('main_image')){
+        $data['main_image'] = $request->file('main_image')->getClientOriginalName();
+        $request->image->move(public_path('/images/products'), $data['main_image']);
+      }
+
+      Product::create($data);
+
+      return Redirect::route('products.index');
     }
 
     /**
@@ -117,5 +142,22 @@ class ProductsController extends AdminController
       $product->delete();
 
       return redirect()->back();
+    }
+
+    public function returnArrayOfAmazonLinks($fullLink){
+
+      $dom = HtmlDomParser::str_get_html( $fullLink );
+      $data = [];
+      $aElement = $dom->find('a');
+      foreach($aElement as $href){
+        $data['value'] = $href->href;
+      }
+
+      $imgElement = $dom->find('img');
+      foreach($imgElement as $img){
+        $data['src'][] = $img->src;
+      }
+
+      return $data;
     }
 }

@@ -7,11 +7,13 @@
     "require": {
         "php": ">=7.0.0",
         "caffeinated/menus": "^3.0",
+        "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
         "league/flysystem-aws-s3-v3": "~1.0",
+        "sunra/php-simple-html-dom-parser": "^1.5",
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {

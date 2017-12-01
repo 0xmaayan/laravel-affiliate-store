@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label>{!! Form::label('link') !!}</label>
-                {!! Form::text('link','',['class' => 'form-control']) !!}
+                {!! Form::textarea('link','',['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 <label>{!! Form::label('main image') !!}</label>
