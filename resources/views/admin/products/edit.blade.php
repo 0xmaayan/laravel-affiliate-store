@@ -43,14 +43,10 @@
                 <label>{!! Form::label('second image') !!}</label>
                 {!! Form::file('second_image') !!}
             </div>
-            <div class="form-group col-md-4">
-                <label>{!! Form::label('category') !!}</label>
-                {!! Form::select('category_id', $categories_list,['class' => 'form-control']); !!}
-            </div>
         </div>
         <div class="col-md-12">
             <div class="form-group col-md-4">
-                <img width="150" height="150" src="{{asset('images/products/'.$product->main_image)}}" alt="main product image">
+                <img width="150" height="150" src="{{$product->main_image}}" alt="main product image">
             </div>
             <div class="form-group col-md-4">
                 <img width="150" height="150" src="{{asset('images/products/'.$product->second_image)}}" alt="second product image">
