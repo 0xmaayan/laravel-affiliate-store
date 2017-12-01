@@ -31,6 +31,7 @@
                         <th>Name</th>
                         <th>Link</th>
                         <th>Category</th>
+                        <th>Brand</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Action</th>
@@ -55,6 +56,7 @@
                     { data: 'name', name: 'name' },
                     { data: 'link', name: 'link' },
                     { data: 'category.name', name: 'category.name' },
+                    { data: 'brands.name', name: 'brands.name' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'updated_at', name: 'updated_at' },
                     { data: 'action', name: 'action' }
