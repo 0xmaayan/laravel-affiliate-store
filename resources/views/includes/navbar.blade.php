@@ -23,7 +23,9 @@
                 <li class="dropdown">
                     <a href="#">Brands</a>
                     <ul>
-                        <li><a href="elements.html">Amazon</a></li>
+                        @foreach($brands as $brand)
+                            <li><a href="elements.html">Amazon</a></li>
+                        @endforeach
                     </ul>
                 </li>
 
