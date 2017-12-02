@@ -6,7 +6,7 @@
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-                <li><a href="{{env('APP_URL')}}" id="current"><i style="bottom: 5px;position: relative;" class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
+                <li><a href="{{ url('/') }}" id="current"><i style="bottom: 5px;position: relative;" class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
 
                 <li class="dropdown">
                     <a href="#">Categories</a>
