@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Base\Controllers\AdminController;
+use App\Content;
 use Illuminate\Http\Request;
 
 class ContentController extends AdminController
@@ -45,32 +46,7 @@ class ContentController extends AdminController
      */
     public function store(Request $request)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
-        'image' => 'mimes:png,jpg,jpeg',
-        'link' => 'required',
-      ]);
 
-      $linksArray = $this->returnArrayOfAmazonLinks($request->link);
-
-      $data = [
-        'name' => $request->name,
-        'price' => $request->price,
-        'link' => $linksArray['value'], // the href attribute value
-        'main_image' =>$linksArray['src'][0], // the img src
-        'category_id' => $request->category_id,
-        'brand_id' => $request->brand_id
-      ];
-
-      if($request->file('main_image')){
-        $data['main_image'] = $request->file('main_image')->getClientOriginalName();
-        $request->image->move(public_path('/images/products'), $data['main_image']);
-      }
-
-      Product::create($data);
-
-      return Redirect::route('products.index');
     }
 
     /**
@@ -105,33 +81,24 @@ class ContentController extends AdminController
     public function update(Request $request, $id)
     {
 
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
-        'image' => 'mimes:png,jpg,jpeg',
-        'link' => 'required',
-      ]);
-
-      $linksArray = $this->returnArrayOfAmazonLinks($request->link);
-
       $data = [
         'name' => $request->name,
-        'price' => $request->price,
-        'link' => $linksArray['value'], // the href attribute value
-        'main_image' =>$linksArray['src'][0], // the img src
-        'category_id' => $request->category_id,
-        'brand_id' => $request->brand_id
+        'content' => $request->image_text,
       ];
 
-      if($request->file('main_image')){
-        $data['main_image'] = $request->file('main_image')->getClientOriginalName();
-        $request->image->move(public_path('/images/products'), $data['main_image']);
+      if($request->file('image')){
+        foreach($request->file('image') as $image)
+        {
+          $original_name = $image->getClientOriginalName();
+          $data['fields'][] = $original_name;
+          $image->move(public_path('/images/home_slider'), $original_name);
+        }
       }
 
-      $product = Product::findOrFail($id);
-      $product->update($data);
+      $content = Content::findOrFail($id);
+      $content->update($data);
 
-      return Redirect::route('products.index');
+      return Redirect::route('content.index');
     }
 
     /**

@@ -22,18 +22,18 @@
         {!! Form::open(['route' => ['content.update',1 ],'files' => true ,'method' => 'PUT']) !!}
         <div class="form-group col-md-4">
             <label>{!! Form::label('image 1') !!}</label>
-            {!! Form::file('image1') !!}
-            {!! Form::text('image1_text','',['class' => 'form-control']) !!}
+            {!! Form::file('image[]') !!}
+            {!! Form::text('image_text[]','',['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-4">
             <label>{!! Form::label('image 2') !!}</label>
-            {!! Form::file('image2') !!}
-            {!! Form::text('image2_text','',['class' => 'form-control']) !!}
+            {!! Form::file('image[]') !!}
+            {!! Form::text('image_text[]','',['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-4">
             <label>{!! Form::label('image 3') !!}</label>
-            {!! Form::file('image3') !!}
-            {!! Form::text('image3_text','',['class' => 'form-control']) !!}
+            {!! Form::file('image[]') !!}
+            {!! Form::text('image_text[]','',['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-4">
             <img src="" alt="image 1">
