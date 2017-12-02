@@ -28,10 +28,12 @@
     <div class="row">
         <div class="col-md-12">
             @foreach($products as $product)
+                <form action="">
+                    {{csrf_field()}}
                 <div class="card col-md-3 col-sm-4 text-center product" style="margin-bottom: 20px;">
-                    <a href="variable-product-page.html">
+                    <button type="submit" onclick="registerProductClick({{$product->id}})">
                         <img src="{{$product->main_image}}" alt="product image" style="width:100%"/>
-                    </a>
+                    </button>
                     <section style="padding-bottom: 0">
                         <h4 class="card-title">{{$product->name}}</h4>
                         <p class="card-text" style="margin:0;">${{$product->price}}</p>
@@ -40,8 +42,39 @@
                         </a>
                     </section>
                 </div>
+                </form>
             @endforeach
         </div>
     </div>
 </div>
 <div class="clearfix"></div>
+
+<script>
+
+    function registerProductClick(e,productId){
+        e.preventDefault();
+        console.log(productId);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '/product/' + productId + '/click',
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            data: {
+                "id": productId
+            },
+            success: function(){
+                alert('hi');
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(JSON.stringify(xhr.responseText));
+            }
+        });
+    }
+</script>
