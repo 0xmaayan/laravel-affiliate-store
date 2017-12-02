@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Brand;
 use App\Category;
 use App\Base\Controllers\AdminController;
 use App\Product;
@@ -29,7 +30,7 @@ class ProductsController extends AdminController
    */
     public function index(Request $request)
     {
-      $products =  Product::with('category')->select('products.*');;
+      $products =  Product::with('brands','category')->select('products.*');
       if ($request->ajax()){
         return Datatables::of($products)
           ->editColumn('link', function ($product){
@@ -54,8 +55,9 @@ class ProductsController extends AdminController
     public function create()
     {
         $categories_list = Category::pluck('name','id');
+        $brands_list = Brand::pluck('name','id');
 
-        return view('admin.products.create',compact('categories_list'));
+        return view('admin.products.create',compact('categories_list','brands_list'));
     }
 
     /**
@@ -80,7 +82,8 @@ class ProductsController extends AdminController
         'price' => $request->price,
         'link' => $linksArray['value'], // the href attribute value
         'main_image' =>$linksArray['src'][0], // the img src
-        'category_id' => $request->category_id
+        'category_id' => $request->category_id,
+        'brand_id' => $request->brand_id
       ];
 
       if($request->file('main_image')){
@@ -113,8 +116,9 @@ class ProductsController extends AdminController
     public function edit($id)
     {
       $categories_list = Category::pluck('name','id');
+      $brands_list = Brand::pluck('name','id');
       $product = Product::findOrFail($id);
-      return view('admin.products.edit',compact('product','categories_list'));
+      return view('admin.products.edit',compact('product','categories_list','brands_list'));
     }
 
     /**
@@ -141,7 +145,8 @@ class ProductsController extends AdminController
         'price' => $request->price,
         'link' => $linksArray['value'], // the href attribute value
         'main_image' =>$linksArray['src'][0], // the img src
-        'category_id' => $request->category_id
+        'category_id' => $request->category_id,
+        'brand_id' => $request->brand_id
       ];
 
       if($request->file('main_image')){

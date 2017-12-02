@@ -43,6 +43,10 @@
                 <label>{!! Form::label('second image') !!}</label>
                 {!! Form::file('second_image') !!}
             </div>
+            <div class="form-group col-md-4">
+                <label style="width:100%;">{!! Form::label('brand') !!}</label>
+                {!! Form::select('brand_id', $brands_list,['class' => 'form-control col-md-12']); !!}
+            </div>
         </div>
         <div class="col-md-12">
             <div class="form-group col-md-4">
