@@ -30,7 +30,6 @@ class ProductsController extends AdminController
    */
     public function index(Request $request)
     {
-      // TODO - change brand_id on product table to brands_id - in migration
       $products =  Product::with('brands','category')->select('products.*');
       if ($request->ajax()){
         return Datatables::of($products)
