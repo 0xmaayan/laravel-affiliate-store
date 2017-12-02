@@ -28,8 +28,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="success">
-                                    @foreach($contents as $content)
+                                @foreach($contents as $content)
+                                    <tr class="success">
                                         <td>{{$content->id}}</td>
                                         <td>{{$content->name}}</td>
                                         <td>
@@ -38,8 +38,8 @@
                                                 Edit
                                             </a>
                                         </td>
-                                    @endforeach
-                                </tr>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

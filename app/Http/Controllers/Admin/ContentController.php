@@ -70,8 +70,8 @@ class ContentController extends AdminController
      */
     public function edit($id)
     {
-      $contents = Content::all();
-      return view('admin.content.edit', compact('contents'));
+      $content = Content::findOrFail($id);
+      return view('admin.content.edit', compact('content'));
     }
 
     /**
@@ -83,19 +83,28 @@ class ContentController extends AdminController
      */
     public function update(Request $request, $id)
     {
+      $data = [];
+      // if is the Home page
+      if($id ==1){
+        $data = [
+          'content' => $request->image_text,
+        ];
 
-      $data = [
-        'content' => $request->image_text,
-      ];
-
-      if($request->file('image')){
-        foreach($request->file('image') as $image)
-        {
-          $original_name = $image->getClientOriginalName();
-          $data['files'][] = $original_name;
-          $image->move(public_path('/images/home_slider'), $original_name);
+        if($request->file('image')){
+          foreach($request->file('image') as $image)
+          {
+            $original_name = $image->getClientOriginalName();
+            $data['files'][] = $original_name;
+            $image->move(public_path('/images/home_slider'), $original_name);
+          }
         }
+        // if is the About page
+      }elseif ($id == 2){
+        $data = [
+          'content' => $request->about,
+        ];
       }
+
       $content = Content::findOrFail($id);
       $content->update($data);
 
