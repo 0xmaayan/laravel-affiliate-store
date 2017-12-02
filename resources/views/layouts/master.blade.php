@@ -107,15 +107,6 @@
     <div class="container">
 
         <div class="eight columns">© Copyright 2017 by <a href="#">lost in space</a>. All Rights Reserved.</div>
-        <div class="eight columns">
-            <ul class="payment-icons">
-                <li><img src="images/visa.png" alt="" /></li>
-                <li><img src="images/mastercard.png" alt="" /></li>
-                <li><img src="images/skrill.png" alt="" /></li>
-                <li><img src="images/moneybookers.png" alt="" /></li>
-                <li><img src="images/paypal.png" alt="" /></li>
-            </ul>
-        </div>
 
     </div>
     <!-- Container / End -->
