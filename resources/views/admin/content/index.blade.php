@@ -29,14 +29,16 @@
                                 </thead>
                                 <tbody>
                                 <tr class="success">
-                                    <td>1</td>
-                                    <td>Home</td>
-                                    <td>
-                                        <a href="{{route('content.edit',['id' => 1 ])}}"
-                                           class="btn btn-warning">
-                                            Edit
-                                        </a>
-                                    </td>
+                                    @foreach($contents as $content)
+                                        <td>{{$content->id}}</td>
+                                        <td>{{$content->name}}</td>
+                                        <td>
+                                            <a href="{{route('content.edit',['id' => $content->id ])}}"
+                                               class="btn btn-warning">
+                                                Edit
+                                            </a>
+                                        </td>
+                                    @endforeach
                                 </tr>
                                 </tbody>
                             </table>

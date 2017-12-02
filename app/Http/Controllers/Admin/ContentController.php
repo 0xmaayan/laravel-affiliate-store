@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Base\Controllers\AdminController;
 use App\Content;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ContentController extends AdminController
 {
@@ -25,7 +26,8 @@ class ContentController extends AdminController
      */
     public function index(Request $request)
     {
-        return view('admin.content.index');
+        $contents = Content::all();
+        return view('admin.content.index',compact('contents'));
     }
 
     /**
@@ -68,7 +70,8 @@ class ContentController extends AdminController
      */
     public function edit($id)
     {
-      return view('admin.content.edit');
+      $contents = Content::all();
+      return view('admin.content.edit', compact('contents'));
     }
 
     /**
@@ -82,7 +85,6 @@ class ContentController extends AdminController
     {
 
       $data = [
-        'name' => $request->name,
         'content' => $request->image_text,
       ];
 
@@ -90,15 +92,14 @@ class ContentController extends AdminController
         foreach($request->file('image') as $image)
         {
           $original_name = $image->getClientOriginalName();
-          $data['fields'][] = $original_name;
+          $data['files'][] = $original_name;
           $image->move(public_path('/images/home_slider'), $original_name);
         }
       }
-
       $content = Content::findOrFail($id);
       $content->update($data);
 
-      return Redirect::route('content.index');
+      return redirect()->back();
     }
 
     /**
