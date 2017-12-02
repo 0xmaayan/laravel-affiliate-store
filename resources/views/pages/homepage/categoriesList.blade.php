@@ -94,7 +94,7 @@
             <ul class="product-list">
                 @foreach($newArrivals as $newArrival)
                 <li><a href="#">
-                        <img style="width: 130px;" src="{{asset('images/products/'.$newArrival->main_image)}}" alt="product image"/>
+                        <img style="width: 130px;" src="{{$newArrival->main_image}}" alt="product image"/>
                         <div class="product-list-desc">{{$newArrival->name}} <i>${{$newArrival->price}}</i></div>
                     </a></li>
                 @endforeach
