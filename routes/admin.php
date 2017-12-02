@@ -28,4 +28,5 @@ Route::post('/admin/settings', ['as' => 'admin.settings.update', 'uses' => 'Sett
 
 Route::resource('categories','CategoriesController');
 Route::resource('products','ProductsController');
+Route::resource('content','ContentController');
 
