@@ -19,31 +19,31 @@ class adminMenu
   {
     Menu::make('admin', function(Builder $menu) {
       $menu->add('Dashboard',  '/admin')
-        ->active('admin/dashboard/*')
+        ->active('dashboard/*')
         ->icon('dashboard')
         ->prependIcon();
       $menu->add('Categories',  ['route' => 'categories.index'])
-        ->active('admin/categories/*')
+        ->active('categories/*')
         ->icon('shopping-basket')
         ->prependIcon();
       $menu->add('Products',  ['route' => 'products.index'])
-        ->active('admin/products/*')
+        ->active('products/*')
         ->icon('bars')
         ->prependIcon();
       $menu->add('Content',  ['route' => 'content.index'])
-        ->active('admin/content/*')
+        ->active('content/*')
         ->icon('newspaper-o')
         ->prependIcon();
       $menu->add('Users',  '/admin/users')
-        ->active('admin/users/*')
+        ->active('users/*')
         ->icon('users')
         ->prependIcon();
       $menu->add('Settings',  '/admin/settings')
-        ->active('admin/settings/*')
+        ->active('settings/*')
         ->icon('cog')
         ->prependIcon();
       $menu->add('Stats',  '/admin/stats')
-        ->active('admin/stats/*')
+        ->active('stats/*')
         ->icon('bar-chart')
         ->prependIcon();
     });
