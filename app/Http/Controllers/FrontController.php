@@ -28,12 +28,4 @@ class FrontController extends Controller
         return view('index',compact('brands','categories','products','newArrivals','contents','settings'));
     }
 
-
-    public function clickProduct($id)
-    {
-      dd($id);
-      $product = Product::findorfail($id); // Find our post by ID.
-      $product->increment('clicks'); // Increment the value in the clicks column.
-      $product->update(); // Save our updated post.
-    }
 }
