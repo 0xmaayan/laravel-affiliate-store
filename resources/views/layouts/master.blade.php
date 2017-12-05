@@ -115,7 +115,21 @@
     <!-- Container / End -->
 
 </div>
-
+<script>
+    function trackingClick(id){
+        debugger;
+        var token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            url: 'product/'+id+'/click',
+            data: {'_token' : token },
+            type: "POST",
+            dataType: 'json',
+            success: function(result){
+                console.log(result)
+            }
+        })
+    }
+</script>
 <!-- Java Script
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

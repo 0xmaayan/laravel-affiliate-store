@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-12">
             @foreach($products as $product)
-                <div class="card col-md-3 col-sm-4 text-center product" style="margin-bottom: 20px;">
+                <div class="card col-md-3 col-sm-4 text-center product" style="margin-bottom: 20px;" onclick="trackingClick({{$product->id}})">
                     <a href="{{$product->link}}" target="_blank">
                         <img src="{{$product->main_image}}" alt="product image" style="width:100%"/>
                     </a>

@@ -37,3 +37,4 @@ Route::get("/email", function() {
 
 Auth::routes();
 
+Route::post('product/{id}/click', 'ProductsController@trackClick');
