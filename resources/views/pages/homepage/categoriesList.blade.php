@@ -36,37 +36,19 @@
 
 
             <ul class="product-list top-rated">
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc with-rating">Brogue Boots in Leather <i>$99.00</i>
+                @foreach($recommendeds as $recommended)
+                <li>
+                    <a href="{{$recommended->link}}">
+                        <img src="{{$recommended->main_image}}" alt="" />
+                        <div class="product-list-desc with-rating">{{$recommended->name}}<i>{{$recommended->price}}</i>
                             <div class="rating five-stars">
                                 <div class="star-rating"></div>
                                 <div class="star-bg"></div>
                             </div>
                         </div>
-                    </a></li>
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc with-rating">Slim Jeans With Blue Tint <i>$79.00</i>
-                            <div class="rating four-stars">
-                                <div class="star-rating"></div>
-                                <div class="star-bg"></div>
-                            </div>
-                        </div>
-                    </a></li>
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc with-rating">New Look Fairisle Scarf <i>$19.00</i>
-                            <div class="rating three-stars">
-                                <div class="star-rating"></div>
-                                <div class="star-bg"></div>
-                            </div>
-                        </div>
-                    </a></li>
-
+                    </a>
+                </li>
+                @endforeach
                 <li><div class="clearfix"></div></li>
 
             </ul>
@@ -85,7 +67,7 @@
 
             <ul class="product-list">
                 @foreach($newArrivals as $newArrival)
-                <li><a href="#">
+                <li><a href="{{$newArrival->link}}">
                         <img style="width: 130px;" src="{{$newArrival->main_image}}" alt="product image"/>
                         <div class="product-list-desc">{{$newArrival->name}} <i>${{$newArrival->price}}</i></div>
                     </a></li>
