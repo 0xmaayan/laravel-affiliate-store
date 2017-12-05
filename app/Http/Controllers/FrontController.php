@@ -23,9 +23,10 @@ class FrontController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $newArrivals = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $mostClicked = Product::orderBy('clicks', 'desc')->take(3)->get();
         $settings = Setting::all();
 
-        return view('index',compact('brands','categories','products','newArrivals','contents','settings'));
+        return view('index',compact('brands','categories','products','newArrivals','contents','settings','mostClicked'));
     }
 
 }

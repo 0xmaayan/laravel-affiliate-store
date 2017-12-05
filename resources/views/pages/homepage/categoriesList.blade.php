@@ -11,21 +11,13 @@
 
 
             <ul class="product-list">
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc">Canvas Backpack <i>$59.00</i></div>
-                    </a></li>
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc">Long Sleeve Shirt <i>$29.00</i></div>
-                    </a></li>
-
-                <li><a href="#">
-                        <img src="{{asset('images/categoriesList/90X90.png')}}" alt="" />
-                        <div class="product-list-desc">Tommy Hilfiger Shirt Beat <i>$89.00</i></div>
-                    </a></li>
+                @foreach($mostClicked as $mostClick)
+                <li><a href="{{$mostClick->link}}">
+                        <img src="{{$mostClick->main_image}}" alt="" />
+                        <div class="product-list-desc">{{$mostClick->name}}<i>{{$mostClick->price}}</i></div>
+                    </a>
+                </li>
+                @endforeach
 
                 <li><div class="clearfix"></div></li>
 
