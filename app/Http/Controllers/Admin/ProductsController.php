@@ -93,7 +93,7 @@ class ProductsController extends AdminController
 
       Product::create($data);
 
-      return Redirect::route('products.index');
+      return Redirect::route('admin.products.index');
     }
 
     /**
@@ -157,7 +157,7 @@ class ProductsController extends AdminController
       $product = Product::findOrFail($id);
       $product->update($data);
 
-      return Redirect::route('products.index');
+      return Redirect::route('admin.products.index');
     }
 
     /**

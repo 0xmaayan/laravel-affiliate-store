@@ -13,7 +13,7 @@
             <ul class="product-list">
                 @foreach($mostClicked as $mostClick)
                 <li><a href="{{$mostClick->link}}">
-                        <img src="{{$mostClick->main_image}}" alt="" />
+                        <img style="width: 130px;" src="{{$mostClick->main_image}}" alt="{{$mostClick->name}}" />
                         <div class="product-list-desc">{{$mostClick->name}}<i>{{$mostClick->price}}</i></div>
                     </a>
                 </li>
@@ -39,7 +39,7 @@
                 @foreach($recommends as $recommend)
                 <li>
                     <a href="{{$recommend->link}}">
-                        <img src="{{$recommend->main_image}}" alt="" />
+                        <img src="{{$recommend->main_image}}" alt="{{$recommend->name}}" />
                         <div class="product-list-desc with-rating">{{$recommend->name}}<i>{{$recommend->price}}</i>
                             <div class="rating five-stars">
                                 <div class="star-rating"></div>
@@ -68,7 +68,7 @@
             <ul class="product-list">
                 @foreach($newArrivals as $newArrival)
                 <li><a href="{{$newArrival->link}}">
-                        <img style="width: 130px;" src="{{$newArrival->main_image}}" alt="product image"/>
+                        <img style="width: 130px;" src="{{$newArrival->main_image}}" alt="{{$newArrival->name}}"/>
                         <div class="product-list-desc">{{$newArrival->name}} <i>${{$newArrival->price}}</i></div>
                     </a></li>
                 @endforeach
