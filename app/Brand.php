@@ -14,7 +14,7 @@ class Brand extends Model
      * @var array
      */
     protected $fillable = [
-      'name'
+      'name','image'
     ];
 
   public function products(){
