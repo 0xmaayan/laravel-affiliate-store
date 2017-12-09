@@ -14,7 +14,6 @@ class BrandsController extends ApplicationController
     }
 
     public function index(){
-      dd('here');
       return view('pages.brands.index');
     }
 
