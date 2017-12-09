@@ -22,4 +22,8 @@ class FrontController extends ApplicationController
         return view('index',compact('brands','categories','products','newArrivals','contents','settings','mostClicked','recommends'));
     }
 
+    public function about(){
+      return view ('pages.about.index');
+    }
+
 }
