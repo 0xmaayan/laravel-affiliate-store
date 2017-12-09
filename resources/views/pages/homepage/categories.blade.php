@@ -21,7 +21,7 @@
 
 
 
-            <!-- Products -->
+            <!-- Categories -->
             <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
                 <div class="overflowholder">
 
