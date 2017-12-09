@@ -12,7 +12,7 @@
                     <a href="{{route('categories')}}">Categories</a>
                     <ul>
                         @foreach($categories as $category)
-                            <li><a href="elements.html">{{$category->name}}</a></li>
+                            <li><a href="{{$category->slug}}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
 

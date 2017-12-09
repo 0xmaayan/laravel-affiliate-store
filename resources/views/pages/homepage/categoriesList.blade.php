@@ -39,7 +39,7 @@
                 @foreach($recommends as $recommend)
                 <li>
                     <a href="{{$recommend->link}}">
-                        <img src="{{$recommend->main_image}}" alt="{{$recommend->name}}" />
+                        <img style="width: 130px;" src="{{$recommend->main_image}}" alt="{{$recommend->name}}" />
                         <div class="product-list-desc with-rating">{{$recommend->name}}<i>{{$recommend->price}}</i>
                             <div class="rating five-stars">
                                 <div class="star-rating"></div>
