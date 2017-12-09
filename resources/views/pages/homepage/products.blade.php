@@ -1,25 +1,3 @@
-@push('styles')
-    <style>
-        .shopNow {
-            color:#fff;
-            background: rgba(0, 0, 0, 0.45);
-            padding: 5px 0;
-            -o-transition:color .2s ease-out, background 0.2s ease-in;
-            -ms-transition:color .2s ease-out, background 0.2s ease-in;
-            -moz-transition:color .2s ease-out, background 0.2s ease-in;
-            -webkit-transition:color .2s ease-out, background 0.2s ease-in;
-            /* ...and now override with proper CSS property */
-            transition:color .2s ease-out, background 0.2s ease-in;
-            text-decoration: none
-        }
-        .shopNow:hover {
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.65);
-            color:#fff;
-        }
-    </style>
-@endpush
-
 <div class="col-md-12 text-center">
     <h1 style="margin: 15px 0;">Products</h1>
 </div>
