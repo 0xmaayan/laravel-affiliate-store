@@ -66,7 +66,7 @@ class CategoriesController extends AdminController
 
       Category::create($data);
 
-      return Redirect::route('categories.index');
+      return Redirect::route('admin.categories.index');
     }
 
     /**
@@ -132,7 +132,7 @@ class CategoriesController extends AdminController
       $category = Category::findOrFail($id);
       $category->update($data);
 
-      return Redirect::route('categories.index');
+      return Redirect::route('admin.categories.index');
     }
 
     /**
@@ -147,6 +147,6 @@ class CategoriesController extends AdminController
 
         $category->delete();
 
-        return Redirect::route('categories.index');
+        return Redirect::route('admin.categories.index');
     }
 }
