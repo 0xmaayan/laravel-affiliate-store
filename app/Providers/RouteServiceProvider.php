@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Category;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -31,6 +32,15 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::bind('categorySlug', function ($slug) {
+          $category =  Category::where('slug', $slug)->first() ?? abort(404);
+          if (auth()->check()) {
+            return $category;
+          }
+
+          return $category;
+        });
     }
 
     /**
@@ -41,11 +51,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
         $this->mapAdminRoutes();
-
+        $this->mapWebRoutes();
         //
     }
 
@@ -95,6 +102,7 @@ class RouteServiceProvider extends ServiceProvider
             ->as('admin.')
             ->namespace($this->adminNamespace)
             ->prefix('admin')
+            ->domain(Config::get('app.url'))
             ->group(base_path('routes/admin.php')
         );
     }

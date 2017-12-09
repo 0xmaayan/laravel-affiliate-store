@@ -45,6 +45,7 @@ Route::get('products',['as' => 'products', 'uses' => 'ProductsController@index']
 Route::post('product/{id}/click', 'ProductsController@trackClick');
 
 Route::get('categories',['as' => 'categories', 'uses' => 'CategoriesController@index']);
+Route::get('{categorySlug}','CategoriesController@show');
 
 Route::get('brands',['as' => 'brands', 'uses' => 'BrandsController@index']);
 

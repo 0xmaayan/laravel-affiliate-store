@@ -30,7 +30,7 @@
                             <li>
                                 <figure class="product">
                                     <div class="mediaholder">
-                                        <a href="variable-product-page.html">
+                                        <a href="{{$category->slug}}">
                                             <img alt="" src="{{asset('images/categories/'.$category->image)}}"/>
                                             <div class="cover">
                                                 <img alt="" src="{{asset('images/categories/'.$category->image)}}"/>

@@ -8,7 +8,7 @@
                 @foreach($categories as $category)
                     <div class="col-md-3" style="">
                         <div class="card text-center">
-                            <a href="{{route('admin.categories.edit',['id' => $category->id ])}}">
+                            <a href="{{$category->slug}}">
                                 <img class="card-img-top" style="margin:0 auto;width: 200px;height:200px;object-fit: contain;" src="{{asset('images/categories/'.$category->image)}}" alt="category image">
                             </a>
                         </div>
