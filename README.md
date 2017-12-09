@@ -2,4 +2,5 @@ App\User::create(['name'=>'maayan','email'=>'maayansavir@gmail.com','password'=>
 App\User::create(['name'=>'maor','email'=>'maoradar4@gmail.com','password'=>'$2y$10$q1jF6zm22P4fqAYQjuzRxOAtVGTt2CHIcg70ehXEEViP6oLBMzu12']);
 App\Content::create(['name'=>'Home']);
 App\Content::create(['name'=>'About']);
+App\Setting::create(['id'=>1]);
 
