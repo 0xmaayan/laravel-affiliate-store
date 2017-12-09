@@ -17,7 +17,7 @@
                     </ul>
 
                 </li>
-                <li><a href="#">Products</a></li>
+                <li><a href="{{route('products')}}">Products</a></li>
                 <li><a href="#">About US</a></li>
 
                 <li class="dropdown">
