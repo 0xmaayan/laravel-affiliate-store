@@ -30,7 +30,7 @@
         <div class="col-md-4">
 
             <!-- Headline -->
-            <h3 class="headline">Top Rated</h3>
+            <h3 class="headline">Recommended</h3>
             <span class="line margin-bottom-0"></span>
             <div class="clearfix"></div>
 
