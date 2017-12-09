@@ -29,4 +29,5 @@ Route::post('/settings', ['as' => 'settings.update', 'uses' => 'SettingsControll
 Route::resource('categories','CategoriesController');
 Route::resource('products','ProductsController');
 Route::resource('content','ContentController');
+Route::resource('brands','BrandsController');
 

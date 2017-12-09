@@ -22,6 +22,10 @@ class adminMenu
         ->active('dashboard/*')
         ->icon('dashboard')
         ->prependIcon();
+      $menu->add('Brands',  ['route' => 'admin.brands.index'])
+        ->active('brands/*')
+        ->icon('snowflake-o')
+        ->prependIcon();
       $menu->add('Categories',  ['route' => 'admin.categories.index'])
         ->active('categories/*')
         ->icon('shopping-basket')
