@@ -21,7 +21,7 @@
                 <li><a href="{{route('about')}}">About US</a></li>
 
                 <li class="dropdown">
-                    <a href="#">Brands</a>
+                    <a href="{{route('brands')}}">Brands</a>
                     <ul>
                         @foreach($brands as $brand)
                             <li><a href="elements.html">Amazon</a></li>
