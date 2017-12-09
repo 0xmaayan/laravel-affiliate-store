@@ -36,11 +36,11 @@
 
 
             <ul class="product-list top-rated">
-                @foreach($recommendeds as $recommended)
+                @foreach($recommends as $recommend)
                 <li>
-                    <a href="{{$recommended->link}}">
-                        <img src="{{$recommended->main_image}}" alt="" />
-                        <div class="product-list-desc with-rating">{{$recommended->name}}<i>{{$recommended->price}}</i>
+                    <a href="{{$recommend->link}}">
+                        <img src="{{$recommend->main_image}}" alt="" />
+                        <div class="product-list-desc with-rating">{{$recommend->name}}<i>{{$recommend->price}}</i>
                             <div class="rating five-stars">
                                 <div class="star-rating"></div>
                                 <div class="star-bg"></div>

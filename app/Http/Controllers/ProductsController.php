@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Base\Controllers\ApplicationController;
 use App\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class ProductsController extends ApplicationController
 {
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
+
   public function index(){
-    $products = Product::all();
-    return view('products.index',compact('products'));
+    return view('pages.products.index',compact('products'));
   }
 
 
