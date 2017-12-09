@@ -22,15 +22,15 @@ class adminMenu
         ->active('dashboard/*')
         ->icon('dashboard')
         ->prependIcon();
-      $menu->add('Categories',  ['route' => 'categories.index'])
+      $menu->add('Categories',  ['route' => 'admin.categories.index'])
         ->active('categories/*')
         ->icon('shopping-basket')
         ->prependIcon();
-      $menu->add('Products',  ['route' => 'products.index'])
+      $menu->add('Products',  ['route' => 'admin.products.index'])
         ->active('products/*')
         ->icon('bars')
         ->prependIcon();
-      $menu->add('Content',  ['route' => 'content.index'])
+      $menu->add('Content',  ['route' => 'admin.content.index'])
         ->active('content/*')
         ->icon('newspaper-o')
         ->prependIcon();

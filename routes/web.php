@@ -37,6 +37,6 @@ Route::get("/email", function() {
 
 Auth::routes();
 
-Route::get('products','ProductsController@index');
+Route::get('products',['as' => 'products', 'uses' => 'ProductsController@index']);
 
 Route::post('product/{id}/click', 'ProductsController@trackClick');

@@ -21,7 +21,7 @@
 
         <div class="col-md-12">
             <div class="col-md-9">
-                {!! Form::open(['route' => ['categories.update',$category->id ],'files' => true ,'method' => 'PUT']) !!}
+                {!! Form::open(['route' => ['admin.categories.update',$category->id ],'files' => true ,'method' => 'PUT']) !!}
                 <div class="form-group col-md-4">
                     <label>{!! Form::label('name') !!}</label>
                     {!! Form::text('name',$category->name,['class' => 'form-control']) !!}
@@ -38,7 +38,7 @@
 
             </div>
             <div class="col-md-3">
-                {!! Form::open(['route' => ['categories.destroy',$category->id ],'method' => 'DELETE']) !!}
+                {!! Form::open(['route' => ['admin.categories.destroy',$category->id ],'method' => 'DELETE']) !!}
                 <div class="form-group col-md-12">
                     {!! Form::submit('Delete Category',['class' => 'btn btn-danger col-md-12']) !!}
                 </div>
@@ -78,7 +78,7 @@
         $('#products-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{!! route('categories.edit',$category->id) !!}',
+            ajax: '{!! route('admin.categories.edit',$category->id) !!}',
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },

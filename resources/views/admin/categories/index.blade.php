@@ -13,14 +13,14 @@
             Categories
             <a
                     class="btn btn-outline btn-info pull-right"
-                    href="{{route('categories.create')}}">Add Category
+                    href="{{route('admin.categories.create')}}">Add Category
             </a>
         </h1>
 
         @foreach($categories as $category)
             <div class="col-md-4" style="">
                 <div class="card text-center">
-                    <a href="{{route('categories.edit',['id' => $category->id ])}}">
+                    <a href="{{route('admin.categories.edit',['id' => $category->id ])}}">
                         <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('images/categories/'.$category->image)}}" alt="category image">
                         <div class="card-block">
                             <h4 class="card-title">{{$category->name}}</h4>

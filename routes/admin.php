@@ -22,9 +22,9 @@ Route::get("/email", function() {
 
 Route::get('/admin', ['as' => 'admin', 'uses' => 'DashboardController@index']);
 //Route::get('/admin/categories', ['as' => 'admin.categories', 'uses' => 'CategoriesController@index']);
-Route::get('/admin/users', ['as' => 'admin.users', 'uses' => 'UsersController@index']);
-Route::get('/admin/settings', ['as' => 'admin.settings', 'uses' => 'SettingsController@index']);
-Route::post('/admin/settings', ['as' => 'admin.settings.update', 'uses' => 'SettingsController@update']);
+Route::get('/admin/users', ['as' => 'users', 'uses' => 'UsersController@index']);
+Route::get('/admin/settings', ['as' => 'settings', 'uses' => 'SettingsController@index']);
+Route::post('/admin/settings', ['as' => 'settings.update', 'uses' => 'SettingsController@update']);
 
 Route::resource('categories','CategoriesController');
 Route::resource('products','ProductsController');

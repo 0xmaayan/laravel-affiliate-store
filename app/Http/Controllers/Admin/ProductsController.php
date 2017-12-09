@@ -37,8 +37,8 @@ class ProductsController extends AdminController
             return '<a href="'.$product->link.'">Product Link</a>';
           })
           ->addColumn('action', function ($product){
-            return '<a class="btn btn-sm btn-warning" href="'.route('products.edit',$product->id).'">Edit</a>
-                    <a class="btn btn-sm btn-danger" href="'.route('products.destroy',$product->id).'">Delete</a>';
+            return '<a class="btn btn-sm btn-warning" href="'.route('admin.products.edit',$product->id).'">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="'.route('admin.products.destroy',$product->id).'">Delete</a>';
           })
           ->rawColumns(['link','action'])
           ->make(true);

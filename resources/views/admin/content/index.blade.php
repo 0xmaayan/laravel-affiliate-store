@@ -33,7 +33,7 @@
                                         <td>{{$content->id}}</td>
                                         <td>{{$content->name}}</td>
                                         <td>
-                                            <a href="{{route('content.edit',['id' => $content->id ])}}"
+                                            <a href="{{route('admin.content.edit',['id' => $content->id ])}}"
                                                class="btn btn-warning">
                                                 Edit
                                             </a>

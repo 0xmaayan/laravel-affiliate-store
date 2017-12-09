@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-md-6">
-            {!! Form::open(['route' => 'products.store','files' => true]) !!}
+            {!! Form::open(['route' => 'admin.products.store','files' => true]) !!}
             <div class="form-group">
                 <label>{!! Form::label('name') !!}</label>
                 {!! Form::text('name','',['class' => 'form-control']) !!}

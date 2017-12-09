@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -91,6 +92,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminRoutes()
     {
       Route::middleware('admin')
+            ->as('admin.')
             ->namespace($this->adminNamespace)
             ->group(base_path('routes/admin.php')
         );

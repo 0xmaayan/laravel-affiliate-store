@@ -19,7 +19,7 @@
                     </h1>
                 </div>
 
-                {!! Form::open(['route' => ['content.update',$content->id ],'files' => true ,'method' => 'PUT']) !!}
+                {!! Form::open(['route' => ['admin.content.update',$content->id ],'files' => true ,'method' => 'PUT']) !!}
                 <div class="form-group col-md-4">
                     <label>{!! Form::label('image 1') !!}</label>
                     {!! Form::file('image[]') !!}
@@ -53,7 +53,7 @@
                 </h1>
             </div>
 
-            {!! Form::open(['route' => ['content.update',$content->id ],'method' => 'PUT']) !!}
+            {!! Form::open(['route' => ['admin.content.update',$content->id ],'method' => 'PUT']) !!}
                 <div class="form-group">
                     <label>{!! Form::label('') !!}</label>
                     {!! Form::textarea('about',$content->content,['class' => 'form-control']) !!}

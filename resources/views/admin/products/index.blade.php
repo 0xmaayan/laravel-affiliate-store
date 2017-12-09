@@ -18,7 +18,7 @@
                     Products
                     <a
                         class="btn btn-outline btn-info pull-right"
-                        href="{{route('products.create')}}">Add Product
+                        href="{{route('admin.products.create')}}">Add Product
                     </a>
                 </h1>
             </div>
@@ -50,7 +50,7 @@
             $('#products-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('products.index') !!}',
+                ajax: '{!! route('admin.products.index') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
