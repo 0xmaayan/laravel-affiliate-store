@@ -20,11 +20,11 @@ Route::get("/email", function() {
   });
 });
 
-Route::get('/admin', ['as' => 'admin', 'uses' => 'DashboardController@index']);
+Route::get('/', ['as' => 'admin', 'uses' => 'DashboardController@index']);
 //Route::get('/admin/categories', ['as' => 'admin.categories', 'uses' => 'CategoriesController@index']);
-Route::get('/admin/users', ['as' => 'users', 'uses' => 'UsersController@index']);
-Route::get('/admin/settings', ['as' => 'settings', 'uses' => 'SettingsController@index']);
-Route::post('/admin/settings', ['as' => 'settings.update', 'uses' => 'SettingsController@update']);
+Route::get('/users', ['as' => 'users', 'uses' => 'UsersController@index']);
+Route::get('/settings', ['as' => 'settings', 'uses' => 'SettingsController@index']);
+Route::post('/settings', ['as' => 'settings.update', 'uses' => 'SettingsController@update']);
 
 Route::resource('categories','CategoriesController');
 Route::resource('products','ProductsController');
