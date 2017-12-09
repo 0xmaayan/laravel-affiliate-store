@@ -48,4 +48,5 @@ Route::get('categories',['as' => 'categories', 'uses' => 'CategoriesController@i
 Route::get('{categorySlug}','CategoriesController@show');
 
 Route::get('brands',['as' => 'brands', 'uses' => 'BrandsController@index']);
+Route::get('{brandSlug}','BrandsController@show');
 
