@@ -2,7 +2,7 @@
     <!-- Logo -->
     <div class="col-md-12">
         <div id="logo" class="col-md-12">
-            <h1><a href="{{env('APP_URL')}}">
+            <h1><a href="{{url('/')}}">
                     @foreach($settings as $setting)
                     <img src="{{asset('images/logo/'.$setting->logo)}}" alt="lostInSpace_logo" />
                     @endforeach
