@@ -83,7 +83,7 @@ class ProductsController extends AdminController
         'link' => $linksArray['value'], // the href attribute value
         'main_image' =>$linksArray['src'][0], // the img src
         'category_id' => $request->category_id,
-        'brands_id' => $request->brand_id
+        'brands_id' => $request->brands_id
       ];
 
       if($request->file('main_image')){

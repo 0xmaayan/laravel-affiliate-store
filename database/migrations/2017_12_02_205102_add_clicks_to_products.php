@@ -14,7 +14,7 @@ class AddClicksToProducts extends Migration
     public function up()
     {
       Schema::table('products', function($table){
-        $table->integer('clicks');
+        $table->integer('clicks')->default(0);
       });
     }
 

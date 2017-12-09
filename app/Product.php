@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Product extends Model
 {
-  use SoftDeletes;
+  use SoftDeletes, HasSlug;
 
   protected $fillable = [
     'name',
@@ -16,7 +18,8 @@ class Product extends Model
     'main_image',
     'second_image',
     'category_id',
-    'brand_id'
+    'brands_id',
+    'slug'
   ];
 
   protected $dates = ['deleted_at'];
@@ -27,5 +30,15 @@ class Product extends Model
 
   public function brands(){
     return $this->belongsTo('App\Brand');
+  }
+
+  /**
+   * Get the options for generating the slug.
+   */
+  public function getSlugOptions() : SlugOptions
+  {
+    return SlugOptions::create()
+      ->generateSlugsFrom('name')
+      ->saveSlugsTo('slug');
   }
 }
