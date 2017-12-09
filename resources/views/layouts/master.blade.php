@@ -48,12 +48,12 @@
     <div class="container">
 
         <div class="col-md-12">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <img src="{{asset('images/logoXL.png')}}" alt="" class="margin-top-10 footer-logo"/>
-                <p class="margin-top-15">Nulla facilisis feugiat magna, ut molestie metus hendrerit vitae. Vivamus tristique lectus at varius rutrum. Integer lobortis mauris non consectetur eleifend.</p>
+                <p class="margin-top-15">Place to write short description about us.</p>
             </div>
 
-            <div class="col-md-3">
+            {{--<div class="col-md-3">
 
                 <!-- Headline -->
                 <h3 class="headline footer">Customer Service</h3>
@@ -68,9 +68,9 @@
                     <li><a href="#">Terms & Conditions</a></li>
                 </ul>
 
-            </div>
+            </div>--}}
 
-            <div class="col-md-3">
+            <div class="col-md-4">
 
                 <!-- Headline -->
                 <h3 class="headline footer">My Account</h3>
@@ -85,7 +85,7 @@
 
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
 
                 <!-- Headline -->
                 <h3 class="headline footer">Newsletter</h3>
@@ -109,9 +109,17 @@
 
     <!-- Container -->
     <div class="container">
-
-        <div class="eight columns">© Copyright 2017 by <a href="#">lost in space</a>. All Rights Reserved.</div>
-
+        <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                © Copyright 2017 by <a href="{{url('/')}}">lost in space</a>. All Rights Reserved.
+            </div>
+            <div class="">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+        </div>
     </div>
     <!-- Container / End -->
 
