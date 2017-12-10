@@ -61,7 +61,7 @@ class CategoriesController extends AdminController
 
       if($request->file('image')){
         $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/images/categories'), $data['image']);
+        $request->image->move(public_path('/uploads/categories'), $data['image']);
       }
 
       Category::create($data);
@@ -126,7 +126,7 @@ class CategoriesController extends AdminController
 
       if($request->file('image')){
         $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/images/categories'), $data['image']);
+        $request->image->move(public_path('/uploads/categories'), $data['image']);
       }
 
       $category = Category::findOrFail($id);

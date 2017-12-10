@@ -88,7 +88,7 @@ class ProductsController extends AdminController
 
       if($request->file('main_image')){
         $data['main_image'] = $request->file('main_image')->getClientOriginalName();
-        $request->image->move(public_path('/images/products'), $data['main_image']);
+        $request->image->move(public_path('/uploads/products'), $data['main_image']);
       }
 
       Product::create($data);
@@ -151,7 +151,7 @@ class ProductsController extends AdminController
 
       if($request->file('main_image')){
         $data['main_image'] = $request->file('main_image')->getClientOriginalName();
-        $request->image->move(public_path('/images/products'), $data['main_image']);
+        $request->image->move(public_path('/uploads/products'), $data['main_image']);
       }
 
       $product = Product::findOrFail($id);

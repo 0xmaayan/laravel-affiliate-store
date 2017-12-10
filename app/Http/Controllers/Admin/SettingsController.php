@@ -60,7 +60,7 @@ class SettingsController extends AdminController
 
       if($request->file('logo')){
         $data['logo'] = $request->file('logo')->getClientOriginalName();
-        $request->logo->move(public_path('/images/logo'), $data['logo']);
+        $request->logo->move(public_path('/uploads/logo'), $data['logo']);
       }
 
       Setting::updateOrCreate(['id' => 1],$data);

@@ -55,7 +55,7 @@ class BrandsController extends AdminController
 
       if($request->file('image')){
         $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/images/brands'), $data['image']);
+        $request->image->move(public_path('/uploads/brands'), $data['image']);
       }
 
       Brand::create($data);
@@ -97,7 +97,7 @@ class BrandsController extends AdminController
 
       if($request->file('image')){
         $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/images/brands'), $data['image']);
+        $request->image->move(public_path('/uploads/brands'), $data['image']);
       }
 
       $brand = Brand::findOrFail($id);

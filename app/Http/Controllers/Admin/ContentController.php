@@ -95,7 +95,7 @@ class ContentController extends AdminController
           {
             $original_name = $image->getClientOriginalName();
             $data['files'][] = $original_name;
-            $image->move(public_path('/images/home_slider'), $original_name);
+            $image->move(public_path('/uploads/home_slider'), $original_name);
           }
         }
         // if is the About page
