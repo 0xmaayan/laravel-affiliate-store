@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Brand;
 use App\Category;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,15 @@ class RouteServiceProvider extends ServiceProvider
 
           return $category;
         });
+
+      Route::bind('brandSlug', function ($slug) {
+        $brand =  Brand::where('slug', $slug)->first() ?? abort(404);
+        if (auth()->check()) {
+          return $brand;
+        }
+
+        return $brand;
+      });
     }
 
     /**

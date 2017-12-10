@@ -24,7 +24,7 @@
                     <a href="{{route('brands')}}">Brands</a>
                     <ul>
                         @foreach($brands as $brand)
-                            <li><a href="{{$brand->slug}}">{{$brand->name}}</a></li>
+                            <li><a href="{{route('brand',$brand->slug)}}">{{$brand->name}}</a></li>
                         @endforeach
                     </ul>
                 </li>

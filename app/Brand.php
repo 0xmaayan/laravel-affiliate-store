@@ -20,7 +20,7 @@ class Brand extends Model
     ];
 
   public function products(){
-    return $this->hasMany('App\Product');
+    return $this->hasMany('App\Product','brands_id');
   }
 
     /**
