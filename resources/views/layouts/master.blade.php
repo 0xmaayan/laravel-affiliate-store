@@ -111,12 +111,22 @@
     <div class="container">
         <div class="row">
         <div class="col-md-12">
-            <div class="">
+            <div class="col-lg-12">
                 © Copyright 2017 by <a href="{{url('/')}}">lost in space</a>. All Rights Reserved.
             </div>
-            <div class="">
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Terms & Conditions</a>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-6 text-left">
+                        <a href="#">Privacy Policy</a> |
+                        <a href="#">Terms & Conditions</a>
+                    </div>
+                    <div class="col-lg-6 pull-right">
+                        <ul class="payment-icons">
+                            <li><a href=""></a><i class="fa fa-2x fa-pinterest"></i></li>
+                            <li><a href=""></a><i class="fa fa-2x fa-instagram"></i></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         </div>
@@ -126,7 +136,6 @@
 </div>
 <script>
     function trackingClick(id){
-        debugger;
         var token = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             url: 'product/'+id+'/click',
@@ -151,16 +160,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/1.9.0/jquery.hoverIntent.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.9/js/superfish.min.js"></script>
 <script src="{{asset('scripts/jquery.pureparallax.js')}}"></script>
-<script src="{{asset('scripts/jquery.pricefilter.js')}}"></script>
-<script src="{{asset('scripts/jquery.selectric.min.js')}}"></script>
-<script src="{{asset('scripts/jquery.royalslider.min.js')}}"></script>
-<script src="{{asset('scripts/SelectBox.js')}}"></script>
-<script src="{{asset('scripts/modernizr.custom.js')}}"></script>
+{{--<script src="{{asset('scripts/jquery.pricefilter.js')}}"></script>--}}
+{{--<script src="{{asset('scripts/jquery.selectric.min.js')}}"></script>--}}
+{{--<script src="{{asset('scripts/jquery.royalslider.min.js')}}"></script>--}}
+{{--<script src="{{asset('scripts/SelectBox.js')}}"></script>--}}
+{{--<script src="{{asset('scripts/modernizr.custom.js')}}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.4/jquery.flexslider-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/1.9.2/countUp.min.js"></script>
-<script src="{{asset('scripts/jquery.tooltips.min.js')}}"></script>
+{{--<script src="{{asset('scripts/jquery.tooltips.min.js')}}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
-<script src="{{asset('scripts/puregrid.js')}}"></script>
+{{--<script src="{{asset('scripts/puregrid.js')}}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stacktable.js/1.0.3/stacktable.min.js"></script>
 <script src="{{asset('scripts/custom.js')}}"></script>
