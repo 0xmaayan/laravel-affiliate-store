@@ -5042,6 +5042,7 @@ ul.footer-links { margin: 0 0 15px 0; }
 .payment-icons li {
 	display: inline-block;
 	float: left;
+	padding: 0px 7px;
 }
 
 .payment-icons li img { margin: 0 0 0 6px; }

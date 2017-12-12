@@ -24,7 +24,7 @@ abstract class ApplicationController extends Controller
 
     public function __construct()
     {
-      $this->settings = Setting::all();
+      $this->settings = Setting::all()->first();
       $this->contents = Content::all();
       $this->brands = Brand::all();
       $this->categories = Category::all();

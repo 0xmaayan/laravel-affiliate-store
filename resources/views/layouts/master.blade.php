@@ -2,13 +2,13 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-    @foreach($settings as $setting)
     <!-- Basic Page Needs
     ================================================== -->
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @endforeach
-
+    <meta name="title" content="{{$settings['title']}}">
+    <meta name="description" content="{{$settings['seo_description']}}">
+    <meta name="keywords" content="{{$settings['seo_keywords']}}">
     <title>{{env('APP_NAME')}}</title>
 
     <!-- Mobile Specific Metas
@@ -116,14 +116,14 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="col-lg-6 text-left">
+                    <div class="col-md-6 col-sm-12 text-left">
                         <a href="#">Privacy Policy</a> |
                         <a href="#">Terms & Conditions</a>
                     </div>
-                    <div class="col-lg-6 pull-right">
+                    <div class="col-md-6 col-sm-12">
                         <ul class="payment-icons">
-                            <li><a href=""></a><i class="fa fa-2x fa-pinterest"></i></li>
-                            <li><a href=""></a><i class="fa fa-2x fa-instagram"></i></li>
+                            <li><a href="{{$settings['pinterest']}}"><i class="fa fa-2x fa-pinterest"></i></a></li>
+                            <li><a href="{{$settings['instagram']}}"><i class="fa fa-2x fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
