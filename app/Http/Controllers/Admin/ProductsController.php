@@ -30,7 +30,7 @@ class ProductsController extends AdminController
    */
     public function index(Request $request)
     {
-      $products =  Product::with('brands','category')->select('products.*');
+      $products =  Product::orderBy('clicks', 'desc')->with('brands','category')->select('products.*');
       if ($request->ajax()){
         return Datatables::of($products)
           ->editColumn('link', function ($product){
