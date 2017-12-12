@@ -6,6 +6,7 @@ use App\Base\Controllers\AdminController;
 use App\Subscribe;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Application\SubscribeRequest;
 
 class SubscribesController extends AdminController
 {
@@ -20,11 +21,10 @@ class SubscribesController extends AdminController
       return view('admin.subscribes.index',compact('subscribes'));
     }
 
-    public function create(Request $request){
-
+    public function create(SubscribeRequest $request){
       $subscribe = ['email' => $request->email];
 
-      Subscribe::create($subscribe);
-
+      $data = Subscribe::create($subscribe);
+      return response()->json($data->email);
     }
 }

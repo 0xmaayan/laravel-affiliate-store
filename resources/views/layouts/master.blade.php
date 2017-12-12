@@ -91,12 +91,12 @@
                 <h3 class="headline footer">Newsletter</h3>
                 <span class="line"></span>
                 <div class="clearfix"></div>
-                <p>Sign up to receive email updates on new product announcements, gift ideas, special promotions, sales and more.</p>
+                <p class="newsletter_text">Sign up to receive email updates on new product announcements, gift ideas, special promotions, sales and more.</p>
 
-                <form action="{{route('subscribe')}}" method="POST">
-                    <button class="newsletter-btn" type="submit">Join</button>
-                    <input class="newsletter" name="email" type="text" placeholder="mail@example.com" value=""/>
-                </form>
+                {!! Form::open(['id'=>'subscribe_form'])!!}
+                    {!! Form::submit('Join',['class'=>'newsletter-btn'])!!}
+                    <input class="newsletter" name="email" type="email" placeholder="mail@example.com" value=""/>
+                {!! Form::close() !!}
             </div>
         </div>
 
@@ -134,20 +134,6 @@
     <!-- Container / End -->
 
 </div>
-<script>
-    function trackingClick(id){
-        var token = $('meta[name="csrf-token"]').attr('content');
-        $.ajax({
-            url: 'product/'+id+'/click',
-            data: {'_token' : token },
-            type: "POST",
-            dataType: 'json',
-            success: function(result){
-                console.log(result)
-            }
-        })
-    }
-</script>
 <!-- Java Script
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -173,3 +159,4 @@
 {{--<script src="{{asset('scripts/puregrid.js')}}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stacktable.js/1.0.3/stacktable.min.js"></script>
 <script src="{{asset('scripts/custom.js')}}"></script>
+<script src="{{asset('scripts/script.js')}}"></script>
