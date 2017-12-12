@@ -31,3 +31,5 @@ Route::resource('products','ProductsController');
 Route::resource('content','ContentController');
 Route::resource('brands','BrandsController');
 
+Route::get('/subscribes', ['as' => 'subscribes.index', 'uses' => 'SubscribesController@index']);
+

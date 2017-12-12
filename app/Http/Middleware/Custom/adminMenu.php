@@ -42,6 +42,10 @@ class adminMenu
         ->active('users/*')
         ->icon('users')
         ->prependIcon();
+      $menu->add('Subscribes',  '/admin/subscribes')
+        ->active('subscribes/*')
+        ->icon('address-book-o')
+        ->prependIcon();
       $menu->add('Settings',  '/admin/settings')
         ->active('settings/*')
         ->icon('cog')

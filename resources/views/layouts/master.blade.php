@@ -93,9 +93,9 @@
                 <div class="clearfix"></div>
                 <p>Sign up to receive email updates on new product announcements, gift ideas, special promotions, sales and more.</p>
 
-                <form action="#" method="get">
+                <form action="{{route('subscribe')}}" method="POST">
                     <button class="newsletter-btn" type="submit">Join</button>
-                    <input class="newsletter" type="text" placeholder="mail@example.com" value=""/>
+                    <input class="newsletter" name="email" type="text" placeholder="mail@example.com" value=""/>
                 </form>
             </div>
         </div>
