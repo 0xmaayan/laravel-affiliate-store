@@ -12,7 +12,7 @@
 
             <ul class="product-list">
                 @foreach($mostClicked as $mostClick)
-                <li><a href="{{$mostClick->link}}">
+                <li><a href="{{$mostClick->link}}" onclick="trackingClick({{$mostClick->id}})" target="_blank">
                         <img style="width: 130px;" src="{{$mostClick->main_image}}" alt="{{$mostClick->name}}" />
                         <div class="product-list-desc">{{$mostClick->name}}<i>{{$mostClick->price}}</i></div>
                     </a>
@@ -38,7 +38,7 @@
             <ul class="product-list top-rated">
                 @foreach($recommends as $recommend)
                 <li>
-                    <a href="{{$recommend->link}}">
+                    <a href="{{$recommend->link}}" onclick="trackingClick({{$recommend->id}})" target="_blank">
                         <img style="width: 130px;" src="{{$recommend->main_image}}" alt="{{$recommend->name}}" />
                         <div class="product-list-desc with-rating">{{$recommend->name}}<i>{{$recommend->price}}</i>
                             <div class="rating five-stars">
@@ -67,7 +67,7 @@
 
             <ul class="product-list">
                 @foreach($newArrivals as $newArrival)
-                <li><a href="{{$newArrival->link}}">
+                <li><a href="{{$newArrival->link}}" onclick="trackingClick({{$newArrival->id}})" target="_blank">
                         <img style="width: 130px;" src="{{$newArrival->main_image}}" alt="{{$newArrival->name}}"/>
                         <div class="product-list-desc">{{$newArrival->name}} <i>${{$newArrival->price}}</i></div>
                     </a></li>
