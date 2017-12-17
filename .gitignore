@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 .env
 .DS_Store
+lostinspace.pem
+id_rsa.pub
