@@ -61,7 +61,9 @@
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
+                            @if($mostClicked)
                             <div class="huge">{{$mostClicked->name}}</div>
+                            @endif
                             <div>Most Clicked!</div>
                         </div>
                     </div>
