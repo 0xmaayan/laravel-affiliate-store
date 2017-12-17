@@ -16,13 +16,13 @@ class ContentsTableSeeder extends Seeder
           'id' => 1,
           'name' => 'Home',
           'files' => '{}',
-          'content' => 'test'
+          'content' => ''
         ],
         [
           'id' => 2,
           'name' => 'About',
           'files' => '{}',
-          'content' => 'test'
+          'content' => ''
         ]
       ]);
     }
