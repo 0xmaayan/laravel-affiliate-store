@@ -112,7 +112,6 @@ class RouteServiceProvider extends ServiceProvider
             ->as('admin.')
             ->namespace($this->adminNamespace)
             ->prefix('admin')
-            ->domain(Config::get('app.url'))
             ->group(base_path('routes/admin.php')
         );
     }
