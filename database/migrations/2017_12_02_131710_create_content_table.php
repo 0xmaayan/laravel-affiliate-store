@@ -17,7 +17,7 @@ class CreateContentTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->json('files')->nullable();
-            $table->json('content')->nullable();
+            $table->longText('content')->nullable();
             $table->timestamps();
         });
     }
