@@ -11,6 +11,19 @@ class ContentsTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\Content::class, 1)->create();
+      DB::table('contents')->insert([
+        [
+          'id' => 1,
+          'name' => 'Home',
+          'files' => '{}',
+          'content' => 'test'
+        ],
+        [
+          'id' => 2,
+          'name' => 'About',
+          'files' => '{}',
+          'content' => 'test'
+        ]
+      ]);
     }
 }
