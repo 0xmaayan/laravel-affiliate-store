@@ -35,6 +35,7 @@
                     {!! Form::file('image[]') !!}
                     {!! Form::text('image_text[]',$content['content'][2],['class' => 'form-control']) !!}
                 </div>
+                @if($content['files'])
                 <div class="form-group col-md-4">
                     <img style="width:100%" src="{{asset('images/home_slider/'.$content['files'][0])}}" alt="image 1">
                 </div>
@@ -44,6 +45,7 @@
                 <div class="form-group col-md-4">
                     <img style="width:100%" src="{{asset('images/home_slider/'.$content['files'][2])}}" alt="image 3">
                 </div>
+                @endif
                 {!! Form::submit('Update',['class' => 'btn btn-default col-md-12']) !!}
                 {!! Form::close() !!}
         @elseif ($content->id == 2)
