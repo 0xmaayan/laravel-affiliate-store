@@ -5,6 +5,7 @@
     <div class="tp-banner-container col-md-12">
         <div class="tp-banner">
             <ul>
+                @if(isset($content))
                 <!-- Slide 1  -->
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="1000">
                     <img src="{{asset('images/home_slider/'.$contents[0]['files'][0])}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
@@ -36,6 +37,7 @@
                         <a href="shop-with-sidebar.html" class="caption-btn">JOIN NOW!</a>
                     </div>
                 </li>
+                @endif
             </ul>
         </div>
     </div>
