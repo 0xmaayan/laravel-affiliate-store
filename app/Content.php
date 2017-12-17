@@ -12,6 +12,5 @@ class Content extends Model
 
   protected $casts = [
     'files' => 'array',
-    'content' => 'array',
   ];
 }
