@@ -50,10 +50,10 @@ class adminMenu
         ->active('settings/*')
         ->icon('cog')
         ->prependIcon();
-      $menu->add('Stats',  '/admin/stats')
+     /* $menu->add('Stats',  '/admin/stats')
         ->active('stats/*')
         ->icon('bar-chart')
-        ->prependIcon();
+        ->prependIcon();*/
     });
 
     return $next($request);

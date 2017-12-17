@@ -25,7 +25,7 @@ class SettingsController extends AdminController
      */
     public function index()
     {
-      $settings = Setting::first();
+      $settings = Setting::firstOrCreate(['id' => 1]);
 
       return view('admin.settings.index',compact('settings'));
     }
