@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Base\Controllers\AdminController;
+use App\Mail\NewSubscribe;
 use App\Subscribe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Application\SubscribeRequest;
 
@@ -24,7 +26,8 @@ class SubscribesController extends AdminController
     public function create(SubscribeRequest $request){
       $subscribe = ['email' => $request->email];
 
-      $data = Subscribe::create($subscribe);
-      return response()->json($data->email);
+      $newSubscribe = Subscribe::create($subscribe);
+      Mail::to($request->user())->queue(new NewSubscribe($newSubscribe));
+      return response()->json($newSubscribe->email);
     }
 }

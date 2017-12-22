@@ -24,7 +24,11 @@ Route::group(['domain' => "www.lostinspace.co"], function()
   });
 });
 
+Route::get('/mailable', function () {
+  $subscribe = App\Subscribe::find(1);
 
+  return new App\Mail\NewSubscribe($subscribe);
+});
 
 Route::get("/email", function() {
   Mail::raw('Now I know how to send emails with Laravel', function($message)
