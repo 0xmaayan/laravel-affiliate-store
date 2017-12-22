@@ -49,7 +49,7 @@
 
         <div class="col-md-12">
             <div class="col-md-4">
-                <img src="{{asset('images/logoXL.png')}}" alt="" class="margin-top-10 footer-logo"/>
+                <img src="{{asset('images/footer-logo.png')}}" alt="" class="margin-top-10 footer-logo"/>
                 <p class="margin-top-15">Place to write short description about us.</p>
             </div>
 

@@ -9,7 +9,10 @@
                     <div class="col-md-3" style="">
                         <div class="card text-center">
                             <a href="{{$category->slug}}">
-                                <img class="card-img-top" style="margin:0 auto;width: 200px;height:200px;object-fit: contain;" src="{{asset('images/categories/'.$category->image)}}" alt="category image">
+                                <img class="card-img-top" style="margin:0 auto;width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->image)}}" alt="category image">
+                                <div class="card-block">
+                                    <h4 class="card-title">{{$category->name}}</h4>
+                                </div>
                             </a>
                         </div>
                     </div>
