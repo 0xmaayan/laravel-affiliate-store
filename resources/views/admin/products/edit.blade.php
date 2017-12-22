@@ -31,24 +31,18 @@
             </div>
             <div class="form-group col-md-4">
                 <label style="width:100%;">{!! Form::label('brand') !!}</label>
-                {!! Form::select('brand_id', $brands_list,['class' => 'form-control col-md-12']); !!}
+                {!! Form::select('brand_id', $brands_list,$product->brands->id,['class' => 'form-control col-md-12']); !!}
             </div>
         </div>
         <div class="col-md-12">
+            @if($product->brands->name == 'Amazon')
+                @include('admin.products.linkaffiliate')
+            @else
+                @include('admin.products.image')
+            @endif
             <div class="form-group col-md-4">
-                <label>{!! Form::label('link') !!}</label>
-                {!! Form::textarea('link',$product->link,['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group col-md-4">
-                <label>{!! Form::label('main image') !!}</label>
-                {!! Form::file('main_image') !!}
-                <div class="form-group">
-                    <img width="150" height="150" src="{{$product->main_image}}" alt="main product image">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>{!! Form::label('category') !!}</label>
-                {!! Form::select('category_id', $categories_list,['class' => 'form-control']); !!}
+                <label style="width:100%;">{!! Form::label('category') !!}</label>
+                {!! Form::select('category_id', $categories_list,$product->category->id,['class' => 'form-control']); !!}
             </div>
         </div>
         <div class="col-md-12">

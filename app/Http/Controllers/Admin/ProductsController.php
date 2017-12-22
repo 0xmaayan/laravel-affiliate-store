@@ -37,8 +37,7 @@ class ProductsController extends AdminController
             return '<a href="'.$product->link.'">Product Link</a>';
           })
           ->addColumn('action', function ($product){
-            return '<a class="btn btn-sm btn-warning" href="'.route('admin.products.edit',$product->id).'">Edit</a>
-                    <a class="btn btn-sm btn-danger" href="'.route('admin.products.destroy',$product->id).'">Delete</a>';
+            return view('admin.products.actions.action', compact('product'));
           })
           ->rawColumns(['link','action'])
           ->make(true);
@@ -72,26 +71,27 @@ class ProductsController extends AdminController
         'name' => 'required|max:255',
         'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
         'image' => 'mimes:png,jpg,jpeg',
-        'link' => 'required',
       ]);
-
-      $linksArray = $this->returnArrayOfAmazonLinks($request->link);
 
       $data = [
         'name' => $request->name,
         'price' => $request->price,
-        'link' => $linksArray['value'], // the href attribute value
-        'main_image' =>$linksArray['src'][0], // the img src
         'category_id' => $request->category_id,
         'brands_id' => $request->brands_id
       ];
 
-      if($request->file('main_image')){
-        $data['main_image'] = $request->file('main_image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/products'), $data['main_image']);
+      if(isset($request->link)){
+        $linksArray = $this->returnArrayOfAmazonLinks($request->link);
+        $data['link'] = $linksArray['value']; // the href attribute value
+        $data['main_image'] = $linksArray['src'][0]; // the img src
       }
 
-      Product::create($data);
+      if($request->file('main_image')){
+        $data['main_image'] = time().'-'.$request->file('main_image')->getClientOriginalName();
+      }
+
+      $product = Product::create($data);
+      $request->main_image->move(public_path('/uploads/products/'.$product->id), $data['main_image']);
 
       return Redirect::route('admin.products.index');
     }
@@ -135,23 +135,25 @@ class ProductsController extends AdminController
         'name' => 'required|max:255',
         'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
         'image' => 'mimes:png,jpg,jpeg',
-        'link' => 'required',
       ]);
 
-      $linksArray = $this->returnArrayOfAmazonLinks($request->link);
 
       $data = [
         'name' => $request->name,
         'price' => $request->price,
-        'link' => $linksArray['value'], // the href attribute value
-        'main_image' =>$linksArray['src'][0], // the img src
         'category_id' => $request->category_id,
+        'link' => $request->link,
         'brands_id' => $request->brand_id
       ];
+      if(isset($request->link)){
+        $linksArray = $this->returnArrayOfAmazonLinks($request->link);
+        $data['link'] = $linksArray['value']; // the href attribute value
+        $data['main_image'] = $linksArray['src'][0]; // the img src
+      }
 
       if($request->file('main_image')){
-        $data['main_image'] = $request->file('main_image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/products'), $data['main_image']);
+        $data['main_image'] = time().'-'.$request->file('main_image')->getClientOriginalName();
+        $request->main_image->move(public_path('/uploads/products/'.$data['id']), $data['main_image']);
       }
 
       $product = Product::findOrFail($id);

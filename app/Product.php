@@ -16,7 +16,6 @@ class Product extends Model
     'link',
     'price',
     'main_image',
-    'second_image',
     'category_id',
     'brands_id',
     'slug'

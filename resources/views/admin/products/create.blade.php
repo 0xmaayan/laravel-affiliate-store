@@ -35,10 +35,6 @@
                 {!! Form::file('main_image') !!}
             </div>
             <div class="form-group">
-                <label>{!! Form::label('second image') !!}</label>
-                {!! Form::file('second_image') !!}
-            </div>
-            <div class="form-group">
                 <label>{!! Form::label('category') !!}</label>
                 {!! Form::select('category_id', $categories_list,['class' => 'form-control']); !!}
             </div>
