@@ -21,17 +21,9 @@
             <div class="col-md-4" style="">
                 <div class="card text-center">
                     <a href="{{route('admin.categories.edit',['id' => $category->id ])}}">
-                        <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->image)}}" alt="category image">
+                        <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->name.'/'.$category->image)}}" alt="category image">
                         <div class="card-block">
                             <h4 class="card-title">{{$category->name}}</h4>
-                            {{--<div class="form-group col-md-6 col-xs-6">--}}
-                                {{--<a href="{{route('categories.show',['id' => $category[2] ])}}" class="btn btn-default btn-xs pull-left">Show</a>--}}
-                            {{--</div>--}}
-                            {{--<div class="form-group col-md-12">--}}
-                                {{--{!! Form::open([ 'route' => ['categories.destroy',$category[2]],'method' => 'DELETE' ]) !!}--}}
-                                {{--{!! Form::submit('Delete',['class' => 'btn btn-danger btn-xs']) !!}--}}
-                                {{--{!! Form::close() !!}--}}
-                            {{--</div>--}}
                         </div>
                     </a>
                 </div>

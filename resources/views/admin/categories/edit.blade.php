@@ -31,7 +31,14 @@
                     {!! Form::file('image') !!}
                 </div>
                 <div class="form-group col-md-4">
-                    <img width="150" height="150" src="{{asset('uploads/categories/'.$category->image)}}" alt="category image">
+                    <label>{!! Form::label('second image') !!}</label>
+                    {!! Form::file('second_image') !!}
+                </div>
+                <div class="form-group col-md-4">
+                    <img width="150" height="150" src="{{asset('uploads/categories/'.$category->name.'/'.$category->image)}}" alt="category image">
+                </div>
+                <div class="form-group col-md-4">
+                    <img width="150" height="150" src="{{asset('uploads/categories/'.$category->name.'/'.$category->second_image)}}" alt="category image">
                 </div>
                 {!! Form::submit('Update',['class' => 'btn btn-default col-md-12']) !!}
                 {!! Form::close() !!}

@@ -53,6 +53,7 @@ class CategoriesController extends AdminController
       $validatedData = $request->validate([
         'name' => 'required|max:255',
         'image' => 'mimes:png,jpg,jpeg',
+        'second_image' => 'mimes:png,jpg,jpeg',
       ]);
 
       $data = [
@@ -60,10 +61,13 @@ class CategoriesController extends AdminController
       ];
 
       if($request->file('image')){
-        $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/categories'), $data['image']);
+        $data['image'] = time().'_'.$request->file('image')->getClientOriginalName();
+        $request->image->move(public_path('/uploads/categories/'.$data['name'].'/'), $data['image']);
       }
-
+      if($request->file('second_image')){
+        $data['second_image'] = time().'_'.$request->file('second_image')->getClientOriginalName();
+        $request->second_image->move(public_path('/uploads/categories/'.$data['name'].'/'), $data['second_image']);
+      }
       Category::create($data);
 
       return Redirect::route('admin.categories.index');
@@ -118,6 +122,7 @@ class CategoriesController extends AdminController
       $validatedData = $request->validate([
         'name' => 'required|max:255',
         'image' => 'mimes:png,jpg,jpeg',
+        'second_image' => 'mimes:png,jpg,jpeg',
       ]);
 
       $data = [
@@ -125,8 +130,12 @@ class CategoriesController extends AdminController
       ];
 
       if($request->file('image')){
-        $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/categories'), $data['image']);
+        $data['image'] = time().'-'.$request->file('image')->getClientOriginalName();
+        $request->image->move(public_path('/uploads/categories/'.$data['name']), $data['image']);
+      }
+      if($request->file('second_image')){
+        $data['second_image'] = time().'-'.$request->file('second_image')->getClientOriginalName();
+        $request->second_image->move(public_path('/uploads/categories/'.$data['name']), $data['second_image']);
       }
 
       $category = Category::findOrFail($id);

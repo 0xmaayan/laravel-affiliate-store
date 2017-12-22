@@ -16,7 +16,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-      'name', 'image',
+      'name', 'image', 'second_image',
     ];
 
     protected $dates = ['deleted_at'];
