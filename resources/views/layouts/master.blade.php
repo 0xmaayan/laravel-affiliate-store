@@ -124,6 +124,7 @@
                         <ul class="payment-icons">
                             <li><a href="{{$settings['pinterest']}}"><i class="fa fa-2x fa-pinterest"></i></a></li>
                             <li><a href="{{$settings['instagram']}}"><i class="fa fa-2x fa-instagram"></i></a></li>
+                            <li><a href="mailto:{{$settings['email']}}"><i class="fa fa-2x fa-envelope-o"></i></a></li>
                         </ul>
                     </div>
                 </div>
