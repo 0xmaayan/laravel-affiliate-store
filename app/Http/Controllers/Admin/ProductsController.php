@@ -77,6 +77,7 @@ class ProductsController extends AdminController
         'name' => $request->name,
         'price' => $request->price,
         'category_id' => $request->category_id,
+        'link' => $request->link,
         'brands_id' => $request->brands_id
       ];
 
@@ -145,15 +146,10 @@ class ProductsController extends AdminController
         'link' => $request->link,
         'brands_id' => $request->brand_id
       ];
-      if(isset($request->link)){
-        $linksArray = $this->returnArrayOfAmazonLinks($request->link);
-        $data['link'] = $linksArray['value']; // the href attribute value
-        $data['main_image'] = $linksArray['src'][0]; // the img src
-      }
 
       if($request->file('main_image')){
         $data['main_image'] = time().'-'.$request->file('main_image')->getClientOriginalName();
-        $request->main_image->move(public_path('/uploads/products/'.$data['id']), $data['main_image']);
+        $request->main_image->move(public_path('/uploads/products/'.$id), $data['main_image']);
       }
 
       $product = Product::findOrFail($id);

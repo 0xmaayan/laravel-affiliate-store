@@ -62,13 +62,14 @@ class CategoriesController extends AdminController
 
       if($request->file('image')){
         $data['image'] = time().'_'.$request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/categories/'.$data['name'].'/'), $data['image']);
       }
       if($request->file('second_image')){
         $data['second_image'] = time().'_'.$request->file('second_image')->getClientOriginalName();
-        $request->second_image->move(public_path('/uploads/categories/'.$data['name'].'/'), $data['second_image']);
       }
-      Category::create($data);
+      $category = Category::create($data);
+
+      $request->image->move(public_path('/uploads/categories/'.$category->id.'/'), $data['image']);
+      $request->second_image->move(public_path('/uploads/categories/'.$category->id.'/'), $data['second_image']);
 
       return Redirect::route('admin.categories.index');
     }
@@ -131,11 +132,11 @@ class CategoriesController extends AdminController
 
       if($request->file('image')){
         $data['image'] = time().'-'.$request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/categories/'.$data['name']), $data['image']);
+        $request->image->move(public_path('/uploads/categories/'.$id), $data['image']);
       }
       if($request->file('second_image')){
         $data['second_image'] = time().'-'.$request->file('second_image')->getClientOriginalName();
-        $request->second_image->move(public_path('/uploads/categories/'.$data['name']), $data['second_image']);
+        $request->second_image->move(public_path('/uploads/categories/'.$id), $data['second_image']);
       }
 
       $category = Category::findOrFail($id);

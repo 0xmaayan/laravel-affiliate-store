@@ -31,9 +31,9 @@
                                 <figure class="product">
                                     <div class="mediaholder">
                                         <a href="{{$category->slug}}">
-                                            <img alt="" src="{{asset('uploads/categories/'.$category->name.'/'.$category->image)}}"/>
+                                            <img alt="" src="{{asset('uploads/categories/'.$category->id.'/'.$category->image)}}"/>
                                             <div class="cover">
-                                                <img alt="" src="{{asset('uploads/categories/'.$category->name.'/'.$category->second_image)}}"/>
+                                                <img alt="" src="{{asset('uploads/categories/'.$category->id.'/'.$category->second_image)}}"/>
                                             </div>
                                         </a>
                                         {{--<a href="{{$category->link}}" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>--}}
