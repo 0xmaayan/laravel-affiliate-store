@@ -77,7 +77,6 @@ class ProductsController extends AdminController
         'name' => $request->name,
         'price' => $request->price,
         'category_id' => $request->category_id,
-        'link' => $request->link,
         'brands_id' => $request->brands_id
       ];
 
@@ -92,7 +91,9 @@ class ProductsController extends AdminController
       }
 
       $product = Product::create($data);
-      $request->main_image->move(public_path('/uploads/products/'.$product->id), $data['main_image']);
+      if(isset($request->main_image)){
+        $request->main_image->move(public_path('/uploads/products/'.$product->id), $data['main_image']);
+      }
 
       return Redirect::route('admin.products.index');
     }

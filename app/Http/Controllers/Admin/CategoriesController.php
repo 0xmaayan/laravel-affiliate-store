@@ -52,8 +52,8 @@ class CategoriesController extends AdminController
     {
       $validatedData = $request->validate([
         'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-        'second_image' => 'mimes:png,jpg,jpeg',
+        'image' => 'required|mimes:png,jpg,jpeg',
+        'second_image' => 'required|mimes:png,jpg,jpeg',
       ]);
 
       $data = [
