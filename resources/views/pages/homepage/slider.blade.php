@@ -5,7 +5,7 @@
     <div class="tp-banner-container col-md-12">
         <div class="tp-banner">
             <ul>
-                @if(isset($contents))
+                @if($contents[0]['files'])
                 <!-- Slide 1  -->
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="1000">
                     <img src="{{asset('uploads/home_slider/'.$contents[0]['files'][0])}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
