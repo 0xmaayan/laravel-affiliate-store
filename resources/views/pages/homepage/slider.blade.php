@@ -5,7 +5,7 @@
     <div class="tp-banner-container col-md-12">
         <div class="tp-banner">
             <ul>
-                @if($contents[0]['files'])
+                @if($contents[0]['files'][0])
                 <!-- Slide 1  -->
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="1000">
                     <img src="{{asset('uploads/home_slider/'.$contents[0]['files'][0])}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
@@ -15,8 +15,8 @@
                         {{--<a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>--}}
                     {{--</div>--}}
                 </li>
-
-
+                @endif
+                @if($contents[0]['files'][1])
                 <!-- Slide 2  -->
                 <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1500" >
                     <img src="{{asset('uploads/home_slider/'.$contents[0]['files'][1])}}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
@@ -26,8 +26,8 @@
                         {{--<a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>--}}
                     {{--</div>--}}
                 </li>
-
-
+                @endif
+                @if($contents[0]['files'][2])
                 <!-- Slide 3  -->
                 <li data-transition="fadetotopfadefrombottom" data-slotamount="7" data-masterspeed="1000">
                     <img src="{{asset('uploads/home_slider/'.$contents[0]['files'][2])}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">

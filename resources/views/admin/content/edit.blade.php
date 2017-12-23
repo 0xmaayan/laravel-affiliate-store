@@ -35,13 +35,17 @@
                     {!! Form::file('image[]') !!}
                     {{--{!! Form::text('image_text[]',$content['content'][2],['class' => 'form-control']) !!}--}}
                 </div>
-                @if($content['files'])
+                @if($content[0]['files'][0])
                 <div class="form-group col-md-4">
                     <img style="width:100%" src="{{asset('uploads/home_slider/'.$content['files'][0])}}" alt="image 1">
                 </div>
+                @endif
+                @if($content[0]['files'][1])
                 <div class="form-group col-md-4">
                     <img style="width:100%" src="{{asset('uploads/home_slider/'.$content['files'][1])}}" alt="image 2">
                 </div>
+                @endif
+                @if($content[0]['files'][2])
                 <div class="form-group col-md-4">
                     <img style="width:100%" src="{{asset('uploads/home_slider/'.$content['files'][2])}}" alt="image 3">
                 </div>
