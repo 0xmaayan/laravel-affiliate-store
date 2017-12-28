@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Base\Controllers\AdminController;
+use App\Categoryfile;
+use App\Http\Requests\Admin\CategoryRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -42,34 +44,31 @@ class CategoriesController extends AdminController
         return view('admin.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param \App\Http\Controllers\Admin\CategoryRequest|CategoryRequest $request
+   * @return \Illuminate\Http\Response
+   */
+    public function store(CategoryRequest $request)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'required|mimes:png,jpg,jpeg',
-        'second_image' => 'required|mimes:png,jpg,jpeg',
-      ]);
-
       $data = [
         'name' => $request->name,
       ];
 
-      if($request->file('image')){
-        $data['image'] = time().'_'.$request->file('image')->getClientOriginalName();
-      }
-      if($request->file('second_image')){
-        $data['second_image'] = time().'_'.$request->file('second_image')->getClientOriginalName();
-      }
       $category = Category::create($data);
 
-      $request->image->move(public_path('/uploads/categories/'.$category->id.'/'), $data['image']);
-      $request->second_image->move(public_path('/uploads/categories/'.$category->id.'/'), $data['second_image']);
+      if($request->file('image')){
+        $files['image'] = time().'_'.$request->file('image')->getClientOriginalName();
+        $request->image->move(public_path('/uploads/categories/'.$category->id.'/'), $files['image']);
+
+          if($request->file('second_image')){
+            $files['second_image'] = time().'_'.$request->file('second_image')->getClientOriginalName();
+            $request->second_image->move(public_path('/uploads/categories/'.$category->id.'/'), $files['second_image']);
+          }
+          $files['category_id'] = $category->id;
+        Categoryfile::create($files);
+      }
 
       return Redirect::route('admin.categories.index');
     }
