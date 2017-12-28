@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Base\Controllers\AdminController;
 use App\Brand;
+use App\Http\Requests\Admin\BrandRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Intervention\Image\Facades\Image;
 
 class BrandsController extends AdminController
 {
@@ -36,29 +38,32 @@ class BrandsController extends AdminController
       return view('admin.brands.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param BrandRequest|Request $request
+   * @return \Illuminate\Http\Response
+   */
+    public function store(BrandRequest $request)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-      ]);
 
       $data = [
         'name' => $request->name,
       ];
 
-      if($request->file('image')){
-        $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/brands'), $data['image']);
+      $brand = Brand::create($data);
+
+      $public_dir = public_path('uploads/brands/'.$brand->id.'/');
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
       }
 
-      Brand::create($data);
+      if($request->file('image')){
+        $img = Image::make($request->file('image'))->resize(270, 200);
+        $data['image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$data['image'],60);
+        $brand->update($data);
+      }
 
       return Redirect::route('admin.brands.index');
     }
@@ -77,27 +82,25 @@ class BrandsController extends AdminController
       return view('admin.brands.edit', compact('brand'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param BrandRequest|Request $request
+   * @param  int $id
+   * @return \Illuminate\Http\Response
+   */
+    public function update(BrandRequest $request, $id)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-      ]);
 
       $data = [
         'name' => $request->name,
       ];
+      $public_dir = public_path('uploads/brands/'.$id.'/');
 
       if($request->file('image')){
-        $data['image'] = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/brands'), $data['image']);
+        $img = Image::make($request->file('image'))->resize(270, 200);
+        $data['image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$data['image'],60);
       }
 
       $brand = Brand::findOrFail($id);
