@@ -6,9 +6,9 @@ use App\Category;
 use App\Base\Controllers\AdminController;
 use App\Categoryfile;
 use App\Http\Requests\Admin\CategoryRequest;
-use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Intervention\Image\Facades\Image;
 use Yajra\DataTables\DataTables;
 
 class CategoriesController extends AdminController
@@ -57,14 +57,22 @@ class CategoriesController extends AdminController
       ];
 
       $category = Category::create($data);
+      $public_dir = public_path('uploads/categories/'.$category->id.'/');
+
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
 
       if($request->file('image')){
-        $files['image'] = time().'_'.$request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/categories/'.$category->id.'/'), $files['image']);
+
+        $img = Image::make($request->file('image'))->resize(270, 200);
+        $files['image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$files['image'],60);
 
           if($request->file('second_image')){
-            $files['second_image'] = time().'_'.$request->file('second_image')->getClientOriginalName();
-            $request->second_image->move(public_path('/uploads/categories/'.$category->id.'/'), $files['second_image']);
+            $img = Image::make($request->file('second_image'))->resize(270, 200);
+            $files['second_image'] = time().$img->basename.'.jpg';
+            $img->save($public_dir.$files['second_image'],60);
           }
           $files['category_id'] = $category->id;
         Categoryfile::create($files);
