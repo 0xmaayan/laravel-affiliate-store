@@ -89,6 +89,7 @@ class ProductsController extends AdminController
 
       if(isset($request->link)){
         $data['link'] = $request->link;
+        $data['type'] = 'personal';
       }
 
       $product = Product::create($data);
@@ -161,6 +162,7 @@ class ProductsController extends AdminController
 
       if(isset($request->link)){
         $data['link'] = $request->link;
+        $data['type'] = 'personal';
       }
 
       $product = Product::findOrFail($id);

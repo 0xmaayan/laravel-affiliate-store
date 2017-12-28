@@ -18,7 +18,8 @@ class Product extends Model
     'main_image',
     'category_id',
     'brands_id',
-    'slug'
+    'slug',
+    'type'
   ];
 
   protected $dates = ['deleted_at'];
