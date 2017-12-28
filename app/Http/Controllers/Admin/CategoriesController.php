@@ -30,8 +30,7 @@ class CategoriesController extends AdminController
     public function index()
     {
       $categories = Category::all();
-      $category = Category::findOrFail(3);
-dd($category->files->image);
+
       return view('admin.categories.index',compact('categories'));
     }
 
