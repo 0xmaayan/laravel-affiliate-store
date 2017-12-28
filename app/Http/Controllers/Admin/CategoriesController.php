@@ -132,15 +132,18 @@ class CategoriesController extends AdminController
         'name' => $request->name,
       ];
       $category = Category::findOrFail($id);
+      $public_dir = public_path('uploads/categories/'.$id.'/');
 
       if($request->file('image')){
-        $data['image'] = time().'-'.$request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/categories/'.$id), $data['image']);
+        $img = Image::make($request->file('image'))->resize(270, 200);
+        $data['image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$data['image'],60);
         $category->files->update($data);
       }
       if($request->file('second_image')){
-        $data['second_image'] = time().'-'.$request->file('second_image')->getClientOriginalName();
-        $request->second_image->move(public_path('/uploads/categories/'.$id), $data['second_image']);
+        $img = Image::make($request->file('second_image'))->resize(270, 200);
+        $data['second_image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$data['second_image'],60);
         $category->files->update($data);
       }
 
