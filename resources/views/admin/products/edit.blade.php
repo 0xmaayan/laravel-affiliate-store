@@ -35,11 +35,7 @@
             </div>
         </div>
         <div class="col-md-12">
-            @if($product->brands->name == 'Amazon')
                 @include('admin.products.linkaffiliate')
-            @else
-                @include('admin.products.image')
-            @endif
             <div class="form-group col-md-4">
                 <label style="width:100%;">{!! Form::label('category') !!}</label>
                 {!! Form::select('category_id', $categories_list,$product->category->id,['class' => 'form-control']); !!}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Brand;
 use App\Category;
 use App\Base\Controllers\AdminController;
+use App\Http\Requests\Admin\ProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -59,19 +60,14 @@ class ProductsController extends AdminController
         return view('admin.products.create',compact('categories_list','brands_list'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param ProductRequest|Request $request
+   * @return \Illuminate\Http\Response
+   */
+    public function store(ProductRequest $request)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
-        'image' => 'mimes:png,jpg,jpeg',
-      ]);
 
       $data = [
         'name' => $request->name,
@@ -80,19 +76,27 @@ class ProductsController extends AdminController
         'brands_id' => $request->brands_id
       ];
 
-      if(isset($request->link)){
-        $linksArray = $this->returnArrayOfAmazonLinks($request->link);
+      if(isset($request->affiliate_link)){
+        $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
         $data['link'] = $linksArray['value']; // the href attribute value
         $data['main_image'] = $linksArray['src'][0]; // the img src
+        $data['type'] = 'affiliate';
       }
 
       if($request->file('main_image')){
         $data['main_image'] = time().'-'.$request->file('main_image')->getClientOriginalName();
       }
 
+      if(isset($request->link)){
+        $data['link'] = $request->link;
+      }
+
       $product = Product::create($data);
       if(isset($request->main_image)){
         $request->main_image->move(public_path('/uploads/products/'.$product->id), $data['main_image']);
+        $data['main_image'] = env('APP_URL').'/uploads/products/'.$product->id.'/'.$data['main_image'];
+        $product = Product::findOrFail($product->id);
+        $product->update($data);
       }
 
       return Redirect::route('admin.products.index');
@@ -123,40 +127,46 @@ class ProductsController extends AdminController
       return view('admin.products.edit',compact('product','categories_list','brands_list'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param ProductRequest|Request $request
+   * @param  int $id
+   * @return \Illuminate\Http\Response
+   */
+    public function update(ProductRequest $request, $id)
     {
-
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
-        'image' => 'mimes:png,jpg,jpeg',
-      ]);
-
 
       $data = [
         'name' => $request->name,
         'price' => $request->price,
         'category_id' => $request->category_id,
-        'link' => $request->link,
         'brands_id' => $request->brand_id
       ];
+
+      if(isset($request->affiliate_link)){
+        $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
+        if(isset($linksArray['value'])){
+          $data['link'] = $linksArray['value']; // the href attribute value
+          $data['main_image'] = $linksArray['src'][0]; // the img src
+          $data['type'] = 'affiliate';
+        }
+      }
 
       if($request->file('main_image')){
         $data['main_image'] = time().'-'.$request->file('main_image')->getClientOriginalName();
         $request->main_image->move(public_path('/uploads/products/'.$id), $data['main_image']);
+        $data['main_image'] = env('APP_URL').'/uploads/products/'.$id.'/'.$data['main_image'];
+      }
+
+      if(isset($request->link)){
+        $data['link'] = $request->link;
       }
 
       $product = Product::findOrFail($id);
       $product->update($data);
 
-      return Redirect::route('admin.products.index');
+      return redirect()->back();
     }
 
     /**
@@ -179,15 +189,23 @@ class ProductsController extends AdminController
       $dom = HtmlDomParser::str_get_html( $fullLink );
       $data = [];
       $aElement = $dom->find('a');
-      foreach($aElement as $href){
-        $data['value'] = $href->href;
-      }
+      if($aElement){
+        foreach($aElement as $href){
+          if(isset($href->href)){
+            $data['value'] = $href->href;
+          }
+        }
 
-      $imgElement = $dom->find('img');
-      foreach($imgElement as $img){
-        $data['src'][] = $img->src;
-      }
+        $imgElement = $dom->find('img');
+        foreach($imgElement as $img){
+          if(isset($img->src)){
+            $data['src'][] = $img->src;
+          }
+        }
 
-      return $data;
+        return $data;
+      }else{
+        return $fullLink;
+      }
     }
 }

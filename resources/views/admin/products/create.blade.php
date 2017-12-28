@@ -16,8 +16,8 @@
             </h1>
         </div>
 
+        {!! Form::open(['route' => 'admin.products.store','files' => true]) !!}
         <div class="col-md-6">
-            {!! Form::open(['route' => 'admin.products.store','files' => true]) !!}
             <div class="form-group">
                 <label>{!! Form::label('name') !!}</label>
                 {!! Form::text('name','',['class' => 'form-control']) !!}
@@ -26,25 +26,33 @@
                 <label>{!! Form::label('price') !!}</label>
                 {!! Form::text('price','',['class' => 'form-control']) !!}
             </div>
-            <div class="form-group">
+            <hr>
+            {{--<div class="form-group">
                 <label>{!! Form::label('link') !!}</label>
-                {!! Form::textarea('link','',['class' => 'form-control']) !!}
-            </div>
+                {!! Form::text('link','',['class' => 'form-control']) !!}
+            </div>--}}
             <div class="form-group">
                 <label>{!! Form::label('main image') !!}</label>
-                {!! Form::file('main_image') !!}
+                {!! Form::file('main_image',['class' => 'form-control col-md-12']) !!}
             </div>
-            <div class="form-group">
-                <label>{!! Form::label('category') !!}</label>
-                {!! Form::select('category_id', $categories_list,['class' => 'form-control']); !!}
-            </div>
-            <div class="form-group">
-                <label>{!! Form::label('brand') !!}</label>
-                {!! Form::select('brands_id', $brands_list,['class' => 'form-control']); !!}
-            </div>
-            {!! Form::submit('Save',['class' => 'btn btn-default']) !!}
-            {!! Form::close() !!}
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="width:100%;">{!! Form::label('category') !!}</label>
+                {!! Form::select('category_id', $categories_list,null,['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                <label style="width:100%;">{!! Form::label('brand') !!}</label>
+                {!! Form::select('brands_id', $brands_list,null,['class' => 'form-control']) !!}
+            </div>
+            <hr>
+            <div class="form-group">
+                <label>{!! Form::label('Affiliate link') !!}</label>
+                {!! Form::textarea('affiliate_link','',['class' => 'form-control']) !!}
+            </div>
+        </div>
+        {!! Form::submit('Save',['class' => 'btn btn-default btn-block']) !!}
+        {!! Form::close() !!}
 
         <div class="col-md-12">
             @if ($errors->any())
