@@ -26,7 +26,7 @@ class Category extends Model
     }
 
     public function files(){
-      return $this->hasMany('App\Categoryfile','category_id');
+      return $this->hasOne('App\Categoryfile','category_id');
     }
 
     /**

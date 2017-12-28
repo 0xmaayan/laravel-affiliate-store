@@ -110,38 +110,35 @@ class CategoriesController extends AdminController
         return view('admin.categories.edit', compact('category','products'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param CategoryRequest|Request $request
+   * @param  int $id
+   * @return \Illuminate\Http\Response
+   */
+    public function update(CategoryRequest $request, $id)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-        'second_image' => 'mimes:png,jpg,jpeg',
-      ]);
 
       $data = [
         'name' => $request->name,
       ];
+      $category = Category::findOrFail($id);
 
       if($request->file('image')){
         $data['image'] = time().'-'.$request->file('image')->getClientOriginalName();
         $request->image->move(public_path('/uploads/categories/'.$id), $data['image']);
+        $category->files->update($data);
       }
       if($request->file('second_image')){
         $data['second_image'] = time().'-'.$request->file('second_image')->getClientOriginalName();
         $request->second_image->move(public_path('/uploads/categories/'.$id), $data['second_image']);
+        $category->files->update($data);
       }
 
-      $category = Category::findOrFail($id);
       $category->update($data);
 
-      return Redirect::route('admin.categories.index');
+      return redirect()->back();
     }
 
     /**

@@ -21,9 +21,7 @@
             <div class="col-md-4" style="">
                 <div class="card text-center">
                     <a href="{{route('admin.categories.edit',['id' => $category->id ])}}">
-                        @foreach($category->files as $file)
-                        <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->id.'/'.$file->image)}}" alt="category image">
-                        @endforeach
+                        <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->image)}}" alt="category image">
                         <div class="card-block">
                             <h4 class="card-title">{{$category->name}}</h4>
                         </div>
