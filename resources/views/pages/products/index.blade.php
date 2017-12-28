@@ -7,11 +7,7 @@
                 @foreach($products as $product)
                     <div class="card col-md-3 col-sm-4 text-center product" style="margin-bottom: 20px;" onclick="trackingClick({{$product->id}})">
                         <a href="{{$product->link}}" target="_blank">
-                            @if($product->brands->name == 'Amazon')
-                                <img src="{{$product->main_image}}" alt="{{$product->name}}" style="width:100%"/>
-                            @else
-                                <img src="{{asset('uploads/products/'.$product->id.'/'.$product->main_image)}}" alt="{{$product->name}}" style="width:100%"/>
-                            @endif
+                            <img src="{{$product->main_image}}" alt="{{$product->name}}" style="width:100%"/>
                         </a>
                         <section style="padding-bottom: 0">
                             <h4 class="card-title">{{$product->name}}</h4>
