@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Intervention\Image\Facades\Image;
 use Yajra\DataTables\DataTables;
 use Sunra\PhpSimple\HtmlDomParser;
 
@@ -76,6 +77,13 @@ class ProductsController extends AdminController
         'brands_id' => $request->brands_id
       ];
 
+      $product = Product::create($data);
+
+      $public_dir = public_path('uploads/products/'.$product->id.'/');
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
+
       if(isset($request->affiliate_link)){
         $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
         $data['link'] = $linksArray['value']; // the href attribute value
@@ -84,7 +92,9 @@ class ProductsController extends AdminController
       }
 
       if($request->file('main_image')){
-        $data['main_image'] = time().'-'.$request->file('main_image')->getClientOriginalName();
+        $img = Image::make($request->file('main_image'))->resize(250, 250);
+        $data['main_image'] = env('APP_URL').'/uploads/products/'.$product->id.'/'.$img->basename.'.jpg';
+        $img->save($public_dir.$img->basename.'.jpg',60);
       }
 
       if(isset($request->link)){
@@ -92,13 +102,7 @@ class ProductsController extends AdminController
         $data['type'] = 'personal';
       }
 
-      $product = Product::create($data);
-      if(isset($request->main_image)){
-        $request->main_image->move(public_path('/uploads/products/'.$product->id), $data['main_image']);
-        $data['main_image'] = env('APP_URL').'/uploads/products/'.$product->id.'/'.$data['main_image'];
-        $product = Product::findOrFail($product->id);
-        $product->update($data);
-      }
+      $product->update($data);
 
       return Redirect::route('admin.products.index');
     }
@@ -145,6 +149,8 @@ class ProductsController extends AdminController
         'brands_id' => $request->brand_id
       ];
 
+      $public_dir = public_path('uploads/products/'.$id.'/');
+
       if(isset($request->affiliate_link)){
         $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
         if(isset($linksArray['value'])){
@@ -155,9 +161,9 @@ class ProductsController extends AdminController
       }
 
       if($request->file('main_image')){
-        $data['main_image'] = time().'-'.$request->file('main_image')->getClientOriginalName();
-        $request->main_image->move(public_path('/uploads/products/'.$id), $data['main_image']);
-        $data['main_image'] = env('APP_URL').'/uploads/products/'.$id.'/'.$data['main_image'];
+        $img = Image::make($request->file('main_image'))->resize(250, 250);
+        $data['main_image'] = env('APP_URL').'/uploads/products/'.$id.'/'.$img->basename.'.jpg';
+        $img->save($public_dir.$img->basename.'.jpg',60);
       }
 
       if(isset($request->link)){
