@@ -13,12 +13,8 @@
             <ul class="product-list">
                 @foreach($mostClicked as $mostClick)
                 <li><a href="{{$mostClick->link}}" onclick="trackingClick({{$mostClick->id}})" target="_blank">
-                        @if($mostClick->brands->name == 'Amazon')
-                            <img src="{{$mostClick->main_image}}" alt="{{$mostClick->name}}" style="width:130px"/>
-                        @else
-                            <img src="{{asset('uploads/products/'.$mostClick->id.'/'.$mostClick->main_image)}}" alt="{{$mostClick->name}}" style="width:130px"/>
-                        @endif
-                        <div class="product-list-desc">{{$mostClick->name}}<i>{{$mostClick->price}}</i></div>
+                        <img src="{{$mostClick->main_image}}" alt="{{$mostClick->name}}" style="width:130px"/>
+                        <div class="product-list-desc">{{$mostClick->name}}<i>${{$mostClick->price}}</i></div>
                     </a>
                 </li>
                 @endforeach
@@ -43,12 +39,8 @@
                 @foreach($recommends as $recommend)
                 <li>
                     <a href="{{$recommend->link}}" onclick="trackingClick({{$recommend->id}})" target="_blank">
-                        @if($recommend->brands->name == 'Amazon')
-                            <img style="width:130px;" src="{{$recommend->main_image}}" alt="{{$recommend->name}}"/>
-                        @else
-                            <img src="{{asset('uploads/products/'.$recommend->id.'/'.$recommend->main_image)}}" alt="{{$recommend->name}}" style="width:130px"/>
-                        @endif
-                        <div class="product-list-desc with-rating">{{$recommend->name}}<i>{{$recommend->price}}</i>
+                        <img style="width:130px;" src="{{$recommend->main_image}}" alt="{{$recommend->name}}"/>
+                        <div class="product-list-desc with-rating">{{$recommend->name}}<i>${{$recommend->price}}</i>
                             <div class="rating five-stars">
                                 <div class="star-rating"></div>
                                 <div class="star-bg"></div>
@@ -76,11 +68,7 @@
             <ul class="product-list">
                 @foreach($newArrivals as $newArrival)
                 <li><a href="{{$newArrival->link}}" onclick="trackingClick({{$newArrival->id}})" target="_blank">
-                        @if($newArrival->brands->name == 'Amazon')
-                            <img src="{{$newArrival->main_image}}" alt="{{$newArrival->name}}" style="width:130px"/>
-                        @else
-                            <img src="{{asset('uploads/products/'.$newArrival->id.'/'.$newArrival->main_image)}}" alt="{{$newArrival->name}}" style="width:130px"/>
-                        @endif
+                        <img src="{{$newArrival->main_image}}" alt="{{$newArrival->name}}" style="width:130px"/>
                         <div class="product-list-desc">{{$newArrival->name}} <i>${{$newArrival->price}}</i></div>
                     </a></li>
                 @endforeach
