@@ -65,14 +65,14 @@ class CategoriesController extends AdminController
 
       if($request->file('image')){
 
-        $img = Image::make($request->file('image'))->resize(270, 200);
+        $img = Image::make($request->file('image'))->fit(220, 200);
         $files['image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$files['image'],60);
+        $img->save($public_dir.$files['image']);
 
           if($request->file('second_image')){
-            $img = Image::make($request->file('second_image'))->resize(270, 200);
+            $img = Image::make($request->file('second_image'))->fit(220, 200);
             $files['second_image'] = time().$img->basename.'.jpg';
-            $img->save($public_dir.$files['second_image'],60);
+            $img->save($public_dir.$files['second_image']);
           }
           $files['category_id'] = $category->id;
         Categoryfile::create($files);
@@ -135,15 +135,15 @@ class CategoriesController extends AdminController
       $public_dir = public_path('uploads/categories/'.$id.'/');
 
       if($request->file('image')){
-        $img = Image::make($request->file('image'))->resize(270, 200);
+        $img = Image::make($request->file('image'))->fit(220, 200);
         $data['image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$data['image'],60);
+        $img->save($public_dir.$data['image']);
         $category->files->update($data);
       }
       if($request->file('second_image')){
-        $img = Image::make($request->file('second_image'))->resize(270, 200);
+        $img = Image::make($request->file('second_image'))->fit(220, 200);
         $data['second_image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$data['second_image'],60);
+        $img->save($public_dir.$data['second_image']);
         $category->files->update($data);
       }
 

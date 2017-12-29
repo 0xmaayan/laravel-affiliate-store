@@ -21,7 +21,7 @@
             <div class="col-md-4" style="">
                 <div class="card text-center">
                     <a href="{{route('admin.categories.edit',['id' => $category->id ])}}">
-                        <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->image)}}" alt="category image">
+                        <img class="card-img-top" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->image)}}" alt="category image">
                         <div class="card-block">
                             <h4 class="card-title">{{$category->name}}</h4>
                         </div>
