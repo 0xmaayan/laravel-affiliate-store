@@ -35,10 +35,14 @@
                     {!! Form::file('second_image') !!}
                 </div>
                 <div class="form-group col-md-4">
-                    <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->image)}}" alt="category image">
+                    @if(isset($category->files->image))
+                    <img class="card-img-top" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->image)}}" alt="category image">
+                    @endif
                 </div>
                 <div class="form-group col-md-4">
-                    <img class="card-img-top" style="width: 200px;height:200px;object-fit: contain;" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->second_image)}}" alt="category image">
+                    @if(isset($category->files->second_image))
+                    <img class="card-img-top" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->second_image)}}" alt="category image">
+                    @endif
                 </div>
                 {!! Form::submit('Update',['class' => 'btn btn-default col-md-12']) !!}
                 {!! Form::close() !!}
