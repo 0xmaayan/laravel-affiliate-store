@@ -92,7 +92,10 @@ class ProductsController extends AdminController
       }
 
       if($request->file('main_image')){
-        $img = Image::make($request->file('main_image'))->resize(250, 250);
+        $img = Image::make($request->file('main_image'))
+          ->fit(220, 280,function ($constraint) {
+            $constraint->upsize();
+          });
         $data['main_image'] = env('APP_URL').'/uploads/products/'.$product->id.'/'.$img->basename.'.jpg';
         $img->save($public_dir.$img->basename.'.jpg',60);
       }
@@ -161,7 +164,10 @@ class ProductsController extends AdminController
       }
 
       if($request->file('main_image')){
-        $img = Image::make($request->file('main_image'))->resize(250, 250);
+        $img = Image::make($request->file('main_image'))
+          ->fit(220, 280,function ($constraint) {
+          $constraint->upsize();
+        });
         $data['main_image'] = env('APP_URL').'/uploads/products/'.$id.'/'.$img->basename.'.jpg';
         $img->save($public_dir.$img->basename.'.jpg',60);
       }
