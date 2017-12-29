@@ -153,6 +153,9 @@ class ProductsController extends AdminController
       ];
 
       $public_dir = public_path('uploads/products/'.$id.'/');
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
 
       if(isset($request->affiliate_link)){
         $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);

@@ -133,6 +133,9 @@ class CategoriesController extends AdminController
       ];
       $category = Category::findOrFail($id);
       $public_dir = public_path('uploads/categories/'.$id.'/');
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
 
       if($request->file('image')){
         $img = Image::make($request->file('image'))->fit(220, 200);

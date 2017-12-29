@@ -96,6 +96,9 @@ class BrandsController extends AdminController
         'name' => $request->name,
       ];
       $public_dir = public_path('uploads/brands/'.$id.'/');
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
 
       if($request->file('image')){
         $img = Image::make($request->file('image'))->fit(220, 200);
