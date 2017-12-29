@@ -140,14 +140,24 @@ class CategoriesController extends AdminController
       if($request->file('image')){
         $img = Image::make($request->file('image'))->fit(220, 200);
         $data['image'] = time().$img->basename.'.jpg';
+        $data['category_id'] = $id;
         $img->save($public_dir.$data['image']);
-        $category->files->update($data);
+        if(isset($category->files)){
+          $category->files->update($data);
+        }else{
+          Categoryfile::create($data);
+        }
       }
       if($request->file('second_image')){
         $img = Image::make($request->file('second_image'))->fit(220, 200);
         $data['second_image'] = time().$img->basename.'.jpg';
         $img->save($public_dir.$data['second_image']);
-        $category->files->update($data);
+        $data['category_id'] = $id;
+        if(isset($category->files)){
+          $category->files->update($data);
+        }else{
+          Categoryfile::create($data);
+        }
       }
 
       $category->update($data);
