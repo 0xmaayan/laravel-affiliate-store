@@ -10,7 +10,6 @@ composer install --optimize-autoloader
 php artisan cache:clear
 php artisan route:cache
 php artisan config:cache
-php artisan view:cache
 # Migrate db changes
 php artisan migrate --force
 # Turn on the app
