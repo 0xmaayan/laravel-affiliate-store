@@ -15,7 +15,7 @@
 
         <div class="col-md-12">
             <h1>
-                Edit <i>{{$brand->name}}</i> Category
+                Edit <i>{{$brand->name}}</i> Brand
             </h1>
         </div>
 
@@ -31,7 +31,7 @@
                     {!! Form::file('image') !!}
                 </div>
                 <div class="form-group col-md-4">
-                    <img width="150" height="150" src="{{asset('uploads/brands/'.$brand->image)}}" alt="category image">
+                    <img width="150" height="150" src="{{asset('uploads/brands/'.$brand->id.'/'.$brand->image)}}" alt="category image">
                 </div>
                 {!! Form::submit('Update',['class' => 'btn btn-default col-md-12']) !!}
                 {!! Form::close() !!}
@@ -40,7 +40,7 @@
             <div class="col-md-3">
                 {!! Form::open(['route' => ['admin.brands.destroy',$brand->id ],'method' => 'DELETE']) !!}
                 <div class="form-group col-md-12">
-                    {!! Form::submit('Delete Category',['class' => 'btn btn-danger col-md-12']) !!}
+                    {!! Form::submit('Delete Brand',['class' => 'btn btn-danger col-md-12']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
