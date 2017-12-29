@@ -59,9 +59,9 @@ class BrandsController extends AdminController
       }
 
       if($request->file('image')){
-        $img = Image::make($request->file('image'))->resize(270, 200);
+        $img = Image::make($request->file('image'))->fit(220, 200);
         $data['image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$data['image'],60);
+        $img->save($public_dir.$data['image']);
         $brand->update($data);
       }
 
@@ -98,9 +98,9 @@ class BrandsController extends AdminController
       $public_dir = public_path('uploads/brands/'.$id.'/');
 
       if($request->file('image')){
-        $img = Image::make($request->file('image'))->resize(270, 200);
+        $img = Image::make($request->file('image'))->fit(220, 200);
         $data['image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$data['image'],60);
+        $img->save($public_dir.$data['image']);
       }
 
       $brand = Brand::findOrFail($id);
