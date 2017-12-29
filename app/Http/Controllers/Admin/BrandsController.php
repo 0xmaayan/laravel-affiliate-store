@@ -59,7 +59,7 @@ class BrandsController extends AdminController
       }
 
       if($request->file('image')){
-        $img = Image::make($request->file('image'))->fit(220, 200);
+        $img = Image::make($request->file('image'))->fit(220, 180);
         $data['image'] = time().$img->basename.'.jpg';
         $img->save($public_dir.$data['image']);
         $brand->update($data);
@@ -101,7 +101,7 @@ class BrandsController extends AdminController
       }
 
       if($request->file('image')){
-        $img = Image::make($request->file('image'))->fit(220, 200);
+        $img = Image::make($request->file('image'))->fit(220, 180);
         $data['image'] = time().$img->basename.'.jpg';
         $img->save($public_dir.$data['image']);
       }

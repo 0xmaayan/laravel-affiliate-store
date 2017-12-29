@@ -65,12 +65,12 @@ class CategoriesController extends AdminController
 
       if($request->file('image')){
 
-        $img = Image::make($request->file('image'))->fit(220, 200);
+        $img = Image::make($request->file('image'))->fit(220, 180);
         $files['image'] = time().$img->basename.'.jpg';
         $img->save($public_dir.$files['image']);
 
           if($request->file('second_image')){
-            $img = Image::make($request->file('second_image'))->fit(220, 200);
+            $img = Image::make($request->file('second_image'))->fit(220, 180);
             $files['second_image'] = time().$img->basename.'.jpg';
             $img->save($public_dir.$files['second_image']);
           }
@@ -138,7 +138,7 @@ class CategoriesController extends AdminController
       }
 
       if($request->file('image')){
-        $img = Image::make($request->file('image'))->fit(220, 200);
+        $img = Image::make($request->file('image'))->fit(220, 180);
         $data['image'] = time().$img->basename.'.jpg';
         $data['category_id'] = $id;
         $img->save($public_dir.$data['image']);
@@ -149,7 +149,7 @@ class CategoriesController extends AdminController
         }
       }
       if($request->file('second_image')){
-        $img = Image::make($request->file('second_image'))->fit(220, 200);
+        $img = Image::make($request->file('second_image'))->fit(220, 180);
         $data['second_image'] = time().$img->basename.'.jpg';
         $img->save($public_dir.$data['second_image']);
         $data['category_id'] = $id;
