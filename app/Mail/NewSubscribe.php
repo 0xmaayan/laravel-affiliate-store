@@ -30,10 +30,8 @@ class NewSubscribe extends Mailable implements ShouldQueue{
   public function build(){
 
     return $this->subject('Hi There!!')
-        ->from(config('mail.from.name'), config('app.name'))
+        ->from(config('mail.from.address'), config('mail.from.name'))
         ->markdown('emails.subscribe.new')
-        ->with('subscribe', $this->subscribe)
-        ->attach('/public/images/footer-logo.png');
-
+        ->with('subscribe', $this->subscribe);
   }
 }
