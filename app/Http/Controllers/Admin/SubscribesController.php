@@ -27,7 +27,7 @@ class SubscribesController extends AdminController
       $subscribe = ['email' => $request->email];
 
       $newSubscribe = Subscribe::create($subscribe);
-      Mail::to($request->user())->queue(new NewSubscribe($newSubscribe));
+      Mail::to($request->email)->send(new NewSubscribe($newSubscribe));
       return response()->json($newSubscribe->email);
     }
 }
