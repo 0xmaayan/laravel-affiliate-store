@@ -111,25 +111,25 @@
     <!-- Container -->
     <div class="container">
         <div class="row">
-        <div class="col-md-12">
             <div class="col-lg-12">
-                © Copyright 2017 by <a href="{{url('/')}}">lost in space</a>. All Rights Reserved.
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="col-md-6 col-sm-12 text-left">
-                        <a href="#">Privacy Policy</a> |
-                        <a href="#">Terms & Conditions</a>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <ul class="payment-icons">
-                            <li><a href="{{$settings['pinterest']}}"><i class="fa fa-2x fa-pinterest"></i></a></li>
-                            <li><a href="{{$settings['instagram']}}"><i class="fa fa-2x fa-instagram"></i></a></li>
-                            <li><a href="mailto:{{$settings['email']}}"><i class="fa fa-2x fa-envelope-o"></i></a></li>
-                        </ul>
+                <div class="col-lg-6 col-md-6">
+                    <div>
+                        © Copyright 2017 by <a href="{{url('/')}}">lost in space</a>. All Rights Reserved.
                     </div>
                 </div>
-            </div>
+                <div class="col-lg-6 col-md-6">
+                    <ul class="payment-icons">
+                        <li><a href="{{$settings['pinterest']}}"><i class="fa fa-2x fa-pinterest"></i></a></li>
+                        <li><a href="{{$settings['instagram']}}"><i class="fa fa-2x fa-instagram"></i></a></li>
+                        <li><a href="mailto:{{$settings['email']}}"><i class="fa fa-2x fa-envelope-o"></i></a></li>
+                    </ul>
+                </div>
+            {{--<div class="row">--}}
+                {{--<div class="col-md-6 col-sm-12 text-left">--}}
+                    {{--<a href="#">Privacy Policy</a> |--}}
+                    {{--<a href="#">Terms & Conditions</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
         </div>
     </div>
