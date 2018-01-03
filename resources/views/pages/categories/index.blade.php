@@ -9,7 +9,9 @@
                     <div class="col-md-3" style="">
                         <div class="card text-center">
                             <a href="{{$category->slug}}">
+                                @if(isset($category->files->image))
                                 <img class="card-img-top" style="margin:0 auto;" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->image)}}" alt="category image">
+                                @endif
                                 <div class="card-block">
                                     <h4 class="card-title">{{$category->name}}</h4>
                                 </div>
