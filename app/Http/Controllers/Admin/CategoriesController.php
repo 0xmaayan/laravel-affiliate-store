@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Base\Controllers\AdminController;
-use App\Product;
+use App\Categoryfile;
+use App\Http\Requests\Admin\CategoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Intervention\Image\Facades\Image;
 use Yajra\DataTables\DataTables;
 
 class CategoriesController extends AdminController
@@ -42,34 +44,39 @@ class CategoriesController extends AdminController
         return view('admin.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param \App\Http\Controllers\Admin\CategoryRequest|CategoryRequest $request
+   * @return \Illuminate\Http\Response
+   */
+    public function store(CategoryRequest $request)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-        'second_image' => 'mimes:png,jpg,jpeg',
-      ]);
-
       $data = [
         'name' => $request->name,
       ];
 
-      if($request->file('image')){
-        $data['image'] = time().'_'.$request->file('image')->getClientOriginalName();
-      }
-      if($request->file('second_image')){
-        $data['second_image'] = time().'_'.$request->file('second_image')->getClientOriginalName();
-      }
       $category = Category::create($data);
+      $public_dir = public_path('uploads/categories/'.$category->id.'/');
 
-      $request->image->move(public_path('/uploads/categories/'.$category->id.'/'), $data['image']);
-      $request->second_image->move(public_path('/uploads/categories/'.$category->id.'/'), $data['second_image']);
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
+
+      if($request->file('image')){
+
+        $img = Image::make($request->file('image'))->fit(220, 180);
+        $files['image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$files['image']);
+
+          if($request->file('second_image')){
+            $img = Image::make($request->file('second_image'))->fit(220, 180);
+            $files['second_image'] = time().$img->basename.'.jpg';
+            $img->save($public_dir.$files['second_image']);
+          }
+          $files['category_id'] = $category->id;
+        Categoryfile::create($files);
+      }
 
       return Redirect::route('admin.categories.index');
     }
@@ -111,38 +118,51 @@ class CategoriesController extends AdminController
         return view('admin.categories.edit', compact('category','products'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param CategoryRequest|Request $request
+   * @param  int $id
+   * @return \Illuminate\Http\Response
+   */
+    public function update(CategoryRequest $request, $id)
     {
-      $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'image' => 'mimes:png,jpg,jpeg',
-        'second_image' => 'mimes:png,jpg,jpeg',
-      ]);
 
       $data = [
         'name' => $request->name,
       ];
+      $category = Category::findOrFail($id);
+      $public_dir = public_path('uploads/categories/'.$id.'/');
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
 
       if($request->file('image')){
-        $data['image'] = time().'-'.$request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('/uploads/categories/'.$id), $data['image']);
+        $img = Image::make($request->file('image'))->fit(220, 180);
+        $data['image'] = time().$img->basename.'.jpg';
+        $data['category_id'] = $id;
+        $img->save($public_dir.$data['image']);
+        if(isset($category->files)){
+          $category->files->update($data);
+        }else{
+          Categoryfile::create($data);
+        }
       }
       if($request->file('second_image')){
-        $data['second_image'] = time().'-'.$request->file('second_image')->getClientOriginalName();
-        $request->second_image->move(public_path('/uploads/categories/'.$id), $data['second_image']);
+        $img = Image::make($request->file('second_image'))->fit(220, 180);
+        $data['second_image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$data['second_image']);
+        $data['category_id'] = $id;
+        if(isset($category->files)){
+          $category->files->update($data);
+        }else{
+          Categoryfile::create($data);
+        }
       }
 
-      $category = Category::findOrFail($id);
       $category->update($data);
 
-      return Redirect::route('admin.categories.index');
+      return redirect()->back();
     }
 
     /**

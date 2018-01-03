@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSecondImageToCategories extends Migration
+class AddTypeToProducts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddSecondImageToCategories extends Migration
      */
     public function up()
     {
-      Schema::table('categories', function($table) {
-        $table->string('second_image')->nullable();
+      Schema::table('products', function($table) {
+        $table->string('type')->nullable();
+        $table->dropColumn('second_image');
       });
     }
 
@@ -25,8 +26,8 @@ class AddSecondImageToCategories extends Migration
      */
     public function down()
     {
-      Schema::table('categories', function($table) {
-        $table->dropColumn('second_image');
+      Schema::table('products', function($table) {
+        $table->dropColumn('type');
       });
     }
 }
