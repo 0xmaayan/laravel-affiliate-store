@@ -223,7 +223,7 @@
 		// Filter by Price
 		//----------------------------------------//
 
-		$( "#slider-range" ).slider({
+		/*$( "#slider-range" ).slider({
 			range: true,
 			min: 0,
 			max: 500,
@@ -248,7 +248,7 @@
 			}
 		});
 		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			" - $" + $( "#slider-range" ).slider( "values", 1 ) );
+			" - $" + $( "#slider-range" ).slider( "values", 1 ) );*/
 
 
 
@@ -256,7 +256,7 @@
 		// Product Slider
 		//----------------------------------------//
 
-		$('#product-slider').royalSlider({
+/*		$('#product-slider').royalSlider({
 
 			autoScaleSlider: true,
 			autoScaleSliderWidth: 560,
@@ -271,14 +271,14 @@
 			navigateByClick: false,
 			numImagesToPreload:2,
 
-			/* Arrow Navigation */
+			/!* Arrow Navigation *!/
 			arrowsNav:true,
 			arrowsNavAutoHide: false,
 			arrowsNavHideOnTouch: true,
 			keyboardNavEnabled: true,
 			fadeinLoadedSlide: true,
 
-			/* Thumbnail Navigation */
+			/!* Thumbnail Navigation *!/
 			controlNavigation: 'thumbnails',
 			thumbs: {
 				orientation: 'horizontal',
@@ -307,14 +307,14 @@
 			navigateByClick: false,
 			numImagesToPreload:2,
 
-			/* Arrow Navigation */
+			/!* Arrow Navigation *!/
 			arrowsNav:true,
 			arrowsNavAutoHide: false,
 			arrowsNavHideOnTouch: true,
 			keyboardNavEnabled: true,
 			fadeinLoadedSlide: true,
 
-			/* Thumbnail Navigation */
+			/!* Thumbnail Navigation *!/
 			controlNavigation: 'thumbnails',
 			thumbs: {
 				orientation: 'vertical',
@@ -343,14 +343,14 @@
 			navigateByClick: false,
 			numImagesToPreload:2,
 
-			/* Arrow Navigation */
+			/!* Arrow Navigation *!/
 			arrowsNav:true,
 			arrowsNavAutoHide: false,
 			arrowsNavHideOnTouch: true,
 			keyboardNavEnabled: true,
 			fadeinLoadedSlide: true,
 
-		});
+		});*/
 
 
 
@@ -465,10 +465,10 @@
 		// Notification Boxes
 		//----------------------------------------//
 
-		$('.counter').counterUp({
+	/*	$('.counter').counterUp({
 			delay: 10,
 			time: 2000
-		});
+		});*/
 
 
 
@@ -484,7 +484,7 @@
 		// Tooltips
 		//----------------------------------------//
 
-		$(".tooltip.top").tipTip({
+	/*	$(".tooltip.top").tipTip({
 			defaultPosition: "top"
 		});
 
@@ -498,7 +498,7 @@
 
 		$(".tooltip.right").tipTip({
 			defaultPosition: "right"
-		});
+		});*/
 
 
 
@@ -641,7 +641,7 @@
 		// Custom Select Boxes
 		//----------------------------------------//
 
-		$('.orderby').selectric();
+		// $('.orderby').selectric();
 
 
 		var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
@@ -676,7 +676,7 @@
 			item.filter(':not('+filter+')').find('a.grid-item-image im').stop().animate({opacity: 0.2});
 		});
 
-		PureGrid.init();
+		//PureGrid.init();
 
 
 
