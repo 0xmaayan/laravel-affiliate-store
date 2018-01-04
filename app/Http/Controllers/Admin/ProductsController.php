@@ -37,6 +37,8 @@ class ProductsController extends AdminController
         return Datatables::of($products)
           ->editColumn('link', function ($product){
             return '<a href="'.$product->link.'">Product Link</a>';
+          })->editColumn('category.name', function ($product){
+            return isset($product->category) ? $product->category->name: "";
           })
           ->addColumn('action', function ($product){
             return view('admin.products.actions.action', compact('product'));
