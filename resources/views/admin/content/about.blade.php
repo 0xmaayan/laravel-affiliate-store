@@ -7,7 +7,7 @@
 {!! Form::open(['route' => ['admin.content.update',$content->id ],'method' => 'PUT']) !!}
 <div class="form-group">
     <label>{!! Form::label('') !!}</label>
-    {!! Form::textarea('about',$content->content,['class' => 'form-control']) !!}
+    {!! Form::textarea('about',$content->content,['class' => 'form-control', 'id' => 'ckview','cols' => "30" ,'rows' => "30"]) !!}
 </div>
 {!! Form::submit('Update',['class' => 'btn btn-default col-md-12']) !!}
 {!! Form::close() !!}
