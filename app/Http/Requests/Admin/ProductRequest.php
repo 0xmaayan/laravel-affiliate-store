@@ -18,7 +18,7 @@ class ProductRequest extends FormRequest {
   {
     return [
       'name' => 'required|max:255',
-      'price' => 'sometimes',
+      'price' => 'sometimes|numeric',
       'type' => 'sometimes',
       'link' => 'sometimes',
       'affiliate_link' => 'sometimes',
