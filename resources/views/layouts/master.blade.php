@@ -37,8 +37,9 @@
 @include('includes.topnav')
 
 @include('includes.navbar')
-
+<div style="margin-top: 30px;">
 @yield('content')
+</div>
 
 <div id="backtotop"><a href="#"></a></div>
 

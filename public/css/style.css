@@ -1444,7 +1444,7 @@ ul.delivery-options {
 ---------------------------------------------------------------------- */
 .menu {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	position: relative;
 	padding: 0;
 	list-style: none;

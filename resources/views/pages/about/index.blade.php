@@ -4,9 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="col-md-12">
-                    {{$contents[1]['content']}}
-                </p>
+                {!! html_entity_decode($contents[1]['content']) !!}
             </div>
         </div>
     </div>
