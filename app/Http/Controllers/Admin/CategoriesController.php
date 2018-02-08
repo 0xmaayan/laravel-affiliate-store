@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Base\Controllers\AdminController;
-use App\Categoryfile;
 use App\Http\Requests\Admin\CategoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -66,17 +65,12 @@ class CategoriesController extends AdminController
       if($request->file('image')){
 
         $img = Image::make($request->file('image'))->fit(220, 180);
-        $files['image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$files['image']);
+        $data['image'] = time().$img->basename.'.jpg';
+        $img->save($public_dir.$data['image']);
 
-          if($request->file('second_image')){
-            $img = Image::make($request->file('second_image'))->fit(220, 180);
-            $files['second_image'] = time().$img->basename.'.jpg';
-            $img->save($public_dir.$files['second_image']);
-          }
-          $files['category_id'] = $category->id;
-        Categoryfile::create($files);
       }
+
+      $category->update($data);
 
       return Redirect::route('admin.categories.index');
     }
@@ -140,24 +134,7 @@ class CategoriesController extends AdminController
       if($request->file('image')){
         $img = Image::make($request->file('image'))->fit(220, 180);
         $data['image'] = time().$img->basename.'.jpg';
-        $data['category_id'] = $id;
         $img->save($public_dir.$data['image']);
-        if(isset($category->files)){
-          $category->files->update($data);
-        }else{
-          Categoryfile::create($data);
-        }
-      }
-      if($request->file('second_image')){
-        $img = Image::make($request->file('second_image'))->fit(220, 180);
-        $data['second_image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$data['second_image']);
-        $data['category_id'] = $id;
-        if(isset($category->files)){
-          $category->files->update($data);
-        }else{
-          Categoryfile::create($data);
-        }
       }
 
       $category->update($data);
