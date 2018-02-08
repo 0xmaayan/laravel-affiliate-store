@@ -87,7 +87,7 @@ table .cart-title a:hover,
 .meta a:hover   						{ color: #b8d5e1; }
 
 
-
+#jPanelMenu-menu { background-color: lightgray; }
 #jPanelMenu-menu a.current { background: #b8d5e1 !important; }
 .current-page { background-color: #b8d5e1 !important; }
 blockquote { border-left: 4px solid #b8d5e1; }
