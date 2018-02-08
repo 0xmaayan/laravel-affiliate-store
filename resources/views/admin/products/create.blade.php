@@ -32,14 +32,21 @@
                 {!! Form::text('link','',['class' => 'form-control']) !!}
             </div>--}}
             <div class="form-group">
-                <label>{!! Form::label('main image') !!}</label>
-                {!! Form::file('main_image',['class' => 'form-control col-md-12']) !!}
+                <label style="width:100%;">{!! Form::label('category') !!}</label>
+                @foreach($categories_list as $key => $category)
+                    <div class="form-control">
+                        {!! Form::checkbox('category_id[]',
+                         $key,
+                          []); !!}
+                        {{$category}}
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label style="width:100%;">{!! Form::label('category') !!}</label>
-                {!! Form::select('category_id', $categories_list,null,['class' => 'form-control']) !!}
+                <label>{!! Form::label('main image') !!}</label>
+                {!! Form::file('main_image',['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 <label style="width:100%;">{!! Form::label('brand') !!}</label>
