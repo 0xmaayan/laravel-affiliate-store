@@ -84,8 +84,7 @@ class ProductsController extends AdminController
       }
 
       if(isset($request->link)){
-        $data['link'] = $request->link;
-        $data['type'] = 'personal';
+        $data = $this->createPersonalProduct($request->link);
       }
 
       $product->update($data);
@@ -145,8 +144,7 @@ class ProductsController extends AdminController
       }
 
       if(isset($request->link)){
-        $data['link'] = $request->link;
-        $data['type'] = 'personal';
+        $data = $this->createPersonalProduct($request->link);
       }
 
       $product = Product::findOrFail($id);
@@ -208,6 +206,13 @@ class ProductsController extends AdminController
         $data['main_image'] = $linksArray['src'][0]; // the img src
         $data['type'] = 'affiliate';
       }
+      return $data;
+    }
+
+    private function createPersonalProduct($personal_link){
+      $data['link'] = $personal_link;
+      $data['type'] = 'personal';
+
       return $data;
     }
 }
