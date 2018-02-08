@@ -7,7 +7,6 @@ use App\Base\Controllers\AdminController;
 use App\Http\Requests\Admin\CategoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Intervention\Image\Facades\Image;
 use Yajra\DataTables\DataTables;
 
 class CategoriesController extends AdminController

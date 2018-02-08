@@ -9,7 +9,6 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Intervention\Image\Facades\Image;
 use Yajra\DataTables\DataTables;
 use Sunra\PhpSimple\HtmlDomParser;
 

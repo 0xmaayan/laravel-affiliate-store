@@ -7,7 +7,6 @@ use App\Brand;
 use App\Http\Requests\Admin\BrandRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Intervention\Image\Facades\Image;
 
 class BrandsController extends AdminController
 {
