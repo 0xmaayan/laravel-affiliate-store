@@ -11,13 +11,14 @@ abstract class AdminController extends Controller
 
     public function __construct()
     {
-
+      $this->middleware('auth');
     }
 
-    public function uploadToS3($image,$folder){
-      $imageFileName = $image->getClientOriginalName();
-      $filePath = '/'.$folder.'/' . $imageFileName;
-      Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
-      return $imageFileName;
+    public function createFolder($folder){
+      $public_dir = public_path($folder);
+      if (!file_exists($public_dir)) {
+        mkdir($public_dir, 0777, true);
+      }
+      return $public_dir;
     }
 }
