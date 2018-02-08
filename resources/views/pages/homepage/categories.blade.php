@@ -3,13 +3,13 @@
     <div class="">
 
         <!-- Headline -->
-        <div class="col-md-11">
+        <div class="col-md-11 col-sm-10 col-xs-9">
             <h3 class="headline">Categories</h3>
             <span class="line margin-bottom-0"></span>
         </div>
 
         <!-- Navigation -->
-        <div class="showbiz-navigation pull-right col-md-1">
+        <div class="showbiz-navigation pull-right col-md-1 col-sm-2 col-xs-3" style="display: inline-flex">
             <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
             <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
         </div>
