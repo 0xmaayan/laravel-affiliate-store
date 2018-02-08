@@ -52,7 +52,7 @@
         <div class="col-md-12">
             <div class="col-md-4">
                 <img src="{{asset('images/footer-logo.png')}}" alt="" class="margin-top-10 footer-logo"/>
-                <p class="margin-top-15">Place to write short description about us.</p>
+                <p class="margin-top-15">Place to write short description about us. What should we write?</p>
             </div>
 
             {{--<div class="col-md-3">
@@ -73,7 +73,7 @@
             </div>--}}
 
             <div class="col-md-4">
-
+            @if(isset($account->id))
                 <!-- Headline -->
                 <h3 class="headline footer">My Account</h3>
                 <span class="line"></span>
@@ -84,7 +84,7 @@
                     <li><a href="#">Order History</a></li>
                     <li><a href="#">Wish List</a></li>
                 </ul>
-
+            @endif
             </div>
 
             <div class="col-md-4">
