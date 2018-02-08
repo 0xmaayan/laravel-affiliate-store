@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Base\Controllers\AdminController;
+use App\Http\Requests\Admin\SettingsRequest;
 use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -22,23 +23,14 @@ class SettingsController extends AdminController
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param SettingsRequest|Request $request
+   * @return \Illuminate\Http\Response
+   */
+    public function update(SettingsRequest $request)
     {
-      $validatedData = $request->validate([
-        'logo' => 'mimes:png,jpg,jpeg|nullable',
-        'title' => 'max:255|nullable',
-        'seo_description' => 'max:255|nullable',
-        'seo_keywords' => 'max:255|nullable',
-        'email' => 'email|nullable',
-        'instagram' => 'max:255|nullable',
-        'pinterest' => 'max:255|nullable',
-      ]);
 
       $data = [
         'title' => $request->title,
