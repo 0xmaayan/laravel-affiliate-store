@@ -35,12 +35,15 @@
                                             <img alt="" src="{{asset('uploads/categories/'.$category->id.'/'.$category->image)}}"/>
                                             @endif
                                             <div class="cover">
+                                                @if(isset($category->image))
+                                                    <img alt="" src="{{asset('uploads/categories/'.$category->id.'/'.$category->image)}}"/>
+                                                @endif
                                             </div>
                                         </a>
                                         {{--<a href="{{$category->link}}" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>--}}
                                     </div>
 
-                                    <a href="variable-product-page.html">
+                                    <a href="{{$category->slug}}">
                                         <section>
                                             <h5>{{$category->name}}</h5>
                                         </section>
