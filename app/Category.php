@@ -16,17 +16,13 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-      'name','slug'
+      'name','slug', 'image'
     ];
 
     protected $dates = ['deleted_at'];
 
     public function products(){
-      return $this->hasMany('App\Product');
-    }
-
-    public function files(){
-      return $this->hasOne('App\Categoryfile','category_id');
+      return $this->belongsToMany('App\Product');
     }
 
     /**

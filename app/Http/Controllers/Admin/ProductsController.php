@@ -32,15 +32,12 @@ class ProductsController extends AdminController
    */
     public function index(Request $request)
     {
-      $products =  Product::orderBy('clicks', 'desc')->with('brands','category')->select('products.*');
+      $products =  Product::orderBy('clicks', 'desc')->with('brands')->select('products.*');
       if ($request->ajax()){
         return Datatables::of($products)
           ->editColumn('link', function ($product){
             return '<a href="'.$product->link.'">Product Link</a>';
-          })->editColumn('category.name', function ($product){
-            return isset($product->category) ? $product->category->name: "";
-          })
-          ->addColumn('action', function ($product){
+          })->addColumn('action', function ($product){
             return view('admin.products.actions.action', compact('product'));
           })
           ->rawColumns(['link','action'])
@@ -75,11 +72,14 @@ class ProductsController extends AdminController
       $data = [
         'name' => $request->name,
         'price' => $request->price,
-        'category_id' => $request->category_id,
         'brands_id' => $request->brands_id
       ];
 
       $product = Product::create($data);
+
+      if($request->category_id){
+        $product->category()->sync($request->category_id);
+      }
 
       $public_dir = public_path('uploads/products/'.$product->id.'/');
       if (!file_exists($public_dir)) {
@@ -150,7 +150,6 @@ class ProductsController extends AdminController
       $data = [
         'name' => $request->name,
         'price' => $request->price,
-        'category_id' => $request->category_id,
         'brands_id' => $request->brand_id
       ];
 
@@ -184,6 +183,11 @@ class ProductsController extends AdminController
 
       $product = Product::findOrFail($id);
       $product->update($data);
+
+      if($request->category_id){
+        $product->category()->sync($request->category_id);
+      }
+
 
       return redirect()->back();
     }

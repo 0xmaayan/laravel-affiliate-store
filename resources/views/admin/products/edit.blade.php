@@ -38,7 +38,20 @@
                 @include('admin.products.linkaffiliate')
             <div class="form-group col-md-4">
                 <label style="width:100%;">{!! Form::label('category') !!}</label>
-                {!! Form::select('category_id', $categories_list,$product->category->id,['class' => 'form-control']); !!}
+                    {{--make array of all category product relation to know which checkbox to check--}}
+                  @foreach($product->category as $categoryProduct)
+                    <?php  $all_data[] =  $categoryProduct->id ?>
+                  @endforeach
+
+                @foreach($categories_list as $key => $category)
+                <div class="form-control">
+                    {!! Form::checkbox('category_id[]',
+                     $key,
+                     in_array($key, isset($all_data) ? $all_data : []),
+                      []); !!}
+                    {{$category}}
+                </div>
+                @endforeach
             </div>
         </div>
         <div class="col-md-12">

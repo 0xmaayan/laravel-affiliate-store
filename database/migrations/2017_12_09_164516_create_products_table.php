@@ -23,17 +23,12 @@ class CreateProductsTable extends Migration
       $table->longText('link')->nullable();
       $table->decimal('price',9,2)->nullable();
       $table->string('main_image')->nullable();
-      $table->string('second_image')->nullable();
+      $table->string('type')->nullable();
       $table->integer('clicks')->default(0);
       $table->integer('brands_id')->unsigned();
       $table->foreign('brands_id')
         ->references('id')
         ->on('brands')
-        ->onDelete('cascade');
-      $table->integer('category_id')->unsigned();
-      $table->foreign('category_id')
-        ->references('id')
-        ->on('categories')
         ->onDelete('cascade');
       $table->softDeletes();
       $table->timestamps();

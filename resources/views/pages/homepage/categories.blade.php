@@ -31,13 +31,10 @@
                                 <figure class="product">
                                     <div class="mediaholder">
                                         <a href="{{$category->slug}}">
-                                            @if(isset($category->files->image))
-                                            <img alt="" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->image)}}"/>
+                                            @if(isset($category->image))
+                                            <img alt="" src="{{asset('uploads/categories/'.$category->id.'/'.$category->image)}}"/>
                                             @endif
                                             <div class="cover">
-                                            @if(isset($category->files->second_image))
-                                            <img alt="" src="{{asset('uploads/categories/'.$category->id.'/'.$category->files->second_image)}}"/>
-                                            @endif
                                             </div>
                                         </a>
                                         {{--<a href="{{$category->link}}" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>--}}
