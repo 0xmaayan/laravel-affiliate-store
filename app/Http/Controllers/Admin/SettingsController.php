@@ -9,15 +9,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class SettingsController extends AdminController
 {
-  /**
-   * Create a new controller instance.
-   *
-   */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
