@@ -52,11 +52,7 @@ class CategoriesController extends AdminController
       $public_dir = $this->createFolder('uploads/categories/'.$category->id.'/');
 
       if($request->file('image')){
-
-        $img = Image::make($request->file('image'))->fit(220, 180);
-        $data['image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$data['image']);
-
+        $data = $this->createImage($request->file('image'),$public_dir);
       }
 
       $category->update($data);
@@ -119,9 +115,7 @@ class CategoriesController extends AdminController
       $public_dir = $this->createFolder('uploads/categories/'.$id.'/');
 
       if($request->file('image')){
-        $img = Image::make($request->file('image'))->fit(220, 180);
-        $data['image'] = time().$img->basename.'.jpg';
-        $img->save($public_dir.$data['image']);
+        $data = $this->createImage($request->file('image'),$public_dir);
       }
 
       $category->update($data);
