@@ -26,10 +26,6 @@
                 <label>{!! Form::label('image') !!}</label>
                 {!! Form::file('image') !!}
             </div>
-            <div class="form-group">
-                <label>{!! Form::label('second image') !!}</label>
-                {!! Form::file('second_image') !!}
-            </div>
             {!! Form::submit('Save',['class' => 'btn btn-default']) !!}
             {!! Form::close() !!}
         </div>
