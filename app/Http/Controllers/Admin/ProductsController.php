@@ -76,10 +76,7 @@ class ProductsController extends AdminController
       $public_dir = $this->createFolder('uploads/products/'.$product->id.'/');
 
       if(isset($request->affiliate_link)){
-        $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
-        $data['link'] = $linksArray['value']; // the href attribute value
-        $data['main_image'] = $linksArray['src'][0]; // the img src
-        $data['type'] = 'affiliate';
+        $data = $this->createAmazonProduct($request->affiliate_link);
       }
 
       if($request->file('main_image')){
@@ -140,12 +137,7 @@ class ProductsController extends AdminController
       $public_dir = $this->createFolder('uploads/products/'.$id.'/');
 
       if(isset($request->affiliate_link)){
-        $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
-        if(isset($linksArray['value'])){
-          $data['link'] = $linksArray['value']; // the href attribute value
-          $data['main_image'] = $linksArray['src'][0]; // the img src
-          $data['type'] = 'affiliate';
-        }
+        $data = $this->createAmazonProduct($request->affiliate_link);
       }
 
       if($request->file('main_image')){
@@ -183,7 +175,7 @@ class ProductsController extends AdminController
       return redirect()->back();
     }
 
-    public function returnArrayOfAmazonLinks($fullLink){
+    private function returnArrayOfAmazonLinks($fullLink){
 
       $dom = HtmlDomParser::str_get_html( $fullLink );
       $data = [];
@@ -206,5 +198,16 @@ class ProductsController extends AdminController
       }else{
         return $fullLink;
       }
+    }
+
+    private function createAmazonProduct($affiliate_link){
+      $data = [];
+      $linksArray = $this->returnArrayOfAmazonLinks($affiliate_link);
+      if(isset($linksArray['value'])){
+        $data['link'] = $linksArray['value']; // the href attribute value
+        $data['main_image'] = $linksArray['src'][0]; // the img src
+        $data['type'] = 'affiliate';
+      }
+      return $data;
     }
 }
