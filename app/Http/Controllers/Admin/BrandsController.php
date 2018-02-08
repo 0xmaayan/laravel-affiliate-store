@@ -12,15 +12,6 @@ use Intervention\Image\Facades\Image;
 class BrandsController extends AdminController
 {
     /**
-     * Create a new controller instance.
-     *
-     */
-    public function __construct()
-    {
-      $this->middleware('auth');
-    }
-
-    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
@@ -53,10 +44,7 @@ class BrandsController extends AdminController
 
       $brand = Brand::create($data);
 
-      $public_dir = public_path('uploads/brands/'.$brand->id.'/');
-      if (!file_exists($public_dir)) {
-        mkdir($public_dir, 0777, true);
-      }
+      $public_dir = $this->createFolder('uploads/brands/'.$brand->id.'/');
 
       if($request->file('image')){
         $img = Image::make($request->file('image'))->fit(220, 180);
@@ -95,10 +83,8 @@ class BrandsController extends AdminController
       $data = [
         'name' => $request->name,
       ];
-      $public_dir = public_path('uploads/brands/'.$id.'/');
-      if (!file_exists($public_dir)) {
-        mkdir($public_dir, 0777, true);
-      }
+
+      $public_dir = $this->createFolder('uploads/brands/'.$id.'/');
 
       if($request->file('image')){
         $img = Image::make($request->file('image'))->fit(220, 180);

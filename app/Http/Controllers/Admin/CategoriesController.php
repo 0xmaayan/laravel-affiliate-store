@@ -12,14 +12,6 @@ use Yajra\DataTables\DataTables;
 
 class CategoriesController extends AdminController
 {
-      /**
-       * Create a new controller instance.
-       *
-       */
-      public function __construct()
-      {
-        $this->middleware('auth');
-      }
 
     /**
      * Display a listing of the resource.
@@ -56,11 +48,8 @@ class CategoriesController extends AdminController
       ];
 
       $category = Category::create($data);
-      $public_dir = public_path('uploads/categories/'.$category->id.'/');
 
-      if (!file_exists($public_dir)) {
-        mkdir($public_dir, 0777, true);
-      }
+      $public_dir = $this->createFolder('uploads/categories/'.$category->id.'/');
 
       if($request->file('image')){
 
@@ -126,10 +115,8 @@ class CategoriesController extends AdminController
         'name' => $request->name,
       ];
       $category = Category::findOrFail($id);
-      $public_dir = public_path('uploads/categories/'.$id.'/');
-      if (!file_exists($public_dir)) {
-        mkdir($public_dir, 0777, true);
-      }
+
+      $public_dir = $this->createFolder('uploads/categories/'.$id.'/');
 
       if($request->file('image')){
         $img = Image::make($request->file('image'))->fit(220, 180);

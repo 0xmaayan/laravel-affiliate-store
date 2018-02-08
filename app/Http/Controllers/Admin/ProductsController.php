@@ -15,14 +15,6 @@ use Sunra\PhpSimple\HtmlDomParser;
 
 class ProductsController extends AdminController
 {
-      /**
-       * Create a new controller instance.
-       *
-       */
-      public function __construct()
-      {
-        $this->middleware('auth');
-      }
 
   /**
    * Display a listing of the resource.
@@ -81,10 +73,7 @@ class ProductsController extends AdminController
         $product->category()->sync($request->category_id);
       }
 
-      $public_dir = public_path('uploads/products/'.$product->id.'/');
-      if (!file_exists($public_dir)) {
-        mkdir($public_dir, 0777, true);
-      }
+      $public_dir = $this->createFolder('uploads/products/'.$product->id.'/');
 
       if(isset($request->affiliate_link)){
         $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
@@ -153,10 +142,7 @@ class ProductsController extends AdminController
         'brands_id' => $request->brand_id
       ];
 
-      $public_dir = public_path('uploads/products/'.$id.'/');
-      if (!file_exists($public_dir)) {
-        mkdir($public_dir, 0777, true);
-      }
+      $public_dir = $this->createFolder('uploads/products/'.$id.'/');
 
       if(isset($request->affiliate_link)){
         $linksArray = $this->returnArrayOfAmazonLinks($request->affiliate_link);
