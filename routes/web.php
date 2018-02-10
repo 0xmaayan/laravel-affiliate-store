@@ -45,6 +45,8 @@ Auth::routes();
 Route::get('/', 'FrontController@index');
 Route::get('about-us',['as' => 'about', 'uses' => 'FrontController@about']);
 
+Route::get('terms-of-use', 'FrontController@termsofuse');
+
 Route::get('products',['as' => 'products', 'uses' => 'ProductsController@index']);
 Route::post('product/{id}/click', 'ProductsController@trackClick');
 

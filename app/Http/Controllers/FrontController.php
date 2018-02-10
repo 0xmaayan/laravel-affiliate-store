@@ -26,4 +26,8 @@ class FrontController extends ApplicationController
       return view ('pages.about.index');
     }
 
+    public function termsofuse(){
+      return view ('pages.termsofuse');
+    }
+
 }
