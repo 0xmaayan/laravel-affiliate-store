@@ -10,11 +10,11 @@
                             <img src="{{$product->main_image}}" alt="{{$product->name}}" style="width:100%"/>
                         </a>
                         <section style="padding-bottom: 0">
-                            <h4 class="card-title">{{$product->name}}</h4>
-                            <p class="card-text" style="margin:0;">${{$product->price}}</p>
-                            <a href="{{$product->link}}" class="btn-block shopNow" target="_blank">
+                            {{--<h4 class="card-title">{{$product->name}}</h4>--}}
+                            <p class="card-text" style="margin:0;font-size:20px !important;">${{$product->price}}</p>
+                            {{--<a href="{{$product->link}}" class="btn-block shopNow" target="_blank">
                                 <i class="fa fa-shopping-cart"></i> Shop Now
-                            </a>
+                            </a>--}}
                         </section>
                     </div>
                 @endforeach
