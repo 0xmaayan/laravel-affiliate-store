@@ -8,7 +8,7 @@
             @foreach($products as $product)
                 <div class="card col-xs-6 col-md-3 col-sm-6 col-xs-12 text-center product" style="margin-bottom: 20px;" onclick="trackingClick({{$product->id}})">
                     <a href="{{$product->link}}" target="_blank">
-                        <img src="{{$product->main_image}}" alt="{{$product->name}}" style="width:100%"/>
+                        <img src="{{$product->main_image}}" alt="{{$product->name}}" style="width: 220px;height: 220px;"/>
                     </a>
                     <section style="padding-bottom: 0">
                         {{--<h4 class="card-title">{{$product->name}}</h4>--}}
