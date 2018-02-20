@@ -28,7 +28,7 @@ abstract class ApplicationController extends Controller
       $this->contents = Content::all();
       $this->brands = Brand::all();
       $this->categories = Category::all();
-      $this->products = Product::all();
+      $this->products = Product::all()->shuffle();
       $this->newArrivals = Product::orderBy('created_at', 'desc')->take(3)->get();
       $this->mostClicked = Product::orderBy('clicks', 'desc')->take(3)->get();
       $this->recommends = Product::inRandomOrder()->take(3)->get();
