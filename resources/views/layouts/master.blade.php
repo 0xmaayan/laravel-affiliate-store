@@ -62,7 +62,10 @@
         <div class="col-md-12">
             <div class="col-md-4">
                 <img src="{{asset('images/footer-logo.png')}}" alt="" class="margin-top-10 footer-logo"/>
-                <p class="margin-top-15">Place to write short description about us. What should we write?</p>
+                <p class="margin-top-15">Curated items from all over the Web,
+                    Discover the best decorate products. All the Space Products are being chosen
+                    by a real professional people from the industry.
+                </p>
             </div>
 
             {{--<div class="col-md-3">
