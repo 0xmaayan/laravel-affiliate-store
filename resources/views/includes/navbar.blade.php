@@ -17,14 +17,14 @@
                     </ul>
 
                 </li>
-                <li class="dropdown">
+                {{--<li class="dropdown">
                     <a href="{{route('brands')}}">Brands</a>
                     <ul>
                         @foreach($brands as $brand)
                             <li><a href="{{route('brand',$brand->slug)}}">{{$brand->name}}</a></li>
                         @endforeach
                     </ul>
-                </li>
+                </li>--}}
                 <li><a href="{{route('about')}}">About US</a></li>
 
             </ul>
