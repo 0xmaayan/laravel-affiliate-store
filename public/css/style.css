@@ -4949,7 +4949,6 @@ ul.product-list li {
 	font-weight: 700;
 	color: #fff;
 	cursor: pointer;
-	float: right;
 	z-index: 5;
 	position: relative;
 	padding: 10px 15px;
@@ -4976,8 +4975,7 @@ input.newsletter {
 	z-index: 1;
 	position: relative;
 	font-size: 13px;
-	width: 85%;
-	margin-top: -40px;
+	width: 80%;
 	padding: 10px 14px;
 	line-height: 20px;
 	background-color: #505050;

@@ -54,12 +54,10 @@
 
 <div id="footer">
 
-    <div id="backtotop"><a href="#"></a></div>
     <!-- Container -->
     <div class="container">
 
-        <div class="col-md-12">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
                 <img src="{{asset('images/footer-logo.png')}}" alt="" class="margin-top-10 footer-logo"/>
                 <p class="margin-top-15">Curated items from all over the Web,
                     Discover the best decorate products. All the Space Products are being chosen
@@ -84,7 +82,7 @@
 
             </div>--}}
 
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
             @if(isset($account->id))
                 <!-- Headline -->
                 <h3 class="headline footer">My Account</h3>
@@ -99,7 +97,7 @@
             @endif
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
 
                 <!-- Headline -->
                 <h3 class="headline footer">Newsletter</h3>
@@ -108,16 +106,14 @@
                 <p class="newsletter_text">Sign up to receive email updates on new product announcements, gift ideas, special promotions, sales and more.</p>
 
                 {!! Form::open(['id'=>'subscribe_form'])!!}
-                    {!! Form::submit('Join',['class'=>'newsletter-btn'])!!}
                     <input class="newsletter" name="email" type="email" placeholder="mail@example.com" value=""/>
+                    {!! Form::submit('Join',['class'=>'newsletter-btn'])!!}
                 {!! Form::close() !!}
             </div>
         </div>
 
     </div>
     <!-- Container / End -->
-
-</div>
 
 <div id="footer-bottom">
 
@@ -151,6 +147,7 @@
     </div>
     <!-- Container / End -->
 
+<div id="backtotop"><a href="#"></a></div>
 </div>
 <!-- Java Script
 ================================================== -->
