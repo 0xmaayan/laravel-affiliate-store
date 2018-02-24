@@ -31,7 +31,7 @@ class SubscribesController extends Controller {
     ];
 
     $newClient = Subscribe::create($client);
-    //Mail::to(config('mail.from.address'))->send(new signedClient($newClient));
+    Mail::to(config('mail.from.address'))->send(new signedClient($newClient));
 
     return response()->json($newClient);
   }
