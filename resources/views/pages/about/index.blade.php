@@ -72,8 +72,9 @@
 
                 <div class="col-md-12" style="margin: 52px 0px;">
                     <div class="col-md-10 col-md-offset-1">
+                        <div id="decorate_form_text"></div>
                         <fieldset>
-                            {!! Form::open(['route' => 'admin.products.store','files' => true]) !!}
+                            {!! Form::open(['id'=>'customDecorate_form']) !!}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{!! Form::label('name') !!}</label>
@@ -81,13 +82,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>{!! Form::label('Email *') !!}</label>
-                                    {!! Form::text('email','example@gmail.com',['class' => 'form-control']) !!}
+                                    {!! Form::text('email','',['class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{!! Form::label('Message: *') !!}</label>
-                                    {!! Form::textarea('comment','',['size' => '80x4']) !!}
+                                    {!! Form::textarea('message','',['size' => '80x4']) !!}
                                 </div>
                             </div>
                             <div class="text-center">
