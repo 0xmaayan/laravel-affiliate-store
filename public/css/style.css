@@ -4652,9 +4652,9 @@ a.img-caption {
 /* ShowBiz Product Styles
 ------------------------------------- */
 .product section {
-	padding: 18px 0 17px 0;
+	padding: 10px 0 17px 0;
 	text-align: center;
-	background-color: #f6f6f6;
+	/*background-color: #f6f6f6;*/
 }
 
 .product section h5 { color: #707070; }
@@ -4765,6 +4765,8 @@ ul.product-list li {
 }
 
 .product-list img {
+	width:100px;
+	height:100px;
 	display: inline;
 	float: left;
 	padding-right: 15px;

@@ -2,6 +2,16 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114448833-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-114448833-1');
+    </script>
+
     <!-- Basic Page Needs
     ================================================== -->
     <meta charset="utf-8">
@@ -21,9 +31,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/costume.css')}}">
     <link rel="stylesheet" href="{{asset('css/colors/blue.css')}}" id="colors">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     @stack('styles')
     <!--[if lt IE 9]>
@@ -41,18 +51,20 @@
 @yield('content')
 </div>
 
-<div id="backtotop"><a href="#"></a></div>
-
 
 <div id="footer">
 
+    <div id="backtotop"><a href="#"></a></div>
     <!-- Container -->
     <div class="container">
 
         <div class="col-md-12">
             <div class="col-md-4">
                 <img src="{{asset('images/footer-logo.png')}}" alt="" class="margin-top-10 footer-logo"/>
-                <p class="margin-top-15">Place to write short description about us. What should we write?</p>
+                <p class="margin-top-15">Curated items from all over the Web,
+                    Discover the best decorate products. All the Space Products are being chosen
+                    by a real professional people from the industry.
+                </p>
             </div>
 
             {{--<div class="col-md-3">
