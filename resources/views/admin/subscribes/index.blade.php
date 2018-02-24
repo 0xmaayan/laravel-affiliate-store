@@ -25,6 +25,8 @@
                     <tr>
                         <th>#</th>
                         <th>email</th>
+                        <th>name</th>
+                        <th>message</th>
                         <th>Created At</th>
                     </tr>
                     </thead>
@@ -45,6 +47,8 @@
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'email', name: 'email' },
+                    { data: 'name', name: 'name' },
+                    { data: 'message', name: 'message' },
                     { data: 'created_at', name: 'created_at' }
                 ]
             });
