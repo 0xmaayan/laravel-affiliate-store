@@ -17,4 +17,5 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-Route::post('subscribe', ['as' => 'subscribe', 'uses' => 'Admin\SubscribesController@create']);
+Route::post('subscribe', ['as' => 'subscribe', 'uses' => 'SubscribesController@create']);
+Route::post('decorate', ['as' => 'decorate', 'uses' => 'SubscribesController@decorate']);
