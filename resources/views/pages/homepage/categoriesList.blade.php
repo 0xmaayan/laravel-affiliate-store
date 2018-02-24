@@ -2,7 +2,7 @@
 
     <div class="col-md-12">
         <!-- Best Sellers -->
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
 
             <!-- Headline -->
             <h3 class="headline">Best Sellers</h3>
@@ -13,7 +13,7 @@
             <ul class="product-list">
                 @foreach($mostClicked as $mostClick)
                 <li><a href="{{$mostClick->link}}" onclick="trackingClick({{$mostClick->id}})" target="_blank">
-                        <img src="{{$mostClick->main_image}}" alt="{{$mostClick->name}}" style="width:130px"/>
+                        <img src="{{$mostClick->main_image}}" alt="{{$mostClick->name}}" />
                         <div class="product-list-desc"><i>${{$mostClick->price}}</i></div>
                     </a>
                 </li>
@@ -27,7 +27,7 @@
 
 
         <!-- Top Rated -->
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
 
             <!-- Headline -->
             <h3 class="headline">Recommended</h3>
@@ -39,7 +39,7 @@
                 @foreach($recommends as $recommend)
                 <li>
                     <a href="{{$recommend->link}}" onclick="trackingClick({{$recommend->id}})" target="_blank">
-                        <img style="width:130px;" src="{{$recommend->main_image}}" alt="{{$recommend->name}}"/>
+                        <img src="{{$recommend->main_image}}" alt="{{$recommend->name}}"/>
                         <div class="product-list-desc with-rating"><i>${{$recommend->price}}</i>
                             <div class="rating five-stars">
                                 <div class="star-rating"></div>
@@ -57,7 +57,7 @@
 
 
         <!-- Weekly Sales -->
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
 
             <!-- Headline -->
             <h3 class="headline">New Arrival</h3>
@@ -68,7 +68,7 @@
             <ul class="product-list">
                 @foreach($newArrivals as $newArrival)
                 <li><a href="{{$newArrival->link}}" onclick="trackingClick({{$newArrival->id}})" target="_blank">
-                        <img src="{{$newArrival->main_image}}" alt="{{$newArrival->name}}" style="width:130px"/>
+                        <img src="{{$newArrival->main_image}}" alt="{{$newArrival->name}}" />
                         <div class="product-list-desc"><i>${{$newArrival->price}}</i></div>
                     </a></li>
                 @endforeach

@@ -4765,6 +4765,8 @@ ul.product-list li {
 }
 
 .product-list img {
+	width:100px;
+	height:100px;
 	display: inline;
 	float: left;
 	padding-right: 15px;

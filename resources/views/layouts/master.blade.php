@@ -51,11 +51,10 @@
 @yield('content')
 </div>
 
-<div id="backtotop"><a href="#"></a></div>
-
 
 <div id="footer">
 
+    <div id="backtotop"><a href="#"></a></div>
     <!-- Container -->
     <div class="container">
 
