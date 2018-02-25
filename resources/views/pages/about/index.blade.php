@@ -17,7 +17,7 @@
                         @foreach($recommends as $recommend)
                             <div class="card col-xs-6 col-md-4 col-sm-4 text-center product" style="margin-bottom: 20px;" onclick="trackingClick({{$recommend->id}})">
                                 <a href="{{$recommend->link}}" target="_blank">
-                                    <img src="{{$recommend->main_image}}" alt="{{$recommend->name}}" style="max-width: 220px;max-height: 220px;margin: 0 auto;"/>
+                                    <img src="{{$recommend->main_image}}" alt="{{$recommend->name}}" style="width: 220px;height: 220px;margin: 0 auto;"/>
                                 </a>
                                 <section style="padding-bottom: 0">
                                     <p class="card-text" style="margin:0;font-size:20px !important;">${{$recommend->price}}</p>
