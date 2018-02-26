@@ -35,7 +35,7 @@ abstract class AdminController extends Controller
     $img = Image::make($file)->fit(220, 220,function ($constraint) {
         $constraint->upsize();
       });
-    $data['main_image'] = env('APP_URL').'/uploads/products/'.$product_id.'/'.$img->basename.'.jpg';
+    $data['main_image'] = config('app.url').'/uploads/products/'.$product_id.'/'.$img->basename.'.jpg';
     $img->save($public_dir.$img->basename.'.jpg');
 
     return $data;
