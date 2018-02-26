@@ -123,10 +123,10 @@
             <div class="col-lg-12">
                 <div class="col-lg-6 col-md-6">
                     <div>
-                        © Copyright {{date("Y")}} by <a href="{{url('/')}}">lost in space</a>. All Rights Reserved.
+                        © Copyright {{date("Y")}} by <a href="{{route('home')}}">lost in space</a>. All Rights Reserved.
                     </div>
                     <div>
-                        <a target="_blank" href="terms-of-use">Terms Of Use</a>
+                        <a target="_blank" href="{{route('termsofuse')}}">Terms Of Use</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

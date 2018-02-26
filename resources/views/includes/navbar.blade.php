@@ -6,13 +6,13 @@
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-                <li><a href="{{ url('/') }}" id="current"><i style="bottom: 5px;position: relative;" class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
+                <li><a href="{{ route('home') }}" id="current"><i style="bottom: 5px;position: relative;" class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
                 <li><a href="{{route('products')}}">Products</a></li>
                 <li class="dropdown">
                     <a href="{{route('categories')}}">Categories</a>
                     <ul>
                         @foreach($categories as $category)
-                            <li><a href="{{$category->slug}}">{{$category->name}}</a></li>
+                            <li><a href="{{route('category',$category->slug)}}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
 

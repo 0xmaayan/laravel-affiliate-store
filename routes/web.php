@@ -33,19 +33,19 @@ Route::group(['domain' => "www.lostinspace.co"], function()
 Auth::routes();
 
 
-Route::get('/', 'FrontController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'FrontController@index']);
 Route::get('about-us',['as' => 'about', 'uses' => 'FrontController@about']);
 
-Route::get('terms-of-use', 'FrontController@termsofuse');
+Route::get('terms-of-use',['as' => 'termsofuse', 'uses' => 'FrontController@termsofuse']);
 
 Route::get('products',['as' => 'products', 'uses' => 'ProductsController@index']);
-Route::post('product/{id}/click', 'ProductsController@trackClick');
+Route::post('product/{id}/click', ['as' => 'product.clicked', 'uses' => 'ProductsController@trackClick']);
 
 Route::get('categories',['as' => 'categories', 'uses' => 'CategoriesController@index']);
 
 Route::get('brands',['as' => 'brands', 'uses' => 'BrandsController@index']);
 Route::get('brands/{brandSlug}',['as' => 'brand', 'uses' => 'BrandsController@show']);
 
-Route::get('{categorySlug}','CategoriesController@show');
+Route::get('{categorySlug}',['as' => 'category', 'uses' => 'CategoriesController@show']);
 
 
