@@ -55,18 +55,28 @@
                 </div>
 
                 <div class="col-md-12">
-                    <div class="parallax-banner fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="200">
-                        <img src="" alt="" />
-                        <div class="parallax-overlay"></div>
+                    <div class="row">
+                        @foreach($lastProducts as $lastProduct)
+                            <div class="card col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center product" style="margin-bottom: 20px;" onclick="trackingClick({{$lastProduct->id}})">
+                                <a href="{{$lastProduct->link}}" target="_blank">
+                                    <img src="{{$lastProduct->main_image}}" alt="{{$lastProduct->name}}" style="width: 220px;height: 220px;margin: 0 auto;"/>
+                                </a>
+                                <section style="padding-bottom: 0">
+                                    <p class="card-text" style="margin:0;font-size:20px !important;">${{$lastProduct->price}}</p>
+                                </section>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
                 <div class="col-md-12">
-                    <div class="text-center">
-                        <h1 style="margin: 52px auto 42px;max-width: 880px;">
-                            Have a custom decorate <br>
-                            With one of our decorates styling team
-                        </h1>
+                    <div class="row">
+                        <div class="text-center">
+                            <h1 style="margin: 52px auto 42px;max-width: 880px;">
+                                Have a custom decorate <br>
+                                With one of our decorates styling team
+                            </h1>
+                        </div>
                     </div>
                 </div>
 
@@ -82,13 +92,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>{!! Form::label('Email *') !!}</label>
-                                    {!! Form::text('email','',['class' => 'form-control']) !!}
+                                    {!! Form::text('email','',['class' => 'form-control', 'required']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{!! Form::label('Message: *') !!}</label>
-                                    {!! Form::textarea('message','',['size' => '80x4']) !!}
+                                    {!! Form::textarea('message','',['size' => '80x4', 'required']) !!}
                                 </div>
                             </div>
                             <div class="text-center">

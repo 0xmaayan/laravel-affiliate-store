@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Base\Controllers\ApplicationController;
+use App\Product;
 
 class FrontController extends ApplicationController
 {
@@ -23,7 +24,8 @@ class FrontController extends ApplicationController
     }
 
     public function about(){
-      return view ('pages.about.index');
+      $lastProducts = Product::orderBy('created_at', 'desc')->take(4)->get();
+      return view ('pages.about.index', compact('lastProducts'));
     }
 
     public function termsofuse(){
