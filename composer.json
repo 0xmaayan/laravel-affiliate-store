@@ -15,6 +15,7 @@
         "laravelcollective/html": "^5.5",
         "league/flysystem-aws-s3-v3": "~1.0",
         "mixpanel/mixpanel-php": "^2.6",
+        "spatie/laravel-sitemap": "^3.3",
         "spatie/laravel-sluggable": "^2.1",
         "sunra/php-simple-html-dom-parser": "^1.5",
         "yajra/laravel-datatables-oracle": "~8.0"
