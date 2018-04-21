@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('title', $category->name)
+@section('ogurl', config('app.url').'/'.$category->slug)
+@section('ogimage', asset('uploads/categories/'.$category->id.'/'.$category->image))
 @section('content')
     <div class="col-md-12 text-center">
         <h1 style="margin: 15px 0;">{{$category->name}}</h1>

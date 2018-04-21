@@ -17,8 +17,14 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @section('title', 'Curated Items From All Over The Web')
+    @section('ogurl', config('app.url'))
+    @section('ogimage', asset('uploads/logo/'.$settings['logo']))
     <meta name="description" content="{{$settings['seo_description']}}">
     <meta name="keywords" content="{{$settings['seo_keywords']}}">
+    <meta property="og:url"                content="@yield('ogurl')" />
+    <meta property="og:title"              content="@yield('title')" />
+    <meta property="og:description"        content="{{$settings['seo_description']}}" />
+    <meta property="og:image"              content="@yield('ogimage')" />
     <title>{{config('app.name', 'Lost In Space')}} - @yield('title')</title>
 
     <!-- Mobile Specific Metas

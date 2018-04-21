@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Products')
+@section('ogurl', config('app.url').'/products')
 @section('content')
     <div class="container">
         <div class="row">
