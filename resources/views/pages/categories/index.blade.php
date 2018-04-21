@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <!-- Categories -->
                 @foreach($categories as $category)
-                    <div class="col-md-3" style="">
+                    <div class="col-sm-6 col-md-3" style="margin-bottom:20px;">
                         <div class="card text-center">
                             <a href="{{$category->slug}}">
                                 @if(isset($category->image))
