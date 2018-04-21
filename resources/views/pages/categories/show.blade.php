@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', $category->name)
 @section('content')
     <div class="col-md-12 text-center">
         <h1 style="margin: 15px 0;">{{$category->name}}</h1>
