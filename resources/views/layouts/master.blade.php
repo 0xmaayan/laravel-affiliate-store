@@ -25,6 +25,8 @@
     <meta property="og:title"              content="@yield('title')" />
     <meta property="og:description"        content="{{$settings['seo_description']}}" />
     <meta property="og:image"              content="@yield('ogimage')" />
+    <meta property="og:image:width"        content="600" />
+    <meta property="og:image:height"       content="315" />
     <title>{{config('app.name', 'Lost In Space')}} - @yield('title')</title>
 
     <!-- Mobile Specific Metas
