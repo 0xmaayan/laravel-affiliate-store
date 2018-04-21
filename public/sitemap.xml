@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>http://lostinspace/</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:42+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/about-us</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:45+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/another-category</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:44+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/categories</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:43+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/my-category</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:43+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/name</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:44+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/picture-category</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:45+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/products</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:44+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://lostinspace/terms-of-use</loc>
+    
+    
+        <lastmod>2018-04-21T18:57:45+03:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+</urlset>
