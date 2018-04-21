@@ -3,13 +3,13 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114448833-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{config('analytics.google')}}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'UA-114448833-1');
+      gtag('config', '{{config('analytics.google')}}');
     </script>
 
     <!-- Basic Page Needs
