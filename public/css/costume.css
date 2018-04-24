@@ -28,3 +28,12 @@
 .menu > li > a {
     color: #606060
 }
+
+@media (max-width:450px){
+    .product{
+        box-shadow: 3px 3px 5px 6px #ccc;
+    }
+    .product img {
+        padding: 10px;
+    }
+}
