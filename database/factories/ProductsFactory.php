@@ -18,9 +18,10 @@ $factory->define(App\Product::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'link' => $faker->url,
+        'slug' => $faker->slug(),
+        'type' => 'affiliate',
         'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
-        'main_image' => $faker->image('public/images/products',400,300,null,false),
-        'second_image' => $faker->image('public/images/products',400,300,null,false),
-        'category_id' => \App\Category::all()->random()->id
+        'main_image' => $faker->imageUrl(),
+        'brands_id' => \App\Brand::all()->random()->id
     ];
 });

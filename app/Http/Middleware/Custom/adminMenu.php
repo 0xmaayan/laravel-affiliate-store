@@ -34,10 +34,10 @@ class adminMenu
         ->active('products/*')
         ->icon('bars')
         ->prependIcon();
-      $menu->add('Content',  ['route' => 'admin.content.index'])
+      /*$menu->add('Content',  ['route' => 'admin.content.index'])
         ->active('content/*')
         ->icon('newspaper-o')
-        ->prependIcon();
+        ->prependIcon();*/
       $menu->add('Users',  '/admin/users')
         ->active('users/*')
         ->icon('users')

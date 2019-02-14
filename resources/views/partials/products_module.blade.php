@@ -3,10 +3,10 @@
         <img src="{{$product->main_image}}" alt="{{$product->name}}" style="width: 220px;height: 220px;margin: 0 auto;"/>
     </a>
     <section style="padding-bottom: 0">
-        {{--<h4 class="card-title">{{$product->name}}</h4>--}}
+        <h4 class="card-title">{{$product->name}}</h4>
         <p class="card-text" style="margin:0;font-size:20px !important;">${{$product->price}}</p>
-        {{--<a href="{{$product->link}}" class="btn-block shopNow" target="_blank">
+        <a href="{{$product->link}}" class="btn-block shopNow" target="_blank">
             <i class="fa fa-shopping-cart"></i> Shop Now
-        </a>--}}
+        </a>
     </section>
 </div>
